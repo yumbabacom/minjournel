@@ -56,24 +56,85 @@ export default function AddTrade() {
     return names[tag] || tag;
   };
 
-  // Form data
+  // Form data - updated with all new fields
   const [formData, setFormData] = useState({
-    tradeType: 'buy',
-    symbol: '',
-    entryPrice: '',
-    quantity: '',
-    stopLoss: '',
-    takeProfit: '',
+    tradeType: 'long',
+    accountId: null,
+    accountSize: 0,
+    riskPerTrade: '2',
+    tradingPair: '',
     strategy: '',
+    entryPrice: '',
+    takeProfit: '',
+    stopLoss: '',
+    tradeDirection: 'long', // auto-detected
+    tradeStatus: 'planning',
+    quantity: '',
     notes: '',
+    analysis: '',
+    riskManagementLessons: '',
     tags: '',
+    screenshot: null
   });
 
   // Additional form state
-  const [showSymbolDropdown, setShowSymbolDropdown] = useState(false);
+  const [showTradingPairModal, setShowTradingPairModal] = useState(false);
   const [showStrategyModal, setShowStrategyModal] = useState(false);
-  const [customStrategy, setCustomStrategy] = useState('');
   const [imagePreview, setImagePreview] = useState(null);
+  const [calculatedResults, setCalculatedResults] = useState({
+    riskAmount: 0,
+    lotSize: 0,
+    potentialProfit: 0,
+    potentialLoss: 0,
+    profitPips: 0,
+    lossPips: 0,
+    riskRewardRatio: 0
+  });
+
+  // Trading pairs data with SVG flags
+  const tradingPairs = {
+    forex: [
+      { pair: 'EUR/USD', name: 'Euro/US Dollar', flag1: 'EU', flag2: 'US' },
+      { pair: 'GBP/USD', name: 'British Pound/US Dollar', flag1: 'GB', flag2: 'US' },
+      { pair: 'USD/JPY', name: 'US Dollar/Japanese Yen', flag1: 'US', flag2: 'JP' },
+      { pair: 'USD/CHF', name: 'US Dollar/Swiss Franc', flag1: 'US', flag2: 'CH' },
+      { pair: 'AUD/USD', name: 'Australian Dollar/US Dollar', flag1: 'AU', flag2: 'US' },
+      { pair: 'USD/CAD', name: 'US Dollar/Canadian Dollar', flag1: 'US', flag2: 'CA' },
+      { pair: 'NZD/USD', name: 'New Zealand Dollar/US Dollar', flag1: 'NZ', flag2: 'US' },
+      { pair: 'EUR/GBP', name: 'Euro/British Pound', flag1: 'EU', flag2: 'GB' },
+      { pair: 'EUR/JPY', name: 'Euro/Japanese Yen', flag1: 'EU', flag2: 'JP' },
+      { pair: 'GBP/JPY', name: 'British Pound/Japanese Yen', flag1: 'GB', flag2: 'JP' }
+    ],
+    crypto: [
+      { pair: 'BTC/USD', name: 'Bitcoin/US Dollar', symbol: '₿' },
+      { pair: 'ETH/USD', name: 'Ethereum/US Dollar', symbol: 'Ξ' },
+      { pair: 'ADA/USD', name: 'Cardano/US Dollar', symbol: '₳' },
+      { pair: 'DOT/USD', name: 'Polkadot/US Dollar', symbol: '●' },
+      { pair: 'LINK/USD', name: 'Chainlink/US Dollar', symbol: '⬡' },
+      { pair: 'LTC/USD', name: 'Litecoin/US Dollar', symbol: 'Ł' }
+    ],
+    stocks: [
+      { pair: 'AAPL', name: 'Apple Inc.', sector: 'Technology' },
+      { pair: 'GOOGL', name: 'Alphabet Inc.', sector: 'Technology' },
+      { pair: 'MSFT', name: 'Microsoft Corporation', sector: 'Technology' },
+      { pair: 'AMZN', name: 'Amazon.com Inc.', sector: 'Consumer Discretionary' },
+      { pair: 'TSLA', name: 'Tesla Inc.', sector: 'Consumer Discretionary' },
+      { pair: 'NVDA', name: 'NVIDIA Corporation', sector: 'Technology' }
+    ],
+    commodities: [
+      { pair: 'XAU/USD', name: 'Gold/US Dollar', symbol: '🥇' },
+      { pair: 'XAG/USD', name: 'Silver/US Dollar', symbol: '🥈' },
+      { pair: 'WTI', name: 'West Texas Intermediate Oil', symbol: '🛢️' },
+      { pair: 'BRENT', name: 'Brent Crude Oil', symbol: '🛢️' }
+    ]
+  };
+
+  // Suggested tags
+  const suggestedTags = [
+    'scalping', 'swing-trade', 'day-trade', 'breakout', 'trend-following',
+    'support-resistance', 'news-trade', 'technical-analysis', 'momentum',
+    'reversal', 'continuation', 'pullback', 'bounce', 'channel'
+  ];
 
   // Trading symbols array
   const tradingSymbols = [
@@ -116,13 +177,98 @@ export default function AddTrade() {
     'MACD Signal'
   ]);
 
+  // Auto-detect trade direction based on price levels
+  const autoDetectTradeDirection = (entry, takeProfit, stopLoss) => {
+    if (!entry || !takeProfit || !stopLoss) return 'long';
+    
+    const entryPrice = parseFloat(entry);
+    const tpPrice = parseFloat(takeProfit);
+    const slPrice = parseFloat(stopLoss);
+    
+    if (tpPrice > entryPrice && slPrice < entryPrice) {
+      return 'long';
+    } else if (tpPrice < entryPrice && slPrice > entryPrice) {
+      return 'short';
+    }
+    return 'long';
+  };
+
+  // Calculate trading results
+  const calculateResults = (data) => {
+    const accountSize = parseFloat(data.accountSize) || 0;
+    const riskPercent = parseFloat(data.riskPerTrade) || 0;
+    const entryPrice = parseFloat(data.entryPrice) || 0;
+    const takeProfit = parseFloat(data.takeProfit) || 0;
+    const stopLoss = parseFloat(data.stopLoss) || 0;
+    
+    if (!accountSize || !riskPercent || !entryPrice || !takeProfit || !stopLoss) {
+      return {
+        riskAmount: 0,
+        lotSize: 0,
+        potentialProfit: 0,
+        potentialLoss: 0,
+        profitPips: 0,
+        lossPips: 0,
+        riskRewardRatio: 0
+      };
+    }
+
+    const riskAmount = (accountSize * riskPercent) / 100;
+    
+    // Calculate pips (simplified for forex)
+    const profitPips = Math.abs(takeProfit - entryPrice) * 10000;
+    const lossPips = Math.abs(entryPrice - stopLoss) * 10000;
+    
+    // Calculate lot size based on risk (simplified)
+    const pipValue = 10; // $10 per pip for standard lot
+    const lotSize = riskAmount / (lossPips * pipValue);
+    
+    // Calculate potential profit/loss
+    const potentialProfit = profitPips * pipValue * lotSize;
+    const potentialLoss = lossPips * pipValue * lotSize;
+    
+    // Risk-reward ratio
+    const riskRewardRatio = potentialProfit / potentialLoss || 0;
+
+    return {
+      riskAmount: riskAmount.toFixed(2),
+      lotSize: lotSize.toFixed(2),
+      potentialProfit: potentialProfit.toFixed(2),
+      potentialLoss: potentialLoss.toFixed(2),
+      profitPips: profitPips.toFixed(1),
+      lossPips: lossPips.toFixed(1),
+      riskRewardRatio: riskRewardRatio.toFixed(2)
+    };
+  };
+
   // Form handlers
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    const newFormData = { ...formData, [name]: value };
+    
+    // Auto-detect trade direction when price levels change
+    if (['entryPrice', 'takeProfit', 'stopLoss'].includes(name)) {
+      const direction = autoDetectTradeDirection(
+        name === 'entryPrice' ? value : newFormData.entryPrice,
+        name === 'takeProfit' ? value : newFormData.takeProfit,
+        name === 'stopLoss' ? value : newFormData.stopLoss
+      );
+      newFormData.tradeDirection = direction;
+    }
+    
+    // Update account size when account changes
+    if (name === 'accountId') {
+      const selectedAccount = accounts.find(acc => acc.id === parseInt(value));
+      if (selectedAccount) {
+        newFormData.accountSize = selectedAccount.balance;
+      }
+    }
+    
+    setFormData(newFormData);
+    
+    // Recalculate results
+    const results = calculateResults(newFormData);
+    setCalculatedResults(results);
   };
 
   const selectSymbol = (symbol) => {
@@ -145,6 +291,7 @@ export default function AddTrade() {
       const reader = new FileReader();
       reader.onload = (e) => {
         setImagePreview(e.target.result);
+        setFormData(prev => ({ ...prev, screenshot: file }));
       };
       reader.readAsDataURL(file);
     }
@@ -795,78 +942,181 @@ export default function AddTrade() {
 
         {/* Main Form Content */}
         <main className="flex-1 p-8 overflow-y-auto">
-          <form id="trade-form" onSubmit={handleSubmit} className="max-w-4xl mx-auto space-y-8">
-            {/* Trade Type & Symbol */}
+          <form id="trade-form" onSubmit={handleSubmit} className="max-w-6xl mx-auto space-y-8">
+            
+            {/* Trading Parameters Section */}
             <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Trade Details</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
+                <svg className="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+                Trading Parameters
+              </h3>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {/* Account Selection */}
+                <div className="lg:col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Trading Account</label>
+                  <select
+                    name="accountId"
+                    value={formData.accountId || ''}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                  >
+                    <option value="">Select Account</option>
+                    {accounts.map((account) => (
+                      <option key={account.id} value={account.id}>
+                        {account.name} - ${Number(account.balance || 0).toLocaleString()} ({getTagDisplayName(account.tag)})
+                      </option>
+                    ))}
+                  </select>
+                  {formData.accountSize > 0 && (
+                    <p className="mt-1 text-sm text-gray-600">
+                      Account Size: <span className="font-semibold">${Number(formData.accountSize).toLocaleString()}</span>
+                    </p>
+                  )}
+                </div>
+
+                {/* Risk Per Trade */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Trade Type</label>
-                  <div className="flex space-x-4">
-                    <label className="flex items-center">
-                      <input
-                        type="radio"
-                        name="tradeType"
-                        value="buy"
-                        checked={formData.tradeType === 'buy'}
-                        onChange={handleChange}
-                        className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
-                      />
-                      <span className="ml-2 text-sm text-gray-700">Buy</span>
-                    </label>
-                    <label className="flex items-center">
-                      <input
-                        type="radio"
-                        name="tradeType"
-                        value="sell"
-                        checked={formData.tradeType === 'sell'}
-                        onChange={handleChange}
-                        className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
-                      />
-                      <span className="ml-2 text-sm text-gray-700">Sell</span>
-                    </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Risk Per Trade</label>
+                  <div className="relative">
+                    <input
+                      type="number"
+                      name="riskPerTrade"
+                      value={formData.riskPerTrade}
+                      onChange={handleChange}
+                      step="0.1"
+                      min="0.1"
+                      max="10"
+                      placeholder="2"
+                      className="w-full px-3 py-2 pr-8 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                    />
+                    <span className="absolute right-3 top-2 text-gray-500">%</span>
                   </div>
                 </div>
 
+                {/* Trading Status */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Symbol</label>
-                  <div className="relative symbol-dropdown">
-                    <input
-                      type="text"
-                      name="symbol"
-                      value={formData.symbol}
-                      onChange={handleChange}
-                      onFocus={() => setShowSymbolDropdown(true)}
-                      placeholder="Search symbol..."
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                    />
-                    
-                    {showSymbolDropdown && filteredSymbols.length > 0 && (
-                      <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-lg z-50 max-h-48 overflow-y-auto">
-                        {filteredSymbols.map((symbol, index) => (
-                          <button
-                            key={index}
-                            type="button"
-                            onClick={() => selectSymbol(symbol.symbol)}
-                            className="w-full px-3 py-2 text-left hover:bg-gray-50 border-b border-gray-100 last:border-b-0"
-                          >
-                            <div className="font-medium text-gray-900">{symbol.symbol}</div>
-                            <div className="text-sm text-gray-500">{symbol.name}</div>
-                          </button>
-                        ))}
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Trade Status</label>
+                  <div className="flex space-x-3">
+                    <button
+                      type="button"
+                      onClick={() => setFormData(prev => ({ ...prev, tradeStatus: 'planning' }))}
+                      className={`flex-1 flex items-center justify-center px-3 py-2 rounded-lg border transition-colors ${
+                        formData.tradeStatus === 'planning'
+                          ? 'bg-blue-50 border-blue-300 text-blue-700'
+                          : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50'
+                      }`}
+                    >
+                      <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                      </svg>
+                      Planning
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setFormData(prev => ({ ...prev, tradeStatus: 'open' }))}
+                      className={`flex-1 flex items-center justify-center px-3 py-2 rounded-lg border transition-colors ${
+                        formData.tradeStatus === 'open'
+                          ? 'bg-green-50 border-green-300 text-green-700'
+                          : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50'
+                      }`}
+                    >
+                      <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                      Open
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Trading Pair and Strategy */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                {/* Trading Pair */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Trading Pair</label>
+                  <button
+                    type="button"
+                    onClick={() => setShowTradingPairModal(true)}
+                    className="w-full p-4 border border-gray-300 rounded-lg text-left hover:border-gray-400 hover:shadow-sm transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  >
+                    {formData.tradingPair ? (
+                      <div className="flex items-center space-x-3">
+                        <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                          <span className="text-blue-600 text-xs font-medium">{formData.tradingPair.split('/')[0] || formData.tradingPair.substring(0, 3)}</span>
+                        </div>
+                        <div>
+                          <p className="font-medium text-gray-900">{formData.tradingPair}</p>
+                          <p className="text-sm text-gray-500">Click to change</p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="flex items-center space-x-3">
+                        <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+                          <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                          </svg>
+                        </div>
+                        <div>
+                          <p className="font-medium text-gray-500">Select Trading Pair</p>
+                          <p className="text-sm text-gray-400">Choose from Forex, Crypto, Stocks, Commodities</p>
+                        </div>
                       </div>
                     )}
-                  </div>
+                  </button>
+                </div>
+
+                {/* Trading Strategy */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Trading Strategy</label>
+                  <button
+                    type="button"
+                    onClick={() => setShowStrategyModal(true)}
+                    className="w-full p-4 border border-gray-300 rounded-lg text-left hover:border-gray-400 hover:shadow-sm transition-all duration-200 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  >
+                    {formData.strategy ? (
+                      <div className="flex items-center space-x-3">
+                        <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                          <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                          </svg>
+                        </div>
+                        <div>
+                          <p className="font-medium text-gray-900">{formData.strategy}</p>
+                          <p className="text-sm text-gray-500">Click to change</p>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="flex items-center space-x-3">
+                        <div className="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center">
+                          <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                          </svg>
+                        </div>
+                        <div>
+                          <p className="font-medium text-gray-500">Select Strategy</p>
+                          <p className="text-sm text-gray-400">Choose from your saved strategies</p>
+                        </div>
+                      </div>
+                    )}
+                  </button>
                 </div>
               </div>
             </div>
 
-            {/* Price & Quantity */}
+            {/* Price Levels Section */}
             <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Price & Quantity</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
+                <svg className="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+                Price Levels
+              </h3>
               
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+                {/* Entry Price */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Entry Price</label>
                   <input
@@ -874,90 +1124,13 @@ export default function AddTrade() {
                     name="entryPrice"
                     value={formData.entryPrice}
                     onChange={handleChange}
-                    step="0.01"
-                    placeholder="0.00"
+                    step="0.00001"
+                    placeholder="1.2500"
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                   />
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Quantity</label>
-                  <input
-                    type="number"
-                    name="quantity"
-                    value={formData.quantity}
-                    onChange={handleChange}
-                    step="0.001"
-                    placeholder="0"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Total Value</label>
-                  <input
-                    type="text"
-                    value={`$${(parseFloat(formData.entryPrice) * parseFloat(formData.quantity) || 0).toFixed(2)}`}
-                    readOnly
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 text-gray-700"
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Strategy Selection */}
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Strategy</h3>
-              
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                {strategies.map((strategy) => (
-                  <button
-                    key={strategy}
-                    type="button"
-                    onClick={() => setFormData(prev => ({ ...prev, strategy }))}
-                    className={`p-3 text-sm font-medium rounded-lg border transition-colors ${
-                      formData.strategy === strategy
-                        ? 'bg-blue-50 border-blue-300 text-blue-700'
-                        : 'bg-white border-gray-200 text-gray-700 hover:bg-gray-50'
-                    }`}
-                  >
-                    {strategy}
-                  </button>
-                ))}
-              </div>
-              
-              <button
-                type="button"
-                onClick={() => setShowStrategyModal(true)}
-                className="mt-3 text-sm text-blue-600 hover:text-blue-700 transition-colors"
-              >
-                + Add Custom Strategy
-              </button>
-            </div>
-
-            {/* Risk Management */}
-            <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Risk Management</h3>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Stop Loss</label>
-                  <input
-                    type="number"
-                    name="stopLoss"
-                    value={formData.stopLoss}
-                    onChange={handleChange}
-                    step="0.01"
-                    placeholder="0.00"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                  />
-                  {formData.stopLoss && formData.entryPrice && (
-                    <p className="mt-1 text-xs text-gray-500">
-                      Risk: ${Math.abs((parseFloat(formData.entryPrice) - parseFloat(formData.stopLoss)) * parseFloat(formData.quantity) || 0).toFixed(2)}
-                    </p>
-                  )}
-                </div>
-
+                {/* Take Profit */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">Take Profit</label>
                   <input
@@ -965,86 +1138,306 @@ export default function AddTrade() {
                     name="takeProfit"
                     value={formData.takeProfit}
                     onChange={handleChange}
-                    step="0.01"
-                    placeholder="0.00"
+                    step="0.00001"
+                    placeholder="1.2600"
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                   />
-                  {formData.takeProfit && formData.entryPrice && (
-                    <p className="mt-1 text-xs text-gray-500">
-                      Reward: ${Math.abs((parseFloat(formData.takeProfit) - parseFloat(formData.entryPrice)) * parseFloat(formData.quantity) || 0).toFixed(2)}
+                </div>
+
+                {/* Stop Loss */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Stop Loss</label>
+                  <input
+                    type="number"
+                    name="stopLoss"
+                    value={formData.stopLoss}
+                    onChange={handleChange}
+                    step="0.00001"
+                    placeholder="1.2400"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                  />
+                </div>
+
+                {/* Trade Direction - Auto-detected */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Trade Direction</label>
+                  <div className="flex space-x-2">
+                    <button
+                      type="button"
+                      onClick={() => setFormData(prev => ({ ...prev, tradeDirection: 'long' }))}
+                      className={`flex-1 flex items-center justify-center px-3 py-2 rounded-lg border transition-colors ${
+                        formData.tradeDirection === 'long'
+                          ? 'bg-green-50 border-green-300 text-green-700'
+                          : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50'
+                      }`}
+                    >
+                      <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                      </svg>
+                      Long
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setFormData(prev => ({ ...prev, tradeDirection: 'short' }))}
+                      className={`flex-1 flex items-center justify-center px-3 py-2 rounded-lg border transition-colors ${
+                        formData.tradeDirection === 'short'
+                          ? 'bg-red-50 border-red-300 text-red-700'
+                          : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50'
+                      }`}
+                    >
+                      <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                      </svg>
+                      Short
+                    </button>
+                  </div>
+                  {formData.entryPrice && formData.takeProfit && formData.stopLoss && (
+                    <p className="mt-1 text-xs text-blue-600">
+                      Auto-detected: {autoDetectTradeDirection(formData.entryPrice, formData.takeProfit, formData.stopLoss).toUpperCase()}
                     </p>
                   )}
                 </div>
               </div>
-
-              {formData.stopLoss && formData.takeProfit && formData.entryPrice && (
-                <div className="mt-4 p-3 bg-gray-50 rounded-lg">
-                  <p className="text-sm text-gray-700">
-                    Risk/Reward Ratio: 1:{(
-                      Math.abs((parseFloat(formData.takeProfit) - parseFloat(formData.entryPrice)) * parseFloat(formData.quantity)) /
-                      Math.abs((parseFloat(formData.entryPrice) - parseFloat(formData.stopLoss)) * parseFloat(formData.quantity)) || 0
-                    ).toFixed(2)}
-                  </p>
-                </div>
-              )}
             </div>
 
-            {/* Notes & Tags */}
+            {/* Auto-calculated Results */}
+            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200 p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
+                <svg className="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 16h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+                Auto-calculated Results
+              </h3>
+              
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
+                <div className="bg-white p-4 rounded-lg border border-blue-100">
+                  <p className="text-xs font-medium text-gray-600 uppercase tracking-wide">Risk Amount</p>
+                  <p className="text-lg font-bold text-gray-900">${calculatedResults.riskAmount}</p>
+                </div>
+                
+                <div className="bg-white p-4 rounded-lg border border-blue-100">
+                  <p className="text-xs font-medium text-gray-600 uppercase tracking-wide">Lot Size</p>
+                  <p className="text-lg font-bold text-gray-900">{calculatedResults.lotSize}</p>
+                </div>
+                
+                <div className="bg-white p-4 rounded-lg border border-green-100">
+                  <p className="text-xs font-medium text-gray-600 uppercase tracking-wide">Potential Profit</p>
+                  <p className="text-lg font-bold text-green-600">${calculatedResults.potentialProfit}</p>
+                </div>
+                
+                <div className="bg-white p-4 rounded-lg border border-red-100">
+                  <p className="text-xs font-medium text-gray-600 uppercase tracking-wide">Potential Loss</p>
+                  <p className="text-lg font-bold text-red-600">${calculatedResults.potentialLoss}</p>
+                </div>
+                
+                <div className="bg-white p-4 rounded-lg border border-blue-100">
+                  <p className="text-xs font-medium text-gray-600 uppercase tracking-wide">Profit Pips</p>
+                  <p className="text-lg font-bold text-gray-900">{calculatedResults.profitPips}</p>
+                </div>
+                
+                <div className="bg-white p-4 rounded-lg border border-blue-100">
+                  <p className="text-xs font-medium text-gray-600 uppercase tracking-wide">Loss Pips</p>
+                  <p className="text-lg font-bold text-gray-900">{calculatedResults.lossPips}</p>
+                </div>
+                
+                <div className="bg-white p-4 rounded-lg border border-purple-100">
+                  <p className="text-xs font-medium text-gray-600 uppercase tracking-wide">Risk:Reward</p>
+                  <p className="text-lg font-bold text-purple-600">1:{calculatedResults.riskRewardRatio}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Trade Screenshot Upload */}
             <div className="bg-white rounded-lg border border-gray-200 p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Additional Information</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                <svg className="w-5 h-5 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h14a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                Trade Screenshot
+              </h3>
+              
+              <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition-colors">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  className="hidden"
+                  id="screenshot-upload"
+                />
+                <label htmlFor="screenshot-upload" className="cursor-pointer">
+                  {imagePreview ? (
+                    <div className="space-y-4">
+                      <img src={imagePreview} alt="Trade screenshot" className="max-w-full h-48 object-cover rounded-lg mx-auto" />
+                      <p className="text-sm text-blue-600 font-medium">Click to change screenshot</p>
+                    </div>
+                  ) : (
+                    <div className="space-y-4">
+                      <svg className="w-12 h-12 text-gray-400 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h14a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                      <div>
+                        <p className="text-lg font-medium text-gray-900">Upload Trade Screenshot</p>
+                        <p className="text-sm text-gray-500">PNG, JPG, GIF up to 10MB</p>
+                      </div>
+                    </div>
+                  )}
+                </label>
+              </div>
+            </div>
+
+            {/* Trade Analysis and Notes */}
+            <div className="bg-white rounded-lg border border-gray-200 p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                <svg className="w-5 h-5 mr-2 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Trade Analysis & Notes
+              </h3>
               
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Notes</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Comprehensive Trade Analysis</label>
                   <textarea
-                    name="notes"
-                    value={formData.notes}
+                    name="analysis"
+                    value={formData.analysis}
                     onChange={handleChange}
-                    rows={4}
-                    placeholder="Add any additional notes about this trade..."
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                    rows={6}
+                    placeholder="Enter your comprehensive trade analysis here...
+
+Suggested points:
+• Market conditions and setup
+• Technical indicators used
+• Fundamental analysis (if applicable)
+• Entry plan and reasoning
+• Exit strategy"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Tags</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Risk Management & Lessons Learned</label>
+                  <textarea
+                    name="riskManagementLessons"
+                    value={formData.riskManagementLessons}
+                    onChange={handleChange}
+                    rows={4}
+                    placeholder="Document risk management decisions and lessons learned...
+
+• Position sizing rationale
+• Risk management rules applied
+• What worked well?
+• What could be improved?
+• Key takeaways for future trades"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Tags Section */}
+            <div className="bg-white rounded-lg border border-gray-200 p-6">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                <svg className="w-5 h-5 mr-2 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                </svg>
+                Tags
+              </h3>
+              
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Add Tags (comma-separated)</label>
                   <input
                     type="text"
                     name="tags"
                     value={formData.tags}
                     onChange={handleChange}
-                    placeholder="e.g., swing trade, earnings play, technical analysis"
+                    placeholder="e.g., scalping, breakout, trend-following"
                     className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                   />
                 </div>
-
+                
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">Trade Screenshot</label>
-                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-6">
-                    <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageUpload}
-                      className="hidden"
-                      id="image-upload"
-                    />
-                    <label
-                      htmlFor="image-upload"
-                      className="cursor-pointer flex flex-col items-center justify-center space-y-2"
-                    >
-                      <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h14a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                      <span className="text-sm text-gray-600">Click to upload trade screenshot</span>
-                    </label>
-                    {imagePreview && (
-                      <div className="mt-4">
-                        <img src={imagePreview} alt="Trade screenshot" className="max-w-full h-32 object-cover rounded-lg" />
-                      </div>
-                    )}
+                  <p className="text-sm font-medium text-gray-700 mb-3">Suggested Tags:</p>
+                  <div className="flex flex-wrap gap-2">
+                    {suggestedTags.map((tag) => (
+                      <button
+                        key={tag}
+                        type="button"
+                        onClick={() => addTag(tag)}
+                        className="px-3 py-1 text-sm bg-gray-100 text-gray-700 rounded-full hover:bg-blue-100 hover:text-blue-700 transition-colors"
+                      >
+                        {tag}
+                      </button>
+                    ))}
                   </div>
                 </div>
+                
+                {formData.tags && (
+                  <div>
+                    <p className="text-sm font-medium text-gray-700 mb-2">Current Tags:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {formData.tags.split(',').map((tag, index) => (
+                        tag.trim() && (
+                          <span
+                            key={index}
+                            className="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded-full border border-blue-200"
+                          >
+                            {tag.trim()}
+                          </span>
+                        )
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 pt-6">
+              <button
+                type="button"
+                onClick={() => router.push('/dashboard')}
+                className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors flex items-center justify-center"
+              >
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                Cancel & Exit
+              </button>
+              
+              <button
+                type="button"
+                onClick={clearForm}
+                className="flex-1 px-6 py-3 border border-orange-300 text-orange-700 rounded-lg hover:bg-orange-50 transition-colors flex items-center justify-center"
+              >
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                Clear Form
+              </button>
+              
+              <button
+                type="submit"
+                disabled={loading || !formData.tradingPair || !formData.entryPrice}
+                className="flex-1 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
+              >
+                {loading ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Saving Trade...
+                  </>
+                ) : (
+                  <>
+                    <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    </svg>
+                    Add Trade to Journal
+                  </>
+                )}
+              </button>
             </div>
           </form>
         </main>
@@ -1187,6 +1580,233 @@ export default function AddTrade() {
               >
                 Add Strategy
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Trading Pairs Modal */}
+      {showTradingPairModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg w-full max-w-4xl max-h-[80vh] overflow-hidden">
+            <div className="p-6 border-b border-gray-200">
+              <div className="flex items-center justify-between">
+                <h3 className="text-xl font-semibold text-gray-900">Select Trading Pair</h3>
+                <button
+                  onClick={() => setShowTradingPairModal(false)}
+                  className="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            
+            <div className="p-6 overflow-y-auto max-h-[60vh]">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                {/* Forex Pairs */}
+                <div>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                    <span className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-2">
+                      <svg className="w-3 h-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </span>
+                    Forex Pairs
+                  </h4>
+                  <div className="space-y-2">
+                    {tradingPairs.forex.map((pair) => (
+                      <button
+                        key={pair.pair}
+                        onClick={() => selectTradingPair(pair.pair)}
+                        className="w-full p-3 text-left border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50 transition-all duration-200 group"
+                      >
+                        <div className="flex items-center space-x-3">
+                          <div className="flex space-x-1">
+                            <div className="w-6 h-4 bg-blue-500 rounded-sm flex items-center justify-center">
+                              <span className="text-white text-xs font-bold">{pair.flag1}</span>
+                            </div>
+                            <div className="w-6 h-4 bg-green-500 rounded-sm flex items-center justify-center">
+                              <span className="text-white text-xs font-bold">{pair.flag2}</span>
+                            </div>
+                          </div>
+                          <div>
+                            <p className="font-medium text-gray-900 group-hover:text-blue-700">{pair.pair}</p>
+                            <p className="text-sm text-gray-500">{pair.name}</p>
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Crypto Pairs */}
+                <div>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                    <span className="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center mr-2">
+                      <svg className="w-3 h-3 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                    </span>
+                    Cryptocurrency
+                  </h4>
+                  <div className="space-y-2">
+                    {tradingPairs.crypto.map((pair) => (
+                      <button
+                        key={pair.pair}
+                        onClick={() => selectTradingPair(pair.pair)}
+                        className="w-full p-3 text-left border border-gray-200 rounded-lg hover:border-orange-300 hover:bg-orange-50 transition-all duration-200 group"
+                      >
+                        <div className="flex items-center space-x-3">
+                          <div className="w-8 h-8 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full flex items-center justify-center">
+                            <span className="text-white text-sm font-bold">{pair.symbol}</span>
+                          </div>
+                          <div>
+                            <p className="font-medium text-gray-900 group-hover:text-orange-700">{pair.pair}</p>
+                            <p className="text-sm text-gray-500">{pair.name}</p>
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Stock Pairs */}
+                <div>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                    <span className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-2">
+                      <svg className="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                      </svg>
+                    </span>
+                    Stocks
+                  </h4>
+                  <div className="space-y-2">
+                    {tradingPairs.stocks.map((pair) => (
+                      <button
+                        key={pair.pair}
+                        onClick={() => selectTradingPair(pair.pair)}
+                        className="w-full p-3 text-left border border-gray-200 rounded-lg hover:border-green-300 hover:bg-green-50 transition-all duration-200 group"
+                      >
+                        <div className="flex items-center space-x-3">
+                          <div className="w-8 h-8 bg-gradient-to-r from-green-400 to-green-600 rounded-full flex items-center justify-center">
+                            <span className="text-white text-xs font-bold">{pair.pair.substring(0, 2)}</span>
+                          </div>
+                          <div>
+                            <p className="font-medium text-gray-900 group-hover:text-green-700">{pair.pair}</p>
+                            <p className="text-sm text-gray-500">{pair.name}</p>
+                            <p className="text-xs text-gray-400">{pair.sector}</p>
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Commodities */}
+                <div>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+                    <span className="w-6 h-6 bg-yellow-100 rounded-full flex items-center justify-center mr-2">
+                      <svg className="w-3 h-3 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+                      </svg>
+                    </span>
+                    Commodities
+                  </h4>
+                  <div className="space-y-2">
+                    {tradingPairs.commodities.map((pair) => (
+                      <button
+                        key={pair.pair}
+                        onClick={() => selectTradingPair(pair.pair)}
+                        className="w-full p-3 text-left border border-gray-200 rounded-lg hover:border-yellow-300 hover:bg-yellow-50 transition-all duration-200 group"
+                      >
+                        <div className="flex items-center space-x-3">
+                          <div className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center">
+                            <span className="text-sm">{pair.symbol}</span>
+                          </div>
+                          <div>
+                            <p className="font-medium text-gray-900 group-hover:text-yellow-700">{pair.pair}</p>
+                            <p className="text-sm text-gray-500">{pair.name}</p>
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Strategy Selection Modal */}
+      {showStrategyModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg w-full max-w-2xl max-h-[80vh] overflow-hidden">
+            <div className="p-6 border-b border-gray-200">
+              <div className="flex items-center justify-between">
+                <h3 className="text-xl font-semibold text-gray-900">Select Trading Strategy</h3>
+                <button
+                  onClick={() => setShowStrategyModal(false)}
+                  className="p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            
+            <div className="p-6 overflow-y-auto max-h-[60vh]">
+              <div className="space-y-3">
+                {strategies.map((strategy) => (
+                  <button
+                    key={strategy}
+                    onClick={() => selectStrategy({ name: strategy })}
+                    className="w-full p-4 text-left border border-gray-200 rounded-lg hover:border-purple-300 hover:bg-purple-50 transition-all duration-200 group"
+                  >
+                    <div className="flex items-center space-x-3">
+                      <div className="w-10 h-10 bg-gradient-to-r from-purple-400 to-purple-600 rounded-full flex items-center justify-center">
+                        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="font-medium text-gray-900 group-hover:text-purple-700">{strategy}</p>
+                        <p className="text-sm text-gray-500">Trading strategy</p>
+                      </div>
+                    </div>
+                  </button>
+                ))}
+                
+                {/* Add Custom Strategy Button */}
+                <button
+                  onClick={() => {
+                    const customStrategy = prompt('Enter custom strategy name:');
+                    if (customStrategy && customStrategy.trim()) {
+                      if (!strategies.includes(customStrategy.trim())) {
+                        setStrategies(prev => [...prev, customStrategy.trim()]);
+                      }
+                      selectStrategy({ name: customStrategy.trim() });
+                    }
+                  }}
+                  className="w-full p-4 text-left border-2 border-dashed border-gray-300 rounded-lg hover:border-purple-400 hover:bg-purple-50 transition-all duration-200 group"
+                >
+                  <div className="flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center group-hover:bg-purple-100">
+                      <svg className="w-5 h-5 text-gray-400 group-hover:text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="font-medium text-gray-700 group-hover:text-purple-700">Add Custom Strategy</p>
+                      <p className="text-sm text-gray-500">Create a new trading strategy</p>
+                    </div>
+                  </div>
+                </button>
+              </div>
             </div>
           </div>
         </div>
