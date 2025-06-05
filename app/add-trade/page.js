@@ -136,31 +136,6 @@ export default function AddTrade() {
     'reversal', 'continuation', 'pullback', 'bounce', 'channel'
   ];
 
-  // Trading symbols array
-  const tradingSymbols = [
-    { symbol: 'AAPL', name: 'Apple Inc.' },
-    { symbol: 'GOOGL', name: 'Alphabet Inc.' },
-    { symbol: 'MSFT', name: 'Microsoft Corporation' },
-    { symbol: 'AMZN', name: 'Amazon.com Inc.' },
-    { symbol: 'TSLA', name: 'Tesla Inc.' },
-    { symbol: 'NVDA', name: 'NVIDIA Corporation' },
-    { symbol: 'META', name: 'Meta Platforms Inc.' },
-    { symbol: 'NFLX', name: 'Netflix Inc.' },
-    { symbol: 'AMD', name: 'Advanced Micro Devices' },
-    { symbol: 'INTC', name: 'Intel Corporation' },
-    { symbol: 'EURUSD', name: 'Euro/US Dollar' },
-    { symbol: 'GBPUSD', name: 'British Pound/US Dollar' },
-    { symbol: 'USDJPY', name: 'US Dollar/Japanese Yen' },
-    { symbol: 'BTCUSD', name: 'Bitcoin/US Dollar' },
-    { symbol: 'ETHUSD', name: 'Ethereum/US Dollar' },
-  ];
-
-  // Filter symbols based on search
-  const filteredSymbols = tradingSymbols.filter(symbol =>
-    symbol.symbol.toLowerCase().includes(formData.symbol.toLowerCase()) ||
-    symbol.name.toLowerCase().includes(formData.symbol.toLowerCase())
-  ).slice(0, 10);
-
   // Strategies array
   const [strategies, setStrategies] = useState([
     'Breakout',
@@ -285,6 +260,56 @@ export default function AddTrade() {
     setShowStrategyModal(false);
   };
 
+  const selectTradingPair = (pair) => {
+    setFormData(prev => ({ ...prev, tradingPair: pair }));
+    setShowTradingPairModal(false);
+  };
+
+  const selectStrategy = (strategy) => {
+    setFormData(prev => ({ ...prev, strategy: strategy.name }));
+    setShowStrategyModal(false);
+  };
+
+  const addTag = (tag) => {
+    const currentTags = formData.tags.split(',').map(t => t.trim()).filter(t => t);
+    if (!currentTags.includes(tag)) {
+      const newTags = [...currentTags, tag].join(', ');
+      setFormData(prev => ({ ...prev, tags: newTags }));
+    }
+  };
+
+  const clearForm = () => {
+    setFormData({
+      tradeType: 'long',
+      accountId: null,
+      accountSize: 0,
+      riskPerTrade: '2',
+      tradingPair: '',
+      strategy: '',
+      entryPrice: '',
+      takeProfit: '',
+      stopLoss: '',
+      tradeDirection: 'long',
+      tradeStatus: 'planning',
+      quantity: '',
+      notes: '',
+      analysis: '',
+      riskManagementLessons: '',
+      tags: '',
+      screenshot: null
+    });
+    setImagePreview(null);
+    setCalculatedResults({
+      riskAmount: 0,
+      lotSize: 0,
+      potentialProfit: 0,
+      potentialLoss: 0,
+      profitPips: 0,
+      lossPips: 0,
+      riskRewardRatio: 0
+    });
+  };
+
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -319,18 +344,7 @@ export default function AddTrade() {
       alert('Trade added successfully!');
       
       // Reset form
-      setFormData({
-        tradeType: 'buy',
-        symbol: '',
-        entryPrice: '',
-        quantity: '',
-        stopLoss: '',
-        takeProfit: '',
-        strategy: '',
-        notes: '',
-        tags: '',
-      });
-      setImagePreview(null);
+      clearForm();
       
     } catch (error) {
       console.error('Error submitting trade:', error);
