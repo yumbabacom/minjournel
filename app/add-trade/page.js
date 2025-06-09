@@ -1186,6 +1186,7 @@ export default function AddTrade() {
         onEditAccount={handleEditAccount}
         onDeleteAccount={handleDeleteAccount}
         onLogout={handleLogout}
+        onUpdateUser={(updatedUser) => setUser(updatedUser)}
       />
 
       {/* Main Content */}

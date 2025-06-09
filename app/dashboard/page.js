@@ -3085,6 +3085,7 @@ function DashboardContent() {
         onEditAccount={handleEditAccountFromSidebar}
         onDeleteAccount={handleDeleteAccount}
         onLogout={handleLogout}
+        onUpdateUser={(updatedUser) => setUser(updatedUser)}
       />
 
       {/* Main Content */}

@@ -803,6 +803,7 @@ export default function AMTradeJournal() {
         onEditAccount={handleEditAccount}
         onDeleteAccount={handleDeleteAccount}
         onLogout={handleLogout}
+        onUpdateUser={(updatedUser) => setUser(updatedUser)}
       />
 
       {/* Main Content */}

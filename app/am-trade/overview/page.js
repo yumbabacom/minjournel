@@ -504,6 +504,7 @@ export default function AMTradeOverview() {
         onEditAccount={handleEditAccount}
         onDeleteAccount={handleDeleteAccount}
         onLogout={handleLogout}
+        onUpdateUser={(updatedUser) => setUser(updatedUser)}
       />
 
       {/* Main Content */}

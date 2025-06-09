@@ -12,7 +12,8 @@ export default function Sidebar({
   onAddAccount,
   onEditAccount,
   onDeleteAccount,
-  onLogout
+  onLogout,
+  onUpdateUser
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -186,11 +187,58 @@ export default function Sidebar({
     setShowUserDropdown(false);
   };
 
-  const handleSaveSettings = () => {
-    // Here you would typically save to your backend
-    console.log('Saving user settings:', userSettings);
-    setShowSettingsModal(false);
-    // You could call an onUpdateUser prop here to update the parent component
+  const handleSaveSettings = async () => {
+    try {
+      // Get token from cookies or localStorage
+      const token = document.cookie
+        .split('; ')
+        .find(row => row.startsWith('auth-token='))
+        ?.split('=')[1] || localStorage.getItem('auth-token');
+
+      if (!token) {
+        alert('Authentication token not found. Please log in again.');
+        return;
+      }
+
+      // Prepare data to send
+      const updateData = {
+        fullName: userSettings.fullName,
+        email: userSettings.email,
+        currentPassword: userSettings.currentPassword,
+        newPassword: userSettings.newPassword,
+        confirmPassword: userSettings.confirmPassword
+      };
+
+      // Make API call
+      const response = await fetch('/api/user/profile', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(updateData)
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert('Profile updated successfully!');
+        setShowSettingsModal(false);
+
+        // Update user data in parent component if callback provided
+        if (typeof onUpdateUser === 'function') {
+          onUpdateUser(data.user);
+        }
+
+        // Refresh page to update user data in UI
+        window.location.reload();
+      } else {
+        alert(data.error || 'Failed to update profile');
+      }
+    } catch (error) {
+      console.error('Error saving settings:', error);
+      alert('An error occurred while saving settings. Please try again.');
+    }
   };
 
   const getInitials = (name) => {

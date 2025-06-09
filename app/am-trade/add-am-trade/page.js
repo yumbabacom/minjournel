@@ -799,6 +799,7 @@ export default function AddAMTrade() {
         onEditAccount={handleEditAccount}
         onDeleteAccount={handleDeleteAccount}
         onLogout={handleLogout}
+        onUpdateUser={(updatedUser) => setUser(updatedUser)}
       />
 
       {/* Main Content */}
