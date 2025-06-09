@@ -37,7 +37,10 @@ export default function LoginPage() {
           // Store user data and token
           localStorage.setItem('auth-token', data.token);
           localStorage.setItem('user', JSON.stringify(data.user));
-          
+
+          // Clear AM Trade mode preference to ensure main dashboard loads first
+          localStorage.setItem('isAMTradeMode', 'false');
+
           // Cookie is set automatically by the API
           // Redirect to dashboard
           router.push('/dashboard');

@@ -2,18 +2,26 @@ import { connectToDatabase } from '../../../lib/mongodb';
 import { NextResponse } from 'next/server';
 import { ObjectId } from 'mongodb';
 
-// GET - Fetch all trades for a user
+// GET - Fetch trades for a user, optionally filtered by account
 export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
     const userId = searchParams.get('userId');
+    const accountId = searchParams.get('accountId');
 
     if (!userId) {
       return NextResponse.json({ error: 'User ID is required' }, { status: 400 });
     }
 
     const { db } = await connectToDatabase();
-    const trades = await db.collection('trades').find({ userId }).sort({ createdAt: -1 }).toArray();
+
+    // Build query filter
+    const filter = { userId };
+    if (accountId) {
+      filter.accountId = accountId;
+    }
+
+    const trades = await db.collection('trades').find(filter).sort({ createdAt: -1 }).toArray();
 
     return NextResponse.json({ trades });
   } catch (error) {
@@ -131,22 +139,25 @@ export async function PUT(request) {
 export async function DELETE(request) {
   try {
     const { searchParams } = new URL(request.url);
-    const tradeId = searchParams.get('tradeId');
+    const tradeId = searchParams.get('tradeId') || searchParams.get('id');
     const userId = searchParams.get('userId');
 
-    if (!tradeId || !userId) {
-      return NextResponse.json({ error: 'Trade ID and User ID are required' }, { status: 400 });
+    if (!tradeId) {
+      return NextResponse.json({ error: 'Trade ID is required' }, { status: 400 });
     }
 
     const { db } = await connectToDatabase();
-    
-    const result = await db.collection('trades').deleteOne({
-      _id: new ObjectId(tradeId),
-      userId
-    });
+
+    // Build delete filter
+    const deleteFilter = { _id: new ObjectId(tradeId) };
+    if (userId) {
+      deleteFilter.userId = userId;
+    }
+
+    const result = await db.collection('trades').deleteOne(deleteFilter);
 
     if (result.deletedCount === 0) {
-      return NextResponse.json({ error: 'Trade not found' }, { status: 404 });
+      return NextResponse.json({ error: 'Trade not found or access denied' }, { status: 404 });
     }
 
     return NextResponse.json({ 

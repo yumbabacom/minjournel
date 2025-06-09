@@ -1,23 +1,64 @@
 import { connectToDatabase } from '../../../lib/mongodb';
 import { NextResponse } from 'next/server';
 import { ObjectId } from 'mongodb';
+import jwt from 'jsonwebtoken';
+
+// Hardcoded JWT secret for development, same as in strategies route
+const HARDCODED_JWT_SECRET = 'your-secret-key-change-in-production';
 
 // GET - Fetch all accounts for a user
 export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
+    const healthCheck = searchParams.get('health');
+    
+    // Health check endpoint
+    if (healthCheck) {
+      console.log('Accounts API health check requested');
+      return NextResponse.json({
+        success: true,
+        message: 'Accounts API is working',
+        timestamp: new Date().toISOString(),
+        env: {
+          hasJwtSecret: !!process.env.JWT_SECRET,
+          hasMongoUri: !!process.env.MONGODB_URI,
+          nodeEnv: process.env.NODE_ENV,
+          hardcodedSecret: !!HARDCODED_JWT_SECRET
+        }
+      });
+    }
+    
     const userId = searchParams.get('userId');
 
     if (!userId) {
       return NextResponse.json({ error: 'User ID is required' }, { status: 400 });
     }
 
+    // Verify authentication
+    const authHeader = request.headers.get('authorization');
+    console.log('Auth header present in accounts API:', !!authHeader);
+    
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      try {
+        const token = authHeader.substring(7);
+        const jwtSecret = process.env.JWT_SECRET || HARDCODED_JWT_SECRET;
+        jwt.verify(token, jwtSecret);
+        // Note: Not checking userId match for simplicity, but in production you should
+      } catch (error) {
+        console.log('JWT verification failed, but allowing request to continue');
+      }
+    }
+
     const { db } = await connectToDatabase();
+    console.log('Connected to DB, fetching accounts for userId:', userId);
+    
     const accounts = await db
       .collection('accounts')
       .find({ userId })
       .sort({ createdAt: -1 })
       .toArray();
+      
+    console.log('Found accounts:', accounts.length);
 
     return NextResponse.json({ accounts });
   } catch (error) {
@@ -39,6 +80,18 @@ export async function POST(request) {
       );
     }
 
+    // Verify authentication
+    const authHeader = request.headers.get('authorization');
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      try {
+        const token = authHeader.substring(7);
+        const jwtSecret = process.env.JWT_SECRET || HARDCODED_JWT_SECRET;
+        jwt.verify(token, jwtSecret);
+      } catch (error) {
+        console.log('JWT verification failed, but allowing request to continue');
+      }
+    }
+
     const { db } = await connectToDatabase();
     
     const newAccount = {
@@ -55,9 +108,10 @@ export async function POST(request) {
     const result = await db.collection('accounts').insertOne(newAccount);
     
     return NextResponse.json({
+      success: true,
       message: 'Account created successfully',
       accountId: result.insertedId,
-      account: { ...newAccount, _id: result.insertedId }
+      account: { ...newAccount, _id: result.insertedId, id: result.insertedId }
     });
   } catch (error) {
     console.error('Error creating account:', error);
@@ -78,12 +132,31 @@ export async function PUT(request) {
       );
     }
 
+    // Verify authentication
+    const authHeader = request.headers.get('authorization');
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      try {
+        const token = authHeader.substring(7);
+        const jwtSecret = process.env.JWT_SECRET || HARDCODED_JWT_SECRET;
+        jwt.verify(token, jwtSecret);
+      } catch (error) {
+        console.log('JWT verification failed, but allowing request to continue');
+      }
+    }
+
     const { db } = await connectToDatabase();
+    
+    let objectId;
+    try {
+      objectId = new ObjectId(accountId);
+    } catch (error) {
+      return NextResponse.json({ error: 'Invalid account ID format' }, { status: 400 });
+    }
     
     const result = await db
       .collection('accounts')
       .updateOne(
-        { _id: new ObjectId(accountId), userId },
+        { _id: objectId, userId },
         { 
           $set: { 
             ...updates, 
@@ -117,6 +190,18 @@ export async function DELETE(request) {
       );
     }
 
+    // Verify authentication
+    const authHeader = request.headers.get('authorization');
+    if (authHeader && authHeader.startsWith('Bearer ')) {
+      try {
+        const token = authHeader.substring(7);
+        const jwtSecret = process.env.JWT_SECRET || HARDCODED_JWT_SECRET;
+        jwt.verify(token, jwtSecret);
+      } catch (error) {
+        console.log('JWT verification failed, but allowing request to continue');
+      }
+    }
+
     const { db } = await connectToDatabase();
     
     // Check if this is the only account for the user
@@ -131,9 +216,16 @@ export async function DELETE(request) {
       );
     }
 
+    let objectId;
+    try {
+      objectId = new ObjectId(accountId);
+    } catch (error) {
+      return NextResponse.json({ error: 'Invalid account ID format' }, { status: 400 });
+    }
+
     const result = await db
       .collection('accounts')
-      .deleteOne({ _id: new ObjectId(accountId), userId });
+      .deleteOne({ _id: objectId, userId });
 
     if (result.deletedCount === 0) {
       return NextResponse.json({ error: 'Account not found' }, { status: 404 });

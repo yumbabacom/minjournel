@@ -1,81 +1,221 @@
+'use client';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 export default function HomePage() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [activeFeature, setActiveFeature] = useState(0);
+  const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [activePricing, setActivePricing] = useState('monthly');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveFeature((prev) => (prev + 1) % 3);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveTestimonial((prev) => (prev + 1) % 3);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <header className="fixed top-0 w-full bg-white/95 backdrop-blur-md border-b border-slate-200 z-50">
-        <nav className="container mx-auto px-4 py-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+      {/* Dynamic Background Elements */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-gradient-to-r from-blue-400/20 to-purple-400/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
+        <div className="absolute top-3/4 right-1/4 w-[500px] h-[500px] bg-gradient-to-r from-amber-400/20 to-orange-400/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-gradient-to-r from-green-400/20 to-blue-400/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse delay-2000"></div>
+      </div>
+
+      {/* Sticky Navigation */}
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        isScrolled
+          ? 'bg-white/80 backdrop-blur-2xl border-b border-white/20 shadow-2xl shadow-black/5'
+          : 'bg-transparent'
+      }`}>
+        <nav className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <Link href="/" className="flex items-center space-x-2 text-2xl font-bold text-slate-800">
-              <span className="text-3xl">📊</span>
-              <span>Journel</span>
+            <Link href="/" className="flex items-center space-x-3 group">
+              <div className="relative">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-600 rounded-2xl flex items-center justify-center text-white font-bold text-xl shadow-2xl group-hover:shadow-blue-500/25 transition-all duration-500 group-hover:scale-110 group-hover:rotate-3">
+                  T
+                </div>
+                <div className="absolute -top-1 -right-1 w-5 h-5 bg-gradient-to-br from-emerald-400 to-green-500 rounded-full animate-bounce"></div>
+              </div>
+              <span className="text-2xl font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent">
+                TradingJournal
+              </span>
             </Link>
-            <ul className="hidden md:flex items-center space-x-8">
-              <li><Link href="/" className="text-slate-600 hover:text-amber-600 transition-colors font-medium">Home</Link></li>
-              <li><Link href="#features" className="text-slate-600 hover:text-amber-600 transition-colors font-medium">Features</Link></li>
-              <li><Link href="#about" className="text-slate-600 hover:text-amber-600 transition-colors font-medium">About</Link></li>
-              <li><Link href="/login" className="text-slate-600 hover:text-amber-600 transition-colors font-medium">Login</Link></li>
-              <li>
-                <Link href="/signup" className="bg-gradient-to-r from-slate-800 to-slate-900 text-white px-6 py-3 rounded-lg font-semibold hover:from-slate-900 hover:to-black transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-                  Start Free Trial
-                </Link>
-              </li>
-            </ul>
+
+            <div className="flex items-center space-x-8">
+              <Link href="/login" className="text-gray-600 hover:text-gray-900 font-medium transition-colors">
+                Sign In
+              </Link>
+              <Link 
+                href="/signup" 
+                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2.5 rounded-xl font-medium hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 hover:-translate-y-0.5"
+              >
+                Get Started
+              </Link>
+            </div>
           </div>
         </nav>
       </header>
 
-      <main>
+      <main className="relative z-10">
         {/* Hero Section */}
-        <section className="pt-24 pb-20 px-4 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white relative overflow-hidden">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-5">
-            <div className="w-full h-full" style={{backgroundImage: "radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)", backgroundSize: "40px 40px"}}></div>
+        <section className="pt-32 pb-24 px-4 relative overflow-hidden">
+          {/* Interactive Background Pattern */}
+          <div className="absolute inset-0 opacity-[0.03]">
+            <div className="w-full h-full" style={{
+              backgroundImage: `radial-gradient(circle at ${mousePosition.x * 0.1}px ${mousePosition.y * 0.1}px, rgba(59, 130, 246, 0.4) 1px, transparent 0)`,
+              backgroundSize: "60px 60px"
+            }}></div>
           </div>
           
           <div className="container mx-auto text-center relative z-10">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-5xl mx-auto">
               {/* Trust Badge */}
-              <div className="inline-flex items-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-6 py-2 mb-8">
-                <span className="text-amber-400 mr-2">✨</span>
-                <span className="text-sm font-medium">Trusted by 10,000+ Professional Traders</span>
+              <div className="inline-flex items-center bg-gradient-to-r from-white/90 to-blue-50/90 backdrop-blur-xl border border-white/30 rounded-full px-8 py-3 mb-12 shadow-2xl shadow-blue-500/10">
+                <div className="flex items-center space-x-2">
+                  <div className="w-8 h-8 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full flex items-center justify-center animate-pulse">
+                    <span className="text-white text-lg">✨</span>
+                  </div>
+                  <span className="text-gray-700 font-semibold">Trusted by 15,000+ Professional Traders Worldwide</span>
+                </div>
               </div>
               
               {/* Main Heading */}
-              <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                Master Your Trading Journey with 
-                <span className="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent"> Data-Driven Insights</span>
+              <h1 className="text-6xl md:text-7xl font-black text-gray-900 mb-8 leading-tight">
+                Master Your Trading with 
+                <span className="relative inline-block mt-4">
+                  <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+                    AI-Powered Insights
+                  </span>
+                  <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 rounded-full transform scale-x-0 animate-pulse"></div>
+                </span>
               </h1>
               
-              <p className="text-xl md:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-                Transform your trading performance with our comprehensive journaling platform. Track, analyze, and optimize every trade to unlock consistent profitability.
+              <p className="text-xl md:text-2xl text-gray-600 mb-16 max-w-4xl mx-auto leading-relaxed font-light">
+                Transform your trading performance with our revolutionary journaling platform. Track, analyze, and optimize every trade with advanced AI to unlock consistent profitability and financial freedom.
               </p>
               
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-                <Link href="/signup" className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-amber-600 hover:to-orange-700 transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1 flex items-center space-x-2">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-20">
+                <Link 
+                  href="/signup" 
+                  className="group relative bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white px-12 py-4 rounded-2xl font-bold text-xl hover:shadow-2xl hover:shadow-blue-500/25 hover:-translate-y-1 transition-all duration-500 w-full sm:w-auto"
+                >
+                  <span className="relative z-10 flex items-center justify-center space-x-3">
                   <span>Start Free Trial</span>
-                  <span>→</span>
+                    <span className="group-hover:translate-x-2 transition-transform duration-300">→</span>
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </Link>
-                <Link href="#demo" className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white/20 transition-all duration-300 flex items-center space-x-2">
-                  <span className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center text-sm">▶</span>
+                
+                <Link 
+                  href="/demo" 
+                  className="group bg-white text-gray-900 px-12 py-4 rounded-2xl font-bold text-xl hover:shadow-2xl hover:shadow-gray-500/25 hover:-translate-y-1 transition-all duration-500 border border-gray-200 w-full sm:w-auto"
+                >
+                  <span className="flex items-center justify-center space-x-3">
                   <span>Watch Demo</span>
+                    <span className="group-hover:translate-x-2 transition-transform duration-300">→</span>
+                  </span>
                 </Link>
               </div>
               
-              {/* Stats */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
-                <div className="text-center">
-                  <div className="text-4xl md:text-5xl font-bold text-amber-400 mb-2">95%</div>
-                  <div className="text-slate-400">Accuracy Rate</div>
+              {/* Stats Section */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div className="bg-white/60 backdrop-blur-xl rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:scale-105 border border-white/20">
+                  <div className="text-5xl md:text-6xl font-black bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-3">98%</div>
+                  <div className="text-gray-600 font-semibold text-lg">Success Rate</div>
+                  <div className="w-full bg-gray-200 rounded-full h-2 mt-3">
+                    <div className="bg-gradient-to-r from-green-500 to-emerald-500 h-2 rounded-full" style={{width: '98%'}}></div>
+                  </div>
                 </div>
-                <div className="text-center">
-                  <div className="text-4xl md:text-5xl font-bold text-amber-400 mb-2">$2.4M+</div>
-                  <div className="text-slate-400">Trades Tracked</div>
+                <div className="bg-white/60 backdrop-blur-xl rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:scale-105 border border-white/20">
+                  <div className="text-5xl md:text-6xl font-black bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-3">$5.2M+</div>
+                  <div className="text-gray-600 font-semibold text-lg">Trades Analyzed</div>
+                  <div className="w-full bg-gray-200 rounded-full h-2 mt-3">
+                    <div className="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full" style={{width: '87%'}}></div>
+                  </div>
                 </div>
-                <div className="text-center">
-                  <div className="text-4xl md:text-5xl font-bold text-amber-400 mb-2">24/7</div>
-                  <div className="text-slate-400">Support</div>
+                <div className="bg-white/60 backdrop-blur-xl rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:scale-105 border border-white/20">
+                  <div className="text-5xl md:text-6xl font-black bg-gradient-to-r from-amber-600 to-orange-600 bg-clip-text text-transparent mb-3">24/7</div>
+                  <div className="text-gray-600 font-semibold text-lg">AI Support</div>
+                  <div className="w-full bg-gray-200 rounded-full h-2 mt-3">
+                    <div className="bg-gradient-to-r from-amber-500 to-orange-500 h-2 rounded-full" style={{width: '100%'}}></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Trading Tools Section */}
+        <section className="py-24 px-4 bg-gradient-to-br from-white to-blue-50 relative overflow-hidden">
+          <div className="container mx-auto">
+            <div className="text-center mb-20">
+              <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">
+                Advanced Trading 
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Tools</span>
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light">Powerful tools designed to enhance your trading performance</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
+              {/* Trading Tools Card 1 */}
+              <div className="group bg-white/70 backdrop-blur-xl p-10 rounded-3xl border border-white/30 hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-purple-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-600 rounded-3xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-xl">
+                    📊
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Real-time Analytics</h3>
+                  <p className="text-gray-600 mb-8 leading-relaxed">Get instant insights into your trading performance with advanced analytics and real-time data visualization.</p>
+                  <div className="flex flex-wrap gap-3">
+                    <span className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold">Live Data</span>
+                    <span className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold">Charts</span>
+                    <span className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold">Metrics</span>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Trading Tools Card 2 */}
+              <div className="group bg-white/70 backdrop-blur-xl p-10 rounded-3xl border border-white/30 hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-50/50 to-orange-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  <div className="w-20 h-20 bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 rounded-3xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-xl">
+                    🤖
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">AI Trading Assistant</h3>
+                  <p className="text-gray-600 mb-8 leading-relaxed">Your personal AI trading assistant that helps you make better decisions and optimize your trading strategy.</p>
+                  <div className="flex flex-wrap gap-3">
+                    <span className="bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-semibold">AI Insights</span>
+                    <span className="bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-semibold">Strategy</span>
+                    <span className="bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-semibold">Analysis</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -83,53 +223,68 @@ export default function HomePage() {
         </section>
 
         {/* Features Section */}
-        <section id="features" className="py-20 px-4 bg-white">
+        <section className="py-24 px-4 relative overflow-hidden">
           <div className="container mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">Everything You Need to Excel</h2>
-              <p className="text-xl text-slate-600 max-w-2xl mx-auto">Comprehensive tools designed specifically for serious traders</p>
+            <div className="text-center mb-20">
+              <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">
+                Everything You Need to 
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Dominate</span>
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light">Comprehensive AI-powered tools designed specifically for ambitious traders who demand excellence</p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
               {/* Feature 1 */}
-              <div className="bg-slate-50 p-8 rounded-2xl border border-slate-200 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                  📝
+              <div className="group bg-white/70 backdrop-blur-xl p-10 rounded-3xl border border-white/30 hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-purple-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  <div className="w-20 h-20 bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-600 rounded-3xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-xl">
+                    📊
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Smart Trade Logging</h3>
+                  <p className="text-gray-600 mb-8 leading-relaxed">Revolutionary AI-powered logging system that captures every detail automatically. Screenshot integration, real-time P&L tracking, and advanced emotional state analysis.</p>
+                  <div className="flex flex-wrap gap-3">
+                    <span className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold">Auto-sync</span>
+                    <span className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold">AI Screenshots</span>
+                    <span className="bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold">Real-time</span>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-800 mb-4">Smart Trade Logging</h3>
-                <p className="text-slate-600 mb-6 leading-relaxed">Automatically capture trade details with our intelligent logging system. Screenshot integration, P&L tracking, and emotional state recording.</p>
-                <div className="flex flex-wrap gap-2">
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Auto-sync</span>
-                  <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Screenshots</span>
                 </div>
               </div>
               
-              {/* Feature 2 - Featured */}
-              <div className="bg-gradient-to-br from-amber-50 to-orange-50 p-8 rounded-2xl border-2 border-amber-200 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group relative">
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
-                  Most Popular
+              {/* Feature 2 */}
+              <div className="group bg-white/70 backdrop-blur-xl p-10 rounded-3xl border border-white/30 hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 relative overflow-hidden">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-amber-500 to-orange-600 text-white px-6 py-2 rounded-full text-sm font-bold shadow-lg">
+                  🔥 Most Popular
                 </div>
-                <div className="w-16 h-16 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                  📊
+                <div className="absolute inset-0 bg-gradient-to-br from-amber-50/50 to-orange-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10 mt-4">
+                  <div className="w-20 h-20 bg-gradient-to-br from-amber-500 via-orange-500 to-red-500 rounded-3xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-xl">
+                    🤖
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">AI-Powered Analytics</h3>
+                  <p className="text-gray-600 mb-8 leading-relaxed">Advanced machine learning algorithms analyze your trading patterns, predict optimal entry/exit points, and provide personalized recommendations for maximum profitability.</p>
+                  <div className="flex flex-wrap gap-3">
+                    <span className="bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-semibold">Machine Learning</span>
+                    <span className="bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-semibold">Predictive</span>
+                    <span className="bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-semibold">Real-time AI</span>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-800 mb-4">Advanced Analytics</h3>
-                <p className="text-slate-600 mb-6 leading-relaxed">Powerful insights dashboard with win/loss ratios, profitability by strategy, risk metrics, and performance trends over time.</p>
-                <div className="flex flex-wrap gap-2">
-                  <span className="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm font-medium">Real-time</span>
-                  <span className="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm font-medium">AI-powered</span>
                 </div>
               </div>
               
               {/* Feature 3 */}
-              <div className="bg-slate-50 p-8 rounded-2xl border border-slate-200 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 group">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
-                  🎯
+              <div className="group bg-white/70 backdrop-blur-xl p-10 rounded-3xl border border-white/30 hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-green-50/50 to-emerald-50/50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="relative z-10">
+                  <div className="w-20 h-20 bg-gradient-to-br from-green-500 via-emerald-500 to-teal-500 rounded-3xl flex items-center justify-center text-3xl mb-8 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-xl">
+                    📈
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Performance Tracking</h3>
+                  <p className="text-gray-600 mb-8 leading-relaxed">Comprehensive performance metrics and analytics to track your progress, identify patterns, and optimize your trading strategy for consistent results.</p>
+                  <div className="flex flex-wrap gap-3">
+                    <span className="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold">Analytics</span>
+                    <span className="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold">Reports</span>
+                    <span className="bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-semibold">Insights</span>
                 </div>
-                <h3 className="text-2xl font-bold text-slate-800 mb-4">Strategy Optimization</h3>
-                <p className="text-slate-600 mb-6 leading-relaxed">Identify your most profitable setups and refine your approach. Pattern recognition and performance backtesting included.</p>
-                <div className="flex flex-wrap gap-2">
-                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Backtesting</span>
-                  <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Patterns</span>
                 </div>
               </div>
             </div>
@@ -137,106 +292,79 @@ export default function HomePage() {
         </section>
 
         {/* Testimonials Section */}
-        <section id="testimonials" className="py-20 px-4 bg-slate-50">
+        <section className="py-24 px-4 bg-gradient-to-br from-slate-50 to-blue-50 relative overflow-hidden">
           <div className="container mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">Trusted by Professional Traders</h2>
-              <p className="text-xl text-slate-600">See what our community is saying</p>
+            <div className="text-center mb-20">
+              <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">
+                What Our Traders 
+                <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Say</span>
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light">Join thousands of successful traders who have transformed their trading journey</p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
               {/* Testimonial 1 */}
-              <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-amber-500">
-                <p className="text-slate-700 text-lg italic mb-6 leading-relaxed">
-                  "Journel completely transformed my trading. The insights helped me identify my weaknesses and I've improved my win rate by 40%."
+              <div className="group bg-white/70 backdrop-blur-xl p-10 rounded-3xl border border-white/30 hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 relative overflow-hidden">
+                <div className="relative z-10">
+                  <div className="flex items-center mb-6">
+                    <div className="flex text-amber-400 text-lg">★★★★★</div>
+                    <span className="ml-2 text-gray-600 font-semibold">5.0</span>
+                  </div>
+                  <p className="text-gray-700 text-lg italic mb-8 leading-relaxed font-light">
+                    "This platform completely revolutionized my trading approach. The AI insights helped me identify my blind spots and I've improved my win rate by 60%."
                 </p>
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center text-xl mr-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center text-2xl mr-4 shadow-lg">
                     👨‍💼
                   </div>
                   <div>
-                    <div className="font-semibold text-slate-800">Marcus Chen</div>
-                    <div className="text-slate-600 text-sm">Day Trader</div>
+                      <div className="font-bold text-gray-900 text-lg">Marcus Chen</div>
+                      <div className="text-gray-600">Senior Day Trader • $2M+ Portfolio</div>
+                    </div>
                   </div>
                 </div>
               </div>
               
               {/* Testimonial 2 */}
-              <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-amber-500">
-                <p className="text-slate-700 text-lg italic mb-6 leading-relaxed">
-                  "The analytics dashboard is incredible. I can see exactly which strategies work and which don't. Worth every penny."
+              <div className="group bg-white/70 backdrop-blur-xl p-10 rounded-3xl border border-white/30 hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 relative overflow-hidden">
+                <div className="relative z-10">
+                  <div className="flex items-center mb-6">
+                    <div className="flex text-amber-400 text-lg">★★★★★</div>
+                    <span className="ml-2 text-gray-600 font-semibold">5.0</span>
+                  </div>
+                  <p className="text-gray-700 text-lg italic mb-8 leading-relaxed font-light">
+                    "The analytics dashboard is mind-blowing. I can see exactly which strategies work in different market conditions. This tool paid for itself in the first week!"
                 </p>
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-pink-600 rounded-full flex items-center justify-center text-xl mr-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-500 rounded-2xl flex items-center justify-center text-2xl mr-4 shadow-lg">
                     👩‍💼
                   </div>
                   <div>
-                    <div className="font-semibold text-slate-800">Sarah Johnson</div>
-                    <div className="text-slate-600 text-sm">Swing Trader</div>
+                      <div className="font-bold text-gray-900 text-lg">Sarah Johnson</div>
+                      <div className="text-gray-600">Professional Swing Trader • 8 Years</div>
+                    </div>
                   </div>
                 </div>
               </div>
               
               {/* Testimonial 3 */}
-              <div className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-amber-500">
-                <p className="text-slate-700 text-lg italic mb-6 leading-relaxed">
-                  "Finally, a journal that understands traders. The emotional tracking feature helped me control my FOMO and revenge trading."
+              <div className="group bg-white/70 backdrop-blur-xl p-10 rounded-3xl border border-white/30 hover:shadow-2xl hover:-translate-y-4 transition-all duration-500 relative overflow-hidden">
+                <div className="relative z-10">
+                  <div className="flex items-center mb-6">
+                    <div className="flex text-amber-400 text-lg">★★★★★</div>
+                    <span className="ml-2 text-gray-600 font-semibold">5.0</span>
+                  </div>
+                  <p className="text-gray-700 text-lg italic mb-8 leading-relaxed font-light">
+                    "Finally, a journal that truly understands trader psychology. The emotional tracking and AI coaching helped me eliminate FOMO and revenge trading completely."
                 </p>
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center text-xl mr-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center text-2xl mr-4 shadow-lg">
                     👨‍💻
                   </div>
                   <div>
-                    <div className="font-semibold text-slate-800">Alex Rodriguez</div>
-                    <div className="text-slate-600 text-sm">Options Trader</div>
+                      <div className="font-bold text-gray-900 text-lg">Alex Rodriguez</div>
+                      <div className="text-gray-600">Options Specialist • Prop Trader</div>
                   </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* About Section */}
-        <section id="about" className="py-20 px-4 bg-white">
-          <div className="container mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-              <div>
-                <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">Built by Traders, for Traders</h2>
-                <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                  Our founding team consists of professional traders who understand the importance of meticulous record-keeping and honest self-assessment in achieving trading success.
-                </p>
-                <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                  We've combined years of trading experience with cutting-edge technology to create the most comprehensive trading journal available today.
-                </p>
-                
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <span className="text-green-500 text-xl">✅</span>
-                    <span className="text-slate-700 font-medium">Bank-level security and encryption</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <span className="text-green-500 text-xl">✅</span>
-                    <span className="text-slate-700 font-medium">24/7 customer support</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <span className="text-green-500 text-xl">✅</span>
-                    <span className="text-slate-700 font-medium">Regular feature updates</span>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex justify-center">
-                <div className="bg-gradient-to-br from-slate-50 to-slate-100 p-8 rounded-2xl shadow-xl max-w-sm w-full">
-                  <div className="flex items-center mb-4">
-                    <span className="text-2xl mr-2">📈</span>
-                    <span className="font-semibold text-slate-800">Your Progress</span>
-                  </div>
-                  <div className="bg-slate-200 rounded-full h-3 mb-4 overflow-hidden">
-                    <div className="bg-gradient-to-r from-amber-500 to-orange-600 h-full rounded-full transition-all duration-1000 ease-out" style={{width: '75%'}}></div>
-                  </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-slate-600">Win Rate: 75%</span>
-                    <span className="text-green-600 font-semibold">+$12,450</span>
                   </div>
                 </div>
               </div>
@@ -245,18 +373,42 @@ export default function HomePage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 px-4 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
-          <div className="container mx-auto text-center">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Transform Your Trading?</h2>
-              <p className="text-xl text-slate-300 mb-10 leading-relaxed">
-                Join thousands of traders who have already improved their performance with Journel
+        <section className="py-24 px-4 bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white relative overflow-hidden">
+          {/* Animated background elements */}
+          <div className="absolute inset-0">
+            <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-full mix-blend-multiply filter blur-3xl animate-pulse delay-1000"></div>
+          </div>
+          
+          <div className="container mx-auto relative z-10">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-5xl md:text-7xl font-black mb-8">
+                Ready to 
+                <span className="bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent"> Transform</span> 
+                <br />Your Trading?
+              </h2>
+              <p className="text-xl md:text-2xl text-gray-300 mb-16 leading-relaxed font-light max-w-3xl mx-auto">
+                Join thousands of elite traders who have already revolutionized their performance with our AI-powered platform. Start your journey to consistent profitability today.
               </p>
-              <div className="flex flex-col items-center space-y-4">
-                <Link href="/signup" className="bg-gradient-to-r from-amber-500 to-orange-600 text-white px-12 py-5 rounded-xl font-semibold text-xl hover:from-amber-600 hover:to-orange-700 transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1">
-                  Start Your Free Trial
+              
+              <div className="flex flex-col items-center space-y-8">
+                <Link href="/signup" className="group relative bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 text-white px-16 py-6 rounded-2xl font-bold text-2xl hover:from-amber-600 hover:via-orange-600 hover:to-red-600 transition-all duration-500 shadow-2xl hover:shadow-amber-500/25 hover:-translate-y-2 hover:scale-105">
+                  <span className="relative z-10 flex items-center space-x-4">
+                    <span>Start Your Free Trial</span>
+                    <span className="group-hover:translate-x-2 transition-transform duration-300 text-3xl">🚀</span>
+                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </Link>
-                <p className="text-sm text-slate-400">No credit card required • 14-day free trial</p>
+                
+                <div className="bg-white/10 backdrop-blur-xl rounded-2xl px-8 py-4 border border-white/20">
+                  <p className="text-gray-300 font-semibold">✨ No credit card required • 14-day free trial • Cancel anytime</p>
+                </div>
+                
+                {/* Money back guarantee */}
+                <div className="flex items-center space-x-3">
+                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">✓</div>
+                  <span className="text-green-300 font-semibold">30-Day Money-Back Guarantee</span>
+                </div>
               </div>
             </div>
           </div>
@@ -264,50 +416,73 @@ export default function HomePage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-slate-900 text-white py-16 px-4">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div className="md:col-span-1">
-              <div className="flex items-center space-x-2 text-2xl font-bold mb-4">
-                <span className="text-3xl">📊</span>
-                <span>Journel</span>
+      <footer className="bg-gray-900 text-white py-20 px-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-blue-900/50 to-purple-900/50"></div>
+        
+        <div className="container mx-auto relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div>
+              <div className="flex items-center space-x-3 text-2xl font-bold mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-purple-600 rounded-2xl flex items-center justify-center text-white text-xl">
+                  T
+                </div>
+                <span className="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">TradingJournal</span>
               </div>
-              <p className="text-slate-400 leading-relaxed">The professional trading journal for serious traders.</p>
+              <p className="text-gray-400 leading-relaxed mb-6">The world's most advanced AI-powered trading journal for professional traders and ambitious individuals.</p>
+              
+              {/* Social Links */}
+              <div className="flex space-x-4">
+                <a href="#" className="w-12 h-12 bg-gray-800 hover:bg-blue-600 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1">
+                  <span className="text-lg">𝕏</span>
+                </a>
+                <a href="#" className="w-12 h-12 bg-gray-800 hover:bg-blue-600 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1">
+                  <span className="text-lg">💼</span>
+                </a>
+                <a href="#" className="w-12 h-12 bg-gray-800 hover:bg-purple-600 rounded-xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1">
+                  <span className="text-lg">💬</span>
+                </a>
+              </div>
             </div>
             
             <div>
-              <h4 className="font-semibold text-lg mb-4">Product</h4>
-              <ul className="space-y-2">
-                <li><Link href="/features" className="text-slate-400 hover:text-amber-400 transition-colors">Features</Link></li>
-                <li><Link href="/pricing" className="text-slate-400 hover:text-amber-400 transition-colors">Pricing</Link></li>
-                <li><Link href="/demo" className="text-slate-400 hover:text-amber-400 transition-colors">Demo</Link></li>
+              <h3 className="text-lg font-bold mb-6">Product</h3>
+              <ul className="space-y-4">
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Features</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Demo</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Updates</a></li>
               </ul>
             </div>
             
             <div>
-              <h4 className="font-semibold text-lg mb-4">Support</h4>
-              <ul className="space-y-2">
-                <li><Link href="/help" className="text-slate-400 hover:text-amber-400 transition-colors">Help Center</Link></li>
-                <li><Link href="/contact" className="text-slate-400 hover:text-amber-400 transition-colors">Contact Us</Link></li>
-                <li><Link href="/api" className="text-slate-400 hover:text-amber-400 transition-colors">API Docs</Link></li>
+              <h3 className="text-lg font-bold mb-6">Company</h3>
+              <ul className="space-y-4">
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">About</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Press</a></li>
               </ul>
             </div>
             
             <div>
-              <h4 className="font-semibold text-lg mb-4">Legal</h4>
-              <ul className="space-y-2">
-                <li><Link href="/privacy" className="text-slate-400 hover:text-amber-400 transition-colors">Privacy Policy</Link></li>
-                <li><Link href="/terms" className="text-slate-400 hover:text-amber-400 transition-colors">Terms of Service</Link></li>
+              <h3 className="text-lg font-bold mb-6">Resources</h3>
+              <ul className="space-y-4">
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">API</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Status</a></li>
               </ul>
             </div>
           </div>
           
-          <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-slate-400 mb-4 md:mb-0">© {new Date().getFullYear()} Journel. All rights reserved.</p>
-            <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-amber-600 transition-colors">🐦</a>
-              <a href="#" className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-amber-600 transition-colors">💼</a>
-              <a href="#" className="w-10 h-10 bg-slate-800 rounded-full flex items-center justify-center hover:bg-amber-600 transition-colors">💬</a>
+          <div className="pt-8 border-t border-gray-800">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <p className="text-gray-400 text-sm mb-4 md:mb-0">© 2024 TradingJournal. All rights reserved.</p>
+              <div className="flex space-x-6">
+                <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
+                <a href="#" className="text-gray-400 hover:text-white text-sm transition-colors">Cookie Policy</a>
+              </div>
             </div>
           </div>
         </div>

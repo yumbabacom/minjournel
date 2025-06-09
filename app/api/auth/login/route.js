@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import connectDB from '../../../../lib/mongodb';
 import User from '../../../../models/User';
 
+// Use the same hardcoded JWT secret for consistency
 const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
 
 export async function POST(request) {
@@ -53,9 +54,10 @@ export async function POST(request) {
     await user.save();
 
     // Create JWT token
+    console.log('Creating token with userId:', user._id);
     const token = jwt.sign(
       { 
-        userId: user._id,
+        userId: user._id.toString(),
         email: user.email,
         fullName: user.fullName
       },

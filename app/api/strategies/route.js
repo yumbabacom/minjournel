@@ -1,24 +1,117 @@
 import { connectToDatabase } from '../../../lib/mongodb';
 import { NextResponse } from 'next/server';
 import { ObjectId } from 'mongodb';
+import jwt from 'jsonwebtoken';
 
-// GET - Fetch all strategies for a user
+// Hardcoded JWT secret for development
+const HARDCODED_JWT_SECRET = 'your-secret-key-change-in-production';
+
+// Simple health check - you can test this by visiting /api/strategies?health=true
+// GET - Fetch all strategies for a user or health check
 export async function GET(request) {
-  try {
-    const { searchParams } = new URL(request.url);
-    const userId = searchParams.get('userId');
+  const { searchParams } = new URL(request.url);
+  const healthCheck = searchParams.get('health');
+  
+  // Health check endpoint
+  if (healthCheck) {
+    console.log('Health check requested');
+    return NextResponse.json({
+      success: true,
+      message: 'API is working',
+      timestamp: new Date().toISOString(),
+      env: {
+        hasJwtSecret: !!process.env.JWT_SECRET,
+        hasMongoUri: !!process.env.MONGODB_URI,
+        nodeEnv: process.env.NODE_ENV,
+        hardcodedSecret: !!HARDCODED_JWT_SECRET
+      }
+    });
+  }
 
-    if (!userId) {
-      return NextResponse.json({ error: 'User ID is required' }, { status: 400 });
+  console.log('API /api/strategies GET called');
+  
+  try {
+    // Get token from Authorization header
+    const authHeader = request.headers.get('authorization');
+    console.log('Auth header present:', !!authHeader);
+    
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      console.log('No valid auth header found');
+      return NextResponse.json({ 
+        success: false, 
+        message: 'No token provided' 
+      }, { status: 401 });
     }
 
-    const { db } = await connectToDatabase();
-    const strategies = await db.collection('strategies').find({ userId }).toArray();
+    const token = authHeader.substring(7);
+    console.log('Token extracted, length:', token.length);
+    
+    // Verify token
+    let decoded;
+    try {
+      // Try with environment variable first, then fallback to hardcoded secret
+      const jwtSecret = process.env.JWT_SECRET || HARDCODED_JWT_SECRET;
+      console.log('Using JWT secret:', jwtSecret ? 'Secret found' : 'No secret available');
+      
+      decoded = jwt.verify(token, jwtSecret);
+      console.log('Token decoded successfully:', decoded);
+    } catch (jwtError) {
+      console.error('JWT verification error:', jwtError);
+      return NextResponse.json({ 
+        success: false, 
+        message: 'Invalid token: ' + jwtError.message
+      }, { status: 401 });
+    }
+    
+    const userId = decoded.userId;
+    console.log('Token verified, userId:', userId);
 
-    return NextResponse.json({ strategies });
+    if (!userId) {
+      console.log('No userId in token');
+      return NextResponse.json({ 
+        success: false, 
+        message: 'Invalid token - no user ID' 
+      }, { status: 401 });
+    }
+
+    // Connect to MongoDB using the proper connection function
+    console.log('Attempting to connect to MongoDB...');
+    const { db } = await connectToDatabase();
+    console.log('MongoDB connected successfully');
+    
+    const strategiesCollection = db.collection('strategies');
+
+    // Fetch user's strategies
+    console.log('Fetching strategies for user:', userId);
+    const strategies = await strategiesCollection
+      .find({ userId: userId.toString() })
+      .sort({ createdAt: -1 })
+      .toArray();
+
+    console.log('Found strategies:', strategies.length);
+
+    return NextResponse.json({
+      success: true,
+      strategies: strategies || []
+    });
+
   } catch (error) {
-    console.error('Error fetching strategies:', error);
-    return NextResponse.json({ error: 'Failed to fetch strategies' }, { status: 500 });
+    console.error('Error in /api/strategies GET:', error);
+    
+    // Return proper JSON error response
+    if (error.name === 'JsonWebTokenError') {
+      console.log('JWT Error:', error.message);
+      return NextResponse.json({
+        success: false,
+        message: 'Invalid token: ' + error.message
+      }, { status: 401 });
+    }
+
+    return NextResponse.json({
+      success: false,
+      message: 'Failed to fetch strategies',
+      error: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error'
+    }, { status: 500 });
   }
 }
 

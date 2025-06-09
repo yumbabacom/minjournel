@@ -10,12 +10,15 @@
   },
   "dependencies": {
     "bcryptjs": "^3.0.2",
+    "chart.js": "^4.4.9",
     "js-cookie": "^3.0.5",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.17.0",
     "mongoose": "^8.15.1",
     "next": "15.3.3",
+    "puppeteer": "^24.10.0",
     "react": "^19.0.0",
+    "react-chartjs-2": "^5.3.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
