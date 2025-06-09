@@ -49,7 +49,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/am-trade": {
+    "/am-trade/add-am-trade": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -62,8 +62,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/am-trade",
-      "dataRoute": "/am-trade.rsc",
+      "srcRoute": "/am-trade/add-am-trade",
+      "dataRoute": "/am-trade/add-am-trade.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -97,30 +97,6 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/dashboard": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "Next-Action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/dashboard",
-      "dataRoute": "/dashboard.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
     "/am-trade/overview": {
       "experimentalBypassFor": [
         {
@@ -145,7 +121,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/am-trade/add-am-trade": {
+    "/dashboard": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -158,32 +134,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/am-trade/add-am-trade",
-      "dataRoute": "/am-trade/add-am-trade.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/journal": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "Next-Action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/journal",
-      "dataRoute": "/journal.rsc",
+      "srcRoute": "/dashboard",
+      "dataRoute": "/dashboard.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -217,6 +169,30 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/am-trade": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "Next-Action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/am-trade",
+      "dataRoute": "/am-trade.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/": {
       "experimentalBypassFor": [
         {
@@ -232,6 +208,30 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/",
       "dataRoute": "/index.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/journal": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "Next-Action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/journal",
+      "dataRoute": "/journal.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -269,8 +269,8 @@
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "932b5877cc9e67d46c361311aad66237",
-    "previewModeSigningKey": "3cb6d7afed5d4e5494d59401ef8364c93d3c5fb52e50bdd8e6e9581430513b82",
-    "previewModeEncryptionKey": "20ec1d5cea10a936dbc0dedefe0b454059b45de0524c6d8837f4cad2783e15f4"
+    "previewModeId": "24bf17fecfdbfdb7ebb4f82ec0270d7e",
+    "previewModeSigningKey": "381eebbd3cba711af9c5ffbb9bc7e942599ac8b78c04b21b19b261eeec130cb7",
+    "previewModeEncryptionKey": "c143e73c8b15b5df646c13c7240142a19780896de83ebcf74a00d090b6473586"
   }
 }
