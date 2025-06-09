@@ -2,8 +2,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
-import SidebarWrapper from '../../../components/SidebarWrapper';
-import MobileHeader from '../../../components/MobileHeader';
+import Sidebar from '../../../components/Sidebar';
 import { Line, Bar, Doughnut, Scatter } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -45,6 +44,7 @@ export default function AMTradeOverview() {
     balance: '',
     tag: 'personal'
   });
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   // Real AM Trade data
   const [amTrades, setAmTrades] = useState([]);
@@ -191,7 +191,17 @@ export default function AMTradeOverview() {
     }
   }, [currentAccountId]);
 
+  // Close mobile sidebar on window resize (when switching to desktop)
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) { // lg breakpoint
+        setIsMobileSidebarOpen(false);
+      }
+    };
 
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Calculate analytics from real data
   const analytics = useMemo(() => {
@@ -637,26 +647,56 @@ export default function AMTradeOverview() {
   }
 
   return (
-    <SidebarWrapper
-      user={user}
-      currentAccountId={currentAccountId}
-      accounts={accounts}
-      onAccountSwitch={handleAccountSwitch}
-      onAddAccount={() => setShowAddAccountModal(true)}
-      onEditAccount={handleEditAccount}
-      onDeleteAccount={handleDeleteAccount}
-      onLogout={handleLogout}
-      onUpdateUser={(updatedUser) => setUser(updatedUser)}
-    >
-      {({ toggleMobileSidebar }) => (
+    <div className="min-h-screen bg-gray-50 flex">
+      {/* Mobile Sidebar Overlay */}
+      {isMobileSidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          onClick={() => setIsMobileSidebarOpen(false)}
+        />
+      )}
+
+      {/* Sidebar */}
+      <div className={`fixed inset-y-0 left-0 z-50 w-64 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${
+        isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+      }`}>
+        <Sidebar
+          user={user}
+          currentAccountId={currentAccountId}
+          accounts={accounts}
+          onAccountSwitch={handleAccountSwitch}
+          onAddAccount={() => setShowAddAccountModal(true)}
+          onEditAccount={handleEditAccount}
+          onDeleteAccount={handleDeleteAccount}
+          onLogout={handleLogout}
+          onUpdateUser={(updatedUser) => setUser(updatedUser)}
+        />
+      </div>
+
+      {/* Main Content */}
+      <main className="flex-1 lg:ml-64 p-4 sm:p-6 lg:p-8">
         <div className="max-w-7xl mx-auto">
-          {/* Mobile Header */}
-          <MobileHeader
-            title="AM Trade Overview"
-            subtitle="Your morning trading session dashboard"
-            onMenuToggle={toggleMobileSidebar}
-            rightContent={
-              <>
+          {/* Header */}
+          <div className="mb-6 sm:mb-8">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-4">
+                {/* Mobile Menu Button */}
+                <button
+                  onClick={() => setIsMobileSidebarOpen(true)}
+                  className="lg:hidden p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                </button>
+
+                <div>
+                  <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">AM Trade Overview</h1>
+                  <p className="text-gray-600 mt-1 sm:mt-2 text-sm sm:text-base">Your morning trading session dashboard</p>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-2 sm:space-x-4">
                 <div className="bg-green-100 text-green-800 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
                   AM Session Active
                 </div>
@@ -667,9 +707,9 @@ export default function AMTradeOverview() {
                   <span className="hidden sm:inline">Add AM Trade</span>
                   <span className="sm:hidden">Add</span>
                 </button>
-              </>
-            }
-          />
+              </div>
+            </div>
+          </div>
 
           {/* Filter Controls */}
           <div className="bg-gradient-to-br from-white via-gray-50/50 to-blue-50/30 rounded-2xl sm:rounded-3xl border border-gray-200/60 p-4 sm:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 mb-6 sm:mb-8">
@@ -1432,9 +1472,10 @@ export default function AMTradeOverview() {
             </div>
           </div>
         </div>
+      </main>
 
-        {/* Add New Account Modal */}
-        {showAddAccountModal && (
+      {/* Add New Account Modal */}
+      {showAddAccountModal && (
         <div className="fixed inset-0 backdrop-blur-sm bg-gray-900/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-md transform transition-all">
             {/* Modal Header */}
@@ -1560,8 +1601,7 @@ export default function AMTradeOverview() {
             </div>
           </div>
         </div>
-        )}
       )}
-    </SidebarWrapper>
+    </div>
   );
 }
