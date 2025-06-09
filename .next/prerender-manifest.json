@@ -1,54 +1,6 @@
 {
   "version": 4,
   "routes": {
-    "/account-debug": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "Next-Action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/account-debug",
-      "dataRoute": "/account-debug.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/am-trade/add-am-trade": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "Next-Action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/am-trade/add-am-trade",
-      "dataRoute": "/am-trade/add-am-trade.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
     "/add-trade": {
       "experimentalBypassFor": [
         {
@@ -64,6 +16,54 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/add-trade",
       "dataRoute": "/add-trade.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/am-trade/journal": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "Next-Action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/am-trade/journal",
+      "dataRoute": "/am-trade/journal.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/account-debug": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "Next-Action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/account-debug",
+      "dataRoute": "/account-debug.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -121,7 +121,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/am-trade/journal": {
+    "/dashboard": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -134,8 +134,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/am-trade/journal",
-      "dataRoute": "/am-trade/journal.rsc",
+      "srcRoute": "/dashboard",
+      "dataRoute": "/dashboard.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -169,7 +169,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/dashboard": {
+    "/am-trade/add-am-trade": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -182,8 +182,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/dashboard",
-      "dataRoute": "/dashboard.rsc",
+      "srcRoute": "/am-trade/add-am-trade",
+      "dataRoute": "/am-trade/add-am-trade.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -269,8 +269,8 @@
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "94ff6974754321bfbd439c883ebca0a1",
-    "previewModeSigningKey": "332f1884817a48998947687ac81eb6c7c3a565c2cbaf26d761d5ffaae8ff9057",
-    "previewModeEncryptionKey": "bc95698d2771a7162dd1f41c8926dd0ddad3fece719cae4f3e828d6d6718f89a"
+    "previewModeId": "067592d8cf904a3ec198c1a09da0ddb0",
+    "previewModeSigningKey": "03677e6ea85045f36096c88e88d2ae3ba481efd8f84407cff787094f7149122f",
+    "previewModeEncryptionKey": "803e8605edad7a768c737e53f428c1acadbf9f4639eb448edb868e93372b96c0"
   }
 }

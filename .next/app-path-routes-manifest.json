@@ -15,9 +15,9 @@
   "/am-trade/journal/page": "/am-trade/journal",
   "/am-trade/overview/page": "/am-trade/overview",
   "/am-trade/page": "/am-trade",
-  "/dashboard/page": "/dashboard",
-  "/journal/page": "/journal",
   "/login/page": "/login",
   "/page": "/",
+  "/journal/page": "/journal",
+  "/dashboard/page": "/dashboard",
   "/signup/page": "/signup"
 }

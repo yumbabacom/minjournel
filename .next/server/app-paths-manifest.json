@@ -15,9 +15,9 @@
   "/am-trade/journal/page": "app/am-trade/journal/page.js",
   "/am-trade/overview/page": "app/am-trade/overview/page.js",
   "/am-trade/page": "app/am-trade/page.js",
-  "/dashboard/page": "app/dashboard/page.js",
-  "/journal/page": "app/journal/page.js",
   "/login/page": "app/login/page.js",
   "/page": "app/page.js",
+  "/journal/page": "app/journal/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
   "/signup/page": "app/signup/page.js"
 }
