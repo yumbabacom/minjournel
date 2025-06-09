@@ -4,7 +4,7 @@ import User from '../../../../models/User';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key';
+const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
 
 // GET - Get user profile
 export async function GET(request) {
@@ -59,9 +59,12 @@ export async function PUT(request) {
     // Verify token
     let decoded;
     try {
+      console.log('Verifying token with secret:', JWT_SECRET ? 'Secret available' : 'No secret');
       decoded = jwt.verify(token, JWT_SECRET);
+      console.log('Token verified successfully for userId:', decoded.userId);
     } catch (error) {
-      return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
+      console.error('JWT verification error:', error.message);
+      return NextResponse.json({ error: 'Invalid token: ' + error.message }, { status: 401 });
     }
 
     // Get request body

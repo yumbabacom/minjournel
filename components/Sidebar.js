@@ -189,16 +189,35 @@ export default function Sidebar({
 
   const handleSaveSettings = async () => {
     try {
-      // Get token from cookies or localStorage
-      const token = document.cookie
-        .split('; ')
-        .find(row => row.startsWith('auth-token='))
-        ?.split('=')[1] || localStorage.getItem('auth-token');
+      // Get token from cookies or localStorage with better error handling
+      let token = null;
+
+      // Try to get from cookies first
+      try {
+        const cookies = document.cookie.split('; ');
+        const authCookie = cookies.find(row => row.startsWith('auth-token='));
+        if (authCookie) {
+          token = authCookie.split('=')[1];
+        }
+      } catch (cookieError) {
+        console.log('Error reading cookies:', cookieError);
+      }
+
+      // Fallback to localStorage
+      if (!token) {
+        try {
+          token = localStorage.getItem('auth-token');
+        } catch (storageError) {
+          console.log('Error reading localStorage:', storageError);
+        }
+      }
 
       if (!token) {
         alert('Authentication token not found. Please log in again.');
         return;
       }
+
+      console.log('Using token for profile update:', token ? 'Token found' : 'No token');
 
       // Prepare data to send
       const updateData = {
@@ -233,6 +252,7 @@ export default function Sidebar({
         // Refresh page to update user data in UI
         window.location.reload();
       } else {
+        console.error('Profile update failed:', data);
         alert(data.error || 'Failed to update profile');
       }
     } catch (error) {
