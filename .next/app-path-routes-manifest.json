@@ -7,17 +7,17 @@
   "/api/economic-calendar/route": "/api/economic-calendar",
   "/api/scraper/dashboard-load/route": "/api/scraper/dashboard-load",
   "/api/strategies/route": "/api/strategies",
-  "/api/trades/route": "/api/trades",
   "/api/user/profile/route": "/api/user/profile",
+  "/api/trades/route": "/api/trades",
+  "/add-trade/page": "/add-trade",
   "/account-debug/page": "/account-debug",
   "/am-trade/add-am-trade/page": "/am-trade/add-am-trade",
-  "/add-trade/page": "/add-trade",
   "/am-trade/journal/page": "/am-trade/journal",
   "/am-trade/overview/page": "/am-trade/overview",
   "/am-trade/page": "/am-trade",
-  "/journal/page": "/journal",
   "/dashboard/page": "/dashboard",
+  "/journal/page": "/journal",
   "/login/page": "/login",
-  "/page": "/",
-  "/signup/page": "/signup"
+  "/signup/page": "/signup",
+  "/page": "/"
 }
