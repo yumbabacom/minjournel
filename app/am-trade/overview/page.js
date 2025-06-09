@@ -261,6 +261,161 @@ export default function AMTradeOverview() {
     };
   }, [filteredTrades]);
 
+  // Helper function to get week start date (Monday)
+  const getWeekStart = (date) => {
+    const d = new Date(date);
+    const day = d.getDay();
+    const diff = d.getDate() - day + (day === 0 ? -6 : 1); // Adjust when day is Sunday
+    return new Date(d.setDate(diff));
+  };
+
+  // Helper function to get week number
+  const getWeekNumber = (date) => {
+    const d = new Date(date);
+    const yearStart = new Date(d.getFullYear(), 0, 1);
+    const weekStart = getWeekStart(d);
+    const weekNumber = Math.ceil(((weekStart - yearStart) / 86400000 + 1) / 7);
+    return weekNumber;
+  };
+
+  // Calculate weekly results for the last 4 weeks
+  const weeklyResults = useMemo(() => {
+    if (!filteredTrades.length) {
+      // Return empty weeks with 0 values when no data
+      const weeks = [];
+      for (let i = 0; i < 4; i++) {
+        const weekStart = new Date();
+        weekStart.setDate(weekStart.getDate() - (i * 7) - weekStart.getDay() + 1);
+        const weekNumber = getWeekNumber(weekStart);
+        weeks.unshift({
+          week: `Week ${weekNumber}`,
+          trades: 0,
+          winRate: 0,
+          sumRR: 0,
+          sumProfitPercent: 0
+        });
+      }
+      return weeks;
+    }
+
+    const now = new Date();
+    const weeks = [];
+
+    // Generate last 4 weeks
+    for (let i = 0; i < 4; i++) {
+      const weekStart = new Date(now);
+      weekStart.setDate(now.getDate() - (i * 7) - now.getDay() + 1); // Start of week (Monday)
+      weekStart.setHours(0, 0, 0, 0);
+      const weekEnd = new Date(weekStart);
+      weekEnd.setDate(weekStart.getDate() + 6); // End of week (Sunday)
+      weekEnd.setHours(23, 59, 59, 999);
+
+      const weekNumber = getWeekNumber(weekStart);
+
+      // Filter trades for this week
+      const weekTrades = filteredTrades.filter(trade => {
+        const tradeDate = new Date(trade.dateTime || trade.createdAt);
+        return tradeDate >= weekStart && tradeDate <= weekEnd;
+      });
+
+      const completedWeekTrades = weekTrades.filter(trade => trade.status && trade.status !== 'pending');
+      const winningWeekTrades = completedWeekTrades.filter(trade => trade.status === 'win');
+
+      const weekWinRate = completedWeekTrades.length > 0 ? (winningWeekTrades.length / completedWeekTrades.length) * 100 : 0;
+      const weekProfit = completedWeekTrades.reduce((sum, trade) => sum + (trade.actualProfit || 0), 0);
+
+      // Calculate Risk/Reward from planned RR or calculated RR
+      const weekRR = completedWeekTrades.reduce((sum, trade) => {
+        // Try to get RR from multiple possible sources
+        const rr = trade.calculatedResults?.riskRewardRatio ||
+                  parseFloat(trade.plannedRR) ||
+                  trade.riskReward ||
+                  0;
+        return sum + rr;
+      }, 0);
+
+      // Calculate profit percentage based on account size
+      const accountSize = weekTrades.length > 0 ? (weekTrades[0].accountSize || 10000) : 10000;
+      const weekProfitPercent = accountSize > 0 ? (weekProfit / accountSize) * 100 : 0;
+
+      weeks.unshift({
+        week: `Week ${weekNumber}`,
+        trades: weekTrades.length,
+        winRate: parseFloat(weekWinRate.toFixed(1)),
+        sumRR: parseFloat(weekRR.toFixed(1)),
+        sumProfitPercent: parseFloat(weekProfitPercent.toFixed(2))
+      });
+    }
+
+    return weeks;
+  }, [filteredTrades]);
+
+  // Calculate daily results for the last 5 weekdays
+  const dailyResults = useMemo(() => {
+    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+    const results = [];
+
+    // Debug logging
+    console.log('Daily Results Calculation:', {
+      totalAmTrades: amTrades.length,
+      currentAccountId,
+      sampleTrade: amTrades[0]
+    });
+
+    days.forEach(dayName => {
+      // Use all AM trades (not just filtered) for daily analysis to get historical patterns
+      const allDayTrades = amTrades.filter(trade => {
+        // Filter by current account
+        const tradeAccountId = String(trade.accountId || trade.account);
+        if (tradeAccountId !== String(currentAccountId)) return false;
+
+        // Filter by weekday
+        const tradeDate = new Date(trade.dateTime || trade.createdAt);
+        const tradeDayName = tradeDate.toLocaleDateString('en-US', { weekday: 'long' });
+        return tradeDayName === dayName;
+      });
+
+      const completedDayTrades = allDayTrades.filter(trade => trade.status && trade.status !== 'pending');
+      const winningDayTrades = completedDayTrades.filter(trade => trade.status === 'win');
+
+      const dayWinRate = completedDayTrades.length > 0 ? (winningDayTrades.length / completedDayTrades.length) * 100 : 0;
+      const dayProfit = completedDayTrades.reduce((sum, trade) => sum + (trade.actualProfit || 0), 0);
+
+      // Calculate Risk/Reward from planned RR or calculated RR
+      const dayRR = allDayTrades.reduce((sum, trade) => {
+        // Try to get RR from multiple possible sources
+        const rr = trade.calculatedResults?.riskRewardRatio ||
+                  parseFloat(trade.plannedRR) ||
+                  trade.riskReward ||
+                  0;
+        return sum + rr;
+      }, 0);
+
+      // Calculate profit percentage based on account size
+      const accountSize = allDayTrades.length > 0 ? (allDayTrades[0].accountSize || 10000) : 10000;
+      const dayProfitPercent = accountSize > 0 ? (dayProfit / accountSize) * 100 : 0;
+
+      const dayResult = {
+        weekday: dayName,
+        trades: allDayTrades.length,
+        winRate: parseFloat(dayWinRate.toFixed(1)),
+        sumRR: parseFloat(dayRR.toFixed(1)),
+        sumProfitPercent: parseFloat(dayProfitPercent.toFixed(2))
+      };
+
+      console.log(`${dayName} Results:`, {
+        allDayTrades: allDayTrades.length,
+        completedDayTrades: completedDayTrades.length,
+        dayResult
+      });
+
+      results.push(dayResult);
+    });
+
+    console.log('Final Daily Results:', results);
+    return results;
+  }, [amTrades, currentAccountId]);
+
   // Get unique values for filters
   const uniquePairs = useMemo(() => {
     const pairs = [...new Set(amTrades.map(trade => trade.tradingPair).filter(Boolean))];
@@ -1002,6 +1157,187 @@ export default function AMTradeOverview() {
                   </button>
                 </div>
               )}
+            </div>
+          </div>
+
+          {/* Trading Week Results & Trading Day Results */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+            {/* Trading Week Results */}
+            <div className="bg-gradient-to-br from-white via-gray-50/50 to-purple-50/30 rounded-2xl border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300">
+              <div className="p-6 border-b border-gray-200/60">
+                <h3 className="text-xl font-bold text-gray-900 flex items-center">
+                  <svg className="w-6 h-6 mr-3 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  Trading Week Results
+                </h3>
+              </div>
+              <div className="p-6">
+                {/* Week Results Header */}
+                <div className="grid grid-cols-5 gap-4 mb-4 pb-3 border-b border-gray-200/60">
+                  <div className="flex items-center space-x-2">
+                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-sm font-medium text-gray-600">Week</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                    <span className="text-sm font-medium text-gray-600">Trades</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-sm font-medium text-gray-600">Win Rate</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    </svg>
+                    <span className="text-sm font-medium text-gray-600">Sum RR</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                    </svg>
+                    <span className="text-sm font-medium text-gray-600">Sum Profit %</span>
+                  </div>
+                </div>
+
+                {/* Week Results Data */}
+                <div className="space-y-3">
+                  {weeklyResults.map((week, index) => (
+                    <div key={index} className="grid grid-cols-5 gap-4 p-3 bg-white rounded-xl border border-gray-200/60 hover:shadow-md transition-all duration-200">
+                      <div className="font-medium text-gray-900">{week.week}</div>
+                      <div className="font-semibold text-gray-700">{week.trades}</div>
+                      <div className={`font-semibold ${
+                        week.winRate > 50 ? 'text-green-600' :
+                        week.winRate > 0 ? 'text-orange-600' : 'text-gray-600'
+                      }`}>
+                        {week.winRate}%
+                      </div>
+                      <div className={`font-semibold ${
+                        week.sumRR > 0 ? 'text-green-600' :
+                        week.sumRR < 0 ? 'text-red-600' : 'text-gray-600'
+                      }`}>
+                        {week.sumRR}
+                      </div>
+                      <div className={`font-semibold ${
+                        week.sumProfitPercent > 0 ? 'text-green-600' :
+                        week.sumProfitPercent < 0 ? 'text-red-600' : 'text-gray-600'
+                      }`}>
+                        {week.sumProfitPercent > 0 ? '+' : ''}{week.sumProfitPercent}%
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Trading Day Results */}
+            <div className="bg-gradient-to-br from-white via-gray-50/50 to-orange-50/30 rounded-2xl border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300">
+              <div className="p-6 border-b border-gray-200/60">
+                <h3 className="text-xl font-bold text-gray-900 flex items-center">
+                  <svg className="w-6 h-6 mr-3 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                  </svg>
+                  Trading Day Results
+                </h3>
+              </div>
+              <div className="p-6">
+                {/* Day Results Header */}
+                <div className="grid grid-cols-5 gap-4 mb-4 pb-3 border-b border-gray-200/60">
+                  <div className="flex items-center space-x-2">
+                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <span className="text-sm font-medium text-gray-600">Weekday</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                    <span className="text-sm font-medium text-gray-600">Trades</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-sm font-medium text-gray-600">Win Rate</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    </svg>
+                    <span className="text-sm font-medium text-gray-600">Sum RR</span>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
+                    </svg>
+                    <span className="text-sm font-medium text-gray-600">Sum Profit %</span>
+                  </div>
+                </div>
+
+                {/* Day Results Data */}
+                <div className="space-y-3">
+                  {dailyResults.map((day, index) => (
+                    <div key={index} className="grid grid-cols-5 gap-4 p-3 bg-white rounded-xl border border-gray-200/60 hover:shadow-md transition-all duration-200">
+                      <div className="font-medium text-gray-900">{day.weekday}</div>
+                      <div className="font-semibold text-gray-700">{day.trades}</div>
+                      <div className={`font-semibold ${
+                        day.winRate > 50 ? 'text-green-600' :
+                        day.winRate > 0 ? 'text-orange-600' : 'text-gray-600'
+                      }`}>
+                        {day.winRate}%
+                      </div>
+                      <div className={`font-semibold ${
+                        day.sumRR > 0 ? 'text-green-600' :
+                        day.sumRR < 0 ? 'text-red-600' : 'text-gray-600'
+                      }`}>
+                        {day.sumRR}
+                      </div>
+                      <div className={`font-semibold ${
+                        day.sumProfitPercent > 0 ? 'text-green-600' :
+                        day.sumProfitPercent < 0 ? 'text-red-600' : 'text-gray-600'
+                      }`}>
+                        {day.sumProfitPercent > 0 ? '+' : ''}{day.sumProfitPercent}%
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Summary Row */}
+                <div className="mt-6 pt-4 border-t border-gray-200/60">
+                  <div className="grid grid-cols-5 gap-4 p-3 bg-gradient-to-r from-gray-50 to-orange-50 rounded-xl border border-gray-200/60">
+                    <div className="font-bold text-gray-900">SUM</div>
+                    <div className="font-bold text-gray-900">
+                      {dailyResults.reduce((sum, day) => sum + day.trades, 0)}
+                    </div>
+                    <div className="font-bold text-gray-900">
+                      {dailyResults.length > 0 ?
+                        (dailyResults.reduce((sum, day) => sum + (day.winRate * day.trades), 0) /
+                         Math.max(dailyResults.reduce((sum, day) => sum + day.trades, 0), 1)).toFixed(1) : '0.0'}%
+                    </div>
+                    <div className={`font-bold ${
+                      dailyResults.reduce((sum, day) => sum + day.sumRR, 0) > 0 ? 'text-green-600' :
+                      dailyResults.reduce((sum, day) => sum + day.sumRR, 0) < 0 ? 'text-red-600' : 'text-gray-600'
+                    }`}>
+                      {dailyResults.reduce((sum, day) => sum + day.sumRR, 0).toFixed(1)}
+                    </div>
+                    <div className={`font-bold ${
+                      dailyResults.reduce((sum, day) => sum + day.sumProfitPercent, 0) > 0 ? 'text-green-600' :
+                      dailyResults.reduce((sum, day) => sum + day.sumProfitPercent, 0) < 0 ? 'text-red-600' : 'text-gray-600'
+                    }`}>
+                      {dailyResults.reduce((sum, day) => sum + day.sumProfitPercent, 0) > 0 ? '+' : ''}
+                      {dailyResults.reduce((sum, day) => sum + day.sumProfitPercent, 0).toFixed(2)}%
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 

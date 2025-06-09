@@ -1,13 +1,12 @@
 {
   "pages": {
-    "/dashboard/page": [
+    "/am-trade/add-am-trade/page": [
       "static/chunks/[root-of-the-server]__6b11dc23._.css",
       "static/chunks/node_modules_next_dist_1a6ee436._.js",
       "static/chunks/app_layout_c0237562.js",
-      "static/chunks/components_Sidebar_00baeef9.js",
-      "static/chunks/app_dashboard_page_a40d4570.js",
+      "static/chunks/_1bb798ae._.js",
       "static/chunks/node_modules_4416e829._.js",
-      "static/chunks/app_dashboard_page_a161915f.js",
+      "static/chunks/app_am-trade_add-am-trade_page_a161915f.js",
       "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_fd44f5a4._.js",
       "static/chunks/node_modules_next_dist_compiled_2ce9398a._.js",
       "static/chunks/node_modules_next_dist_client_8f19e6fb._.js",
@@ -16,12 +15,13 @@
       "static/chunks/_e69f0d32._.js",
       "static/chunks/_93808211._.js"
     ],
-    "/login/page": [
+    "/am-trade/journal/page": [
       "static/chunks/[root-of-the-server]__6b11dc23._.css",
       "static/chunks/node_modules_next_dist_1a6ee436._.js",
       "static/chunks/app_layout_c0237562.js",
-      "static/chunks/_6e58ef29._.js",
-      "static/chunks/app_login_page_a161915f.js",
+      "static/chunks/_4c24e80e._.js",
+      "static/chunks/node_modules_4416e829._.js",
+      "static/chunks/app_am-trade_journal_page_a161915f.js",
       "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_fd44f5a4._.js",
       "static/chunks/node_modules_next_dist_compiled_2ce9398a._.js",
       "static/chunks/node_modules_next_dist_client_8f19e6fb._.js",
@@ -30,12 +30,13 @@
       "static/chunks/_e69f0d32._.js",
       "static/chunks/_93808211._.js"
     ],
-    "/page": [
+    "/am-trade/overview/page": [
       "static/chunks/[root-of-the-server]__6b11dc23._.css",
       "static/chunks/node_modules_next_dist_1a6ee436._.js",
       "static/chunks/app_layout_c0237562.js",
-      "static/chunks/_e0414dc0._.js",
-      "static/chunks/app_page_a161915f.js",
+      "static/chunks/_a7abfbe3._.js",
+      "static/chunks/node_modules_ccf59790._.js",
+      "static/chunks/app_am-trade_overview_page_a161915f.js",
       "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_fd44f5a4._.js",
       "static/chunks/node_modules_next_dist_compiled_2ce9398a._.js",
       "static/chunks/node_modules_next_dist_client_8f19e6fb._.js",
