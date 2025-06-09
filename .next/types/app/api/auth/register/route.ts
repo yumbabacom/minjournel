@@ -1,4 +1,4 @@
-// File: E:\trading-journal-app\app\api\auth\register\route.js
+// File: /home/runner/work/minjournel/minjournel/app/api/auth/register/route.js
 import * as entry from '../../../../../../app/api/auth/register/route.js'
 import type { NextRequest } from 'next/server.js'
 
