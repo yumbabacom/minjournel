@@ -12,12 +12,12 @@
   "/account-debug/page": "app/account-debug/page.js",
   "/add-trade/page": "app/add-trade/page.js",
   "/am-trade/add-am-trade/page": "app/am-trade/add-am-trade/page.js",
-  "/am-trade/journal/page": "app/am-trade/journal/page.js",
   "/am-trade/page": "app/am-trade/page.js",
   "/am-trade/overview/page": "app/am-trade/overview/page.js",
-  "/login/page": "app/login/page.js",
-  "/page": "app/page.js",
-  "/signup/page": "app/signup/page.js",
+  "/am-trade/journal/page": "app/am-trade/journal/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
   "/journal/page": "app/journal/page.js",
-  "/dashboard/page": "app/dashboard/page.js"
+  "/page": "app/page.js",
+  "/login/page": "app/login/page.js",
+  "/signup/page": "app/signup/page.js"
 }

@@ -2521,6 +2521,63 @@ function AMTradeStatusUpdateModal({ trade, accounts, onClose, onStatusUpdated })
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState('status');
 
+  // Trading pairs data (same as add-trade page)
+  const tradingPairs = {
+    forex: [
+      { pair: 'EUR/USD', name: 'Euro / US Dollar' },
+      { pair: 'GBP/USD', name: 'British Pound / US Dollar' },
+      { pair: 'USD/JPY', name: 'US Dollar / Japanese Yen' },
+      { pair: 'USD/CHF', name: 'US Dollar / Swiss Franc' },
+      { pair: 'AUD/USD', name: 'Australian Dollar / US Dollar' },
+      { pair: 'USD/CAD', name: 'US Dollar / Canadian Dollar' },
+      { pair: 'NZD/USD', name: 'New Zealand Dollar / US Dollar' },
+      { pair: 'EUR/GBP', name: 'Euro / British Pound' },
+      { pair: 'EUR/JPY', name: 'Euro / Japanese Yen' },
+      { pair: 'GBP/JPY', name: 'British Pound / Japanese Yen' },
+      { pair: 'CHF/JPY', name: 'Swiss Franc / Japanese Yen' },
+      { pair: 'AUD/JPY', name: 'Australian Dollar / Japanese Yen' },
+      { pair: 'CAD/JPY', name: 'Canadian Dollar / Japanese Yen' },
+      { pair: 'NZD/JPY', name: 'New Zealand Dollar / Japanese Yen' },
+      { pair: 'EUR/CHF', name: 'Euro / Swiss Franc' },
+      { pair: 'GBP/CHF', name: 'British Pound / Swiss Franc' },
+      { pair: 'AUD/CHF', name: 'Australian Dollar / Swiss Franc' },
+      { pair: 'CAD/CHF', name: 'Canadian Dollar / Swiss Franc' },
+      { pair: 'NZD/CHF', name: 'New Zealand Dollar / Swiss Franc' },
+      { pair: 'EUR/AUD', name: 'Euro / Australian Dollar' },
+      { pair: 'GBP/AUD', name: 'British Pound / Australian Dollar' },
+      { pair: 'AUD/CAD', name: 'Australian Dollar / Canadian Dollar' },
+      { pair: 'AUD/NZD', name: 'Australian Dollar / New Zealand Dollar' },
+      { pair: 'EUR/CAD', name: 'Euro / Canadian Dollar' },
+      { pair: 'GBP/CAD', name: 'British Pound / Canadian Dollar' },
+      { pair: 'CAD/CHF', name: 'Canadian Dollar / Swiss Franc' },
+      { pair: 'EUR/NZD', name: 'Euro / New Zealand Dollar' },
+      { pair: 'GBP/NZD', name: 'British Pound / New Zealand Dollar' },
+      { pair: 'NZD/CAD', name: 'New Zealand Dollar / Canadian Dollar' }
+    ],
+    crypto: [
+      { pair: 'BTC/USD', name: 'Bitcoin / US Dollar' },
+      { pair: 'ETH/USD', name: 'Ethereum / US Dollar' },
+      { pair: 'LTC/USD', name: 'Litecoin / US Dollar' },
+      { pair: 'XRP/USD', name: 'Ripple / US Dollar' },
+      { pair: 'ADA/USD', name: 'Cardano / US Dollar' },
+      { pair: 'DOT/USD', name: 'Polkadot / US Dollar' },
+      { pair: 'LINK/USD', name: 'Chainlink / US Dollar' },
+      { pair: 'BCH/USD', name: 'Bitcoin Cash / US Dollar' },
+      { pair: 'XLM/USD', name: 'Stellar / US Dollar' },
+      { pair: 'UNI/USD', name: 'Uniswap / US Dollar' }
+    ],
+    commodities: [
+      { pair: 'XAU/USD', name: 'Gold / US Dollar' },
+      { pair: 'XAG/USD', name: 'Silver / US Dollar' },
+      { pair: 'WTI/USD', name: 'Crude Oil WTI / US Dollar' },
+      { pair: 'BRENT/USD', name: 'Brent Oil / US Dollar' },
+      { pair: 'NATGAS/USD', name: 'Natural Gas / US Dollar' },
+      { pair: 'COPPER/USD', name: 'Copper / US Dollar' },
+      { pair: 'PLATINUM/USD', name: 'Platinum / US Dollar' },
+      { pair: 'PALLADIUM/USD', name: 'Palladium / US Dollar' }
+    ]
+  };
+
   // Helper function to format currency (local to modal)
   const formatCurrency = (amount) => {
     if (amount === null || amount === undefined || isNaN(amount)) return '$0.00';
@@ -2636,31 +2693,36 @@ function AMTradeStatusUpdateModal({ trade, accounts, onClose, onStatusUpdated })
   const getTradingPairDetails = (pairString) => {
     if (!pairString) return null;
 
-    // Check forex pairs
-    const forexPairs = tradingPairs.forex || [];
-    for (const pair of forexPairs) {
-      if (pair.pair === pairString) {
-        return { category: 'forex', pair: pair.pair, name: pair.name };
+    try {
+      // Check forex pairs
+      const forexPairs = tradingPairs?.forex || [];
+      for (const pair of forexPairs) {
+        if (pair.pair === pairString) {
+          return { category: 'forex', pair: pair.pair, name: pair.name };
+        }
       }
-    }
 
-    // Check crypto pairs
-    const cryptoPairs = tradingPairs.crypto || [];
-    for (const pair of cryptoPairs) {
-      if (pair.pair === pairString) {
-        return { category: 'crypto', pair: pair.pair, name: pair.name };
+      // Check crypto pairs
+      const cryptoPairs = tradingPairs?.crypto || [];
+      for (const pair of cryptoPairs) {
+        if (pair.pair === pairString) {
+          return { category: 'crypto', pair: pair.pair, name: pair.name };
+        }
       }
-    }
 
-    // Check commodities
-    const commodityPairs = tradingPairs.commodities || [];
-    for (const pair of commodityPairs) {
-      if (pair.pair === pairString) {
-        return { category: 'commodities', pair: pair.pair, name: pair.name };
+      // Check commodities
+      const commodityPairs = tradingPairs?.commodities || [];
+      for (const pair of commodityPairs) {
+        if (pair.pair === pairString) {
+          return { category: 'commodities', pair: pair.pair, name: pair.name };
+        }
       }
-    }
 
-    return null;
+      return null;
+    } catch (error) {
+      console.error('Error getting trading pair details:', error);
+      return null;
+    }
   };
 
   // Calculate pip value based on pair type (same as add-trade page)
@@ -2722,11 +2784,13 @@ function AMTradeStatusUpdateModal({ trade, accounts, onClose, onStatusUpdated })
 
   // Auto-calculate P&L and metrics (improved version)
   const calculateMetrics = (data) => {
-    const actualEntry = parseFloat(data.actualEntry) || 0;
-    const actualExit = parseFloat(data.actualExit) || 0;
-    const stopLoss = parseFloat(data.stopLoss) || 0;
-    const takeProfit = parseFloat(data.takeProfit) || 0;
-    const manualPL = parseFloat(data.manualPL) || 0;
+    try {
+      // Safely parse numeric values
+      const actualEntry = parseFloat(data?.actualEntry) || 0;
+      const actualExit = parseFloat(data?.actualExit) || 0;
+      const stopLoss = parseFloat(data?.stopLoss) || 0;
+      const takeProfit = parseFloat(data?.takeProfit) || 0;
+      const manualPL = parseFloat(data?.manualPL) || 0;
 
     // If using manual P&L entry (exitType is 'other')
     if (data.exitType === 'other') {
@@ -2838,24 +2902,45 @@ function AMTradeStatusUpdateModal({ trade, accounts, onClose, onStatusUpdated })
       riskRewardRatio: parseFloat(riskRewardRatio.toFixed(2)),
       accountImpact: parseFloat(accountImpact.toFixed(2))
     };
+    } catch (error) {
+      console.error('Error in calculateMetrics:', error);
+      // Return safe default values
+      return {
+        actualPL: 0,
+        pips: 0,
+        riskRewardRatio: 0,
+        accountImpact: 0
+      };
+    }
   };
 
   // Update calculations when form data changes
   useEffect(() => {
-    const results = calculateMetrics(formData);
-    setCalculatedResults(results);
+    try {
+      const results = calculateMetrics(formData);
+      setCalculatedResults(results);
 
-    // Auto-update actual profit field only for price-based calculations
-    if (formData.exitType === 'price' && results.actualPL !== parseFloat(formData.actualProfit || 0)) {
-      setFormData(prev => ({
-        ...prev,
-        actualProfit: results.actualPL.toString()
-      }));
-    } else if (formData.exitType === 'other' && formData.manualPL !== formData.actualProfit) {
-      setFormData(prev => ({
-        ...prev,
-        actualProfit: formData.manualPL
-      }));
+      // Auto-update actual profit field only for price-based calculations
+      if (formData.exitType === 'price' && results.actualPL !== parseFloat(formData.actualProfit || 0)) {
+        setFormData(prev => ({
+          ...prev,
+          actualProfit: results.actualPL.toString()
+        }));
+      } else if (formData.exitType === 'other' && formData.manualPL !== formData.actualProfit) {
+        setFormData(prev => ({
+          ...prev,
+          actualProfit: formData.manualPL
+        }));
+      }
+    } catch (error) {
+      console.error('Error updating calculations:', error);
+      // Set safe default values
+      setCalculatedResults({
+        actualPL: 0,
+        pips: 0,
+        riskRewardRatio: 0,
+        accountImpact: 0
+      });
     }
   }, [formData.actualEntry, formData.actualExit, formData.stopLoss, formData.takeProfit, formData.exitType, formData.manualPL]);
 
@@ -2869,6 +2954,25 @@ function AMTradeStatusUpdateModal({ trade, accounts, onClose, onStatusUpdated })
       const userData = localStorage.getItem('user');
       const user = userData ? JSON.parse(userData) : null;
       const userId = user?.id || user?._id;
+
+      // Validate required data
+      if (!token) {
+        alert('Authentication token not found. Please log in again.');
+        setLoading(false);
+        return;
+      }
+
+      if (!userId) {
+        alert('User information not found. Please log in again.');
+        setLoading(false);
+        return;
+      }
+
+      if (!trade?._id) {
+        alert('Trade information is missing. Please refresh the page.');
+        setLoading(false);
+        return;
+      }
 
       // Prepare closing images array
       const closingImages = [];
