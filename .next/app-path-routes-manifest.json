@@ -1,0 +1,23 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/api/accounts/route": "/api/accounts",
+  "/api/am-trades/route": "/api/am-trades",
+  "/api/auth/login/route": "/api/auth/login",
+  "/api/auth/register/route": "/api/auth/register",
+  "/api/economic-calendar/route": "/api/economic-calendar",
+  "/api/scraper/dashboard-load/route": "/api/scraper/dashboard-load",
+  "/api/strategies/route": "/api/strategies",
+  "/api/user/profile/route": "/api/user/profile",
+  "/api/trades/route": "/api/trades",
+  "/account-debug/page": "/account-debug",
+  "/add-trade/page": "/add-trade",
+  "/am-trade/add-am-trade/page": "/am-trade/add-am-trade",
+  "/am-trade/journal/page": "/am-trade/journal",
+  "/am-trade/overview/page": "/am-trade/overview",
+  "/am-trade/page": "/am-trade",
+  "/journal/page": "/journal",
+  "/dashboard/page": "/dashboard",
+  "/login/page": "/login",
+  "/page": "/",
+  "/signup/page": "/signup"
+}
