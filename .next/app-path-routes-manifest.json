@@ -10,14 +10,14 @@
   "/api/trades/route": "/api/trades",
   "/api/user/profile/route": "/api/user/profile",
   "/account-debug/page": "/account-debug",
-  "/add-trade/page": "/add-trade",
   "/am-trade/add-am-trade/page": "/am-trade/add-am-trade",
+  "/add-trade/page": "/add-trade",
   "/am-trade/journal/page": "/am-trade/journal",
   "/am-trade/overview/page": "/am-trade/overview",
   "/am-trade/page": "/am-trade",
-  "/login/page": "/login",
-  "/page": "/",
   "/journal/page": "/journal",
   "/dashboard/page": "/dashboard",
+  "/login/page": "/login",
+  "/page": "/",
   "/signup/page": "/signup"
 }
