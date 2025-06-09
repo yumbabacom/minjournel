@@ -1,4 +1,4 @@
-// File: /home/runner/work/minjournel/minjournel/app/dashboard/page.js
+// File: E:\trading-journal-app\app\dashboard\page.js
 import * as entry from '../../../../app/dashboard/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
