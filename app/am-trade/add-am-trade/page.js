@@ -1410,9 +1410,11 @@ export default function AddAMTrade() {
                       >
                         <option value="">Select time frame</option>
                         <option value="1 minute">1 minute</option>
+                        <option value="3 minutes">3 minutes</option>
                         <option value="< 5 minutes">&lt; 5 minutes</option>
                         <option value="5 minutes">5 minutes</option>
                         <option value="15 minutes">15 minutes</option>
+                        <option value="30 minutes">30 minutes</option>
                         <option value="1 hour">1 hour</option>
                       </select>
                       <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-orange-500">
