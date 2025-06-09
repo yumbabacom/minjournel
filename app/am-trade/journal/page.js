@@ -403,18 +403,79 @@ export default function AMTradeJournal() {
     setIsSubmitting(true);
     try {
       const token = Cookies.get('auth-token');
-      const response = await fetch(`/api/am-trades?tradeId=${selectedTrade._id}&userId=${user?.id || user?._id}`, {
-        method: 'DELETE',
-        headers: { Authorization: `Bearer ${token}` }
+      const userId = user?.id || user?._id;
+
+      console.log('Deleting AM trade:', {
+        tradeId: selectedTrade._id,
+        userId: userId,
+        token: token ? 'Present' : 'Missing'
       });
 
-      if (response.ok) {
+      const response = await fetch(`/api/am-trades?tradeId=${selectedTrade._id}&userId=${userId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      console.log('Delete response status:', response.status);
+
+      const result = await response.json();
+      console.log('Delete response data:', result);
+
+      if (response.ok && result.success) {
+        // If trade had P&L impact, reverse it from account balance
+        if (selectedTrade.actualProfit && selectedTrade.status && (selectedTrade.status === 'win' || selectedTrade.status === 'loss')) {
+          const currentAccount = accounts.find(acc => acc.id === selectedTrade.accountId || acc._id === selectedTrade.accountId);
+          if (currentAccount) {
+            const newBalance = currentAccount.balance - selectedTrade.actualProfit;
+
+            console.log('Reversing P&L impact on account balance:', {
+              currentBalance: currentAccount.balance,
+              actualProfit: selectedTrade.actualProfit,
+              newBalance: newBalance
+            });
+
+            try {
+              const accountResponse = await fetch('/api/accounts', {
+                method: 'PUT',
+                headers: {
+                  'Authorization': `Bearer ${token}`,
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  accountId: currentAccount.id || currentAccount._id,
+                  userId: userId,
+                  updates: { balance: newBalance }
+                })
+              });
+
+              if (accountResponse.ok) {
+                // Update account in local state
+                setAccounts(prev => prev.map(acc =>
+                  (acc.id === currentAccount.id || acc._id === currentAccount._id)
+                    ? { ...acc, balance: newBalance }
+                    : acc
+                ));
+                console.log('Account balance updated after trade deletion');
+              } else {
+                console.error('Failed to update account balance after trade deletion');
+              }
+            } catch (accountError) {
+              console.error('Error updating account balance after trade deletion:', accountError);
+            }
+          }
+        }
+
+        // Remove trade from local state
         setTrades(prev => prev.filter(trade => trade._id !== selectedTrade._id));
         setShowDeleteModal(false);
         setSelectedTrade(null);
         alert('Trade deleted successfully!');
       } else {
-        alert('Failed to delete trade. Please try again.');
+        console.error('Delete failed:', result);
+        alert(`Failed to delete trade: ${result.message || 'Unknown error'}`);
       }
     } catch (error) {
       console.error('Error deleting trade:', error);

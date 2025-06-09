@@ -184,8 +184,17 @@ export async function DELETE(request) {
     const tradeId = searchParams.get('tradeId') || searchParams.get('id');
     const userId = searchParams.get('userId');
 
+    console.log('AM Trade DELETE request:', { tradeId, userId });
+
     if (!tradeId) {
+      console.error('Missing tradeId in delete request');
       return NextResponse.json({ error: 'Trade ID is required' }, { status: 400 });
+    }
+
+    // Validate ObjectId format
+    if (!ObjectId.isValid(tradeId)) {
+      console.error('Invalid tradeId format:', tradeId);
+      return NextResponse.json({ error: 'Invalid Trade ID format' }, { status: 400 });
     }
 
     const { db } = await connectToDatabase();
@@ -196,18 +205,41 @@ export async function DELETE(request) {
       deleteFilter.userId = userId;
     }
 
-    const result = await db.collection('am_trades').deleteOne(deleteFilter);
+    console.log('Delete filter:', deleteFilter);
 
-    if (result.deletedCount === 0) {
+    // First, check if the trade exists
+    const existingTrade = await db.collection('am_trades').findOne(deleteFilter);
+    if (!existingTrade) {
+      console.error('AM Trade not found:', deleteFilter);
       return NextResponse.json({ error: 'AM Trade not found or access denied' }, { status: 404 });
     }
 
-    return NextResponse.json({ 
-      success: true, 
-      message: 'AM Trade deleted successfully' 
+    console.log('Found trade to delete:', { _id: existingTrade._id, tradingPair: existingTrade.tradingPair });
+
+    // Delete the trade
+    const result = await db.collection('am_trades').deleteOne(deleteFilter);
+
+    console.log('Delete result:', result);
+
+    if (result.deletedCount === 0) {
+      console.error('No trades were deleted');
+      return NextResponse.json({ error: 'Failed to delete AM Trade' }, { status: 500 });
+    }
+
+    console.log('AM Trade deleted successfully');
+    return NextResponse.json({
+      success: true,
+      message: 'AM Trade deleted successfully',
+      deletedTrade: {
+        _id: existingTrade._id,
+        tradingPair: existingTrade.tradingPair
+      }
     });
   } catch (error) {
     console.error('Error deleting AM trade:', error);
-    return NextResponse.json({ error: 'Failed to delete AM trade' }, { status: 500 });
+    return NextResponse.json({
+      error: 'Failed to delete AM trade',
+      details: error.message
+    }, { status: 500 });
   }
 }
