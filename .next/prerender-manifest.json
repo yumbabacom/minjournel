@@ -25,30 +25,6 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/add-trade": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "Next-Action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/add-trade",
-      "dataRoute": "/add-trade.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
     "/am-trade/add-am-trade": {
       "experimentalBypassFor": [
         {
@@ -73,7 +49,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/am-trade/journal": {
+    "/add-trade": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -86,32 +62,8 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/am-trade/journal",
-      "dataRoute": "/am-trade/journal.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
-    },
-    "/am-trade": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "Next-Action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/am-trade",
-      "dataRoute": "/am-trade.rsc",
+      "srcRoute": "/add-trade",
+      "dataRoute": "/add-trade.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -145,7 +97,7 @@
         "x-next-revalidate-tag-token"
       ]
     },
-    "/dashboard": {
+    "/am-trade": {
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -158,8 +110,32 @@
         }
       ],
       "initialRevalidateSeconds": false,
-      "srcRoute": "/dashboard",
-      "dataRoute": "/dashboard.rsc",
+      "srcRoute": "/am-trade",
+      "dataRoute": "/am-trade.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/am-trade/journal": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "Next-Action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/am-trade/journal",
+      "dataRoute": "/am-trade/journal.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -184,6 +160,54 @@
       "initialRevalidateSeconds": false,
       "srcRoute": "/journal",
       "dataRoute": "/journal.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/dashboard": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "Next-Action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/dashboard",
+      "dataRoute": "/dashboard.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
+    "/login": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "Next-Action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/login",
+      "dataRoute": "/login.rsc",
       "allowHeader": [
         "host",
         "x-matched-path",
@@ -240,37 +264,13 @@
         "x-next-revalidated-tags",
         "x-next-revalidate-tag-token"
       ]
-    },
-    "/login": {
-      "experimentalBypassFor": [
-        {
-          "type": "header",
-          "key": "Next-Action"
-        },
-        {
-          "type": "header",
-          "key": "content-type",
-          "value": "multipart/form-data;.*"
-        }
-      ],
-      "initialRevalidateSeconds": false,
-      "srcRoute": "/login",
-      "dataRoute": "/login.rsc",
-      "allowHeader": [
-        "host",
-        "x-matched-path",
-        "x-prerender-revalidate",
-        "x-prerender-revalidate-if-generated",
-        "x-next-revalidated-tags",
-        "x-next-revalidate-tag-token"
-      ]
     }
   },
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "cb7a58c2f54099501d93f8bd9ab81af5",
-    "previewModeSigningKey": "b150ac6754721f528558a57a61f3527e36cdb7f075ef042b8e22579ef0edb198",
-    "previewModeEncryptionKey": "c1d25b2af6e6ae5df0ed739820a9c81fe40c075638b2ad6e1a0531b213b3d632"
+    "previewModeId": "94ff6974754321bfbd439c883ebca0a1",
+    "previewModeSigningKey": "332f1884817a48998947687ac81eb6c7c3a565c2cbaf26d761d5ffaae8ff9057",
+    "previewModeEncryptionKey": "bc95698d2771a7162dd1f41c8926dd0ddad3fece719cae4f3e828d6d6718f89a"
   }
 }

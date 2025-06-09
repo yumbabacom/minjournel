@@ -12,12 +12,12 @@
   "/account-debug/page": "/account-debug",
   "/add-trade/page": "/add-trade",
   "/am-trade/add-am-trade/page": "/am-trade/add-am-trade",
-  "/am-trade/overview/page": "/am-trade/overview",
   "/am-trade/journal/page": "/am-trade/journal",
+  "/am-trade/overview/page": "/am-trade/overview",
   "/am-trade/page": "/am-trade",
-  "/login/page": "/login",
-  "/page": "/",
   "/dashboard/page": "/dashboard",
   "/journal/page": "/journal",
+  "/login/page": "/login",
+  "/page": "/",
   "/signup/page": "/signup"
 }
