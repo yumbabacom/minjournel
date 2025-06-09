@@ -459,6 +459,17 @@ export default function AMTradeJournal() {
                     : acc
                 ));
                 console.log('Account balance updated after trade deletion');
+
+                // Dispatch custom event for real-time sync with Dashboard and other components
+                const event = new CustomEvent('accountBalanceUpdated', {
+                  detail: {
+                    accountId: currentAccount.id || currentAccount._id,
+                    newBalance: newBalance,
+                    source: 'am-trade-delete'
+                  }
+                });
+                window.dispatchEvent(event);
+
               } else {
                 console.error('Failed to update account balance after trade deletion');
               }
@@ -3070,6 +3081,28 @@ function AMTradeStatusUpdateModal({ trade, accounts, onClose, onStatusUpdated })
           if (accountResponse.ok) {
             updatedAccount = { ...currentAccount, balance: newBalance };
             console.log('Account balance updated successfully:', updatedAccount);
+
+            // Dispatch custom event for real-time sync with Dashboard and other components
+            const event = new CustomEvent('accountBalanceUpdated', {
+              detail: {
+                accountId: currentAccount.id || currentAccount._id,
+                newBalance: newBalance,
+                source: 'am-trade-update'
+              }
+            });
+            window.dispatchEvent(event);
+
+            // Also dispatch trade update event
+            const tradeEvent = new CustomEvent('tradeUpdated', {
+              detail: {
+                tradeId: trade._id,
+                accountId: currentAccount.id || currentAccount._id,
+                actualPL: calculatedResults.actualPL,
+                source: 'am-trade'
+              }
+            });
+            window.dispatchEvent(tradeEvent);
+
           } else {
             const errorData = await accountResponse.json();
             console.error('Failed to update account balance:', errorData);

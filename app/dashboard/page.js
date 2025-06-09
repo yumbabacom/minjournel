@@ -2933,6 +2933,48 @@ function DashboardContent() {
     }
   }, [user]);
 
+  // Listen for account balance updates from other components (AM Trade, etc.)
+  useEffect(() => {
+    const handleAccountBalanceUpdate = (event) => {
+      const { accountId, newBalance, source } = event.detail;
+      console.log('Dashboard received account balance update:', { accountId, newBalance, source });
+
+      // Update the account in local state
+      setAccounts(prev => prev.map(acc =>
+        (acc.id === accountId || acc._id === accountId)
+          ? { ...acc, balance: newBalance }
+          : acc
+      ));
+
+      // If this is the current account, also refresh trades to recalculate stats
+      if (accountId === currentAccountId || accountId === currentAccountId?.toString()) {
+        console.log('Current account balance updated, refreshing trades...');
+        fetchTrades();
+      }
+    };
+
+    const handleTradeUpdate = (event) => {
+      const { tradeId, accountId, actualPL, source } = event.detail;
+      console.log('Dashboard received trade update:', { tradeId, accountId, actualPL, source });
+
+      // Refresh trades to get updated data
+      if (accountId === currentAccountId || accountId === currentAccountId?.toString()) {
+        console.log('Trade updated for current account, refreshing data...');
+        fetchTrades();
+      }
+    };
+
+    // Add event listeners
+    window.addEventListener('accountBalanceUpdated', handleAccountBalanceUpdate);
+    window.addEventListener('tradeUpdated', handleTradeUpdate);
+
+    // Cleanup event listeners
+    return () => {
+      window.removeEventListener('accountBalanceUpdated', handleAccountBalanceUpdate);
+      window.removeEventListener('tradeUpdated', handleTradeUpdate);
+    };
+  }, [currentAccountId, fetchTrades]);
+
   // Fetch trades when user is set
   useEffect(() => {
     if (user?.id || user?._id) {
