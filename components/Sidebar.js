@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { useRouter, usePathname } from 'next/navigation';
 
 export default function Sidebar({
@@ -394,33 +395,6 @@ export default function Sidebar({
                     <span>Account Settings</span>
                   </button>
 
-                  <button className="w-full flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-pink-50 rounded-xl transition-all duration-200 text-sm font-medium group">
-                    <div className="w-8 h-8 bg-gradient-to-br from-purple-100 to-purple-200 rounded-lg flex items-center justify-center group-hover:from-purple-200 group-hover:to-purple-300 transition-all duration-200">
-                      <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                    </div>
-                    <span>Profile</span>
-                  </button>
-
-                  <button className="w-full flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-emerald-50 rounded-xl transition-all duration-200 text-sm font-medium group">
-                    <div className="w-8 h-8 bg-gradient-to-br from-green-100 to-green-200 rounded-lg flex items-center justify-center group-hover:from-green-200 group-hover:to-green-300 transition-all duration-200">
-                      <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 17h5l-5 5v-5zM4 19h6v-2H4v2zM4 15h8v-2H4v2zM4 11h10V9H4v2zM4 7h12V5H4v2z" />
-                      </svg>
-                    </div>
-                    <span>Export Data</span>
-                  </button>
-
-                  <button className="w-full flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-orange-50 hover:to-amber-50 rounded-xl transition-all duration-200 text-sm font-medium group">
-                    <div className="w-8 h-8 bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg flex items-center justify-center group-hover:from-orange-200 group-hover:to-orange-300 transition-all duration-200">
-                      <svg className="w-4 h-4 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
-                    <span>Help & Support</span>
-                  </button>
-
                   <div className="border-t border-gray-200/60 my-3"></div>
 
                   <button
@@ -744,12 +718,19 @@ export default function Sidebar({
         </button>
       </div>
 
-      {/* Settings Modal */}
-      {showSettingsModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden">
+      {/* Settings Modal - Portal to body */}
+      {showSettingsModal && typeof document !== 'undefined' && createPortal(
+        <div
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[9999] p-4"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              setShowSettingsModal(false);
+            }
+          }}
+        >
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md max-h-[90vh] overflow-hidden relative z-[10000]">
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-indigo-50">
+            <div className="flex items-center justify-between p-6 border-b border-gray-200">
               <div className="flex items-center space-x-3">
                 <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
                   <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -759,7 +740,7 @@ export default function Sidebar({
                 </div>
                 <div>
                   <h2 className="text-xl font-bold text-gray-900">Account Settings</h2>
-                  <p className="text-sm text-gray-600">Manage your profile and preferences</p>
+                  <p className="text-sm text-gray-600">Update your account information</p>
                 </div>
               </div>
               <button
@@ -773,328 +754,84 @@ export default function Sidebar({
             </div>
 
             {/* Modal Content */}
-            <div className="p-6 overflow-y-auto max-h-[calc(90vh-140px)]">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Profile Section */}
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                      <svg className="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                      </svg>
-                      Profile Information
-                    </h3>
-
-                    {/* Avatar Upload */}
-                    <div className="flex items-center space-x-4 mb-6">
-                      <div className="relative">
-                        {userSettings.avatar ? (
-                          <img
-                            src={userSettings.avatar}
-                            alt="Profile"
-                            className="w-20 h-20 rounded-full object-cover border-4 border-gray-200"
-                          />
-                        ) : (
-                          <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center border-4 border-gray-200">
-                            <span className="text-white font-bold text-xl">
-                              {getInitials(userSettings.fullName)}
-                            </span>
-                          </div>
-                        )}
-                        <label className="absolute -bottom-2 -right-2 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center cursor-pointer hover:bg-blue-700 transition-colors shadow-lg">
-                          <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
-                          </svg>
-                          <input
-                            type="file"
-                            accept="image/*"
-                            onChange={handleAvatarUpload}
-                            className="hidden"
-                          />
-                        </label>
-                      </div>
-                      <div>
-                        <p className="font-medium text-gray-900">Profile Picture</p>
-                        <p className="text-sm text-gray-500">Upload a new avatar image</p>
-                        <p className="text-xs text-gray-400 mt-1">JPG, PNG or GIF (max 5MB)</p>
-                      </div>
-                    </div>
-
-                    {/* Form Fields */}
-                    <div className="space-y-4">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
-                        <input
-                          type="text"
-                          value={userSettings.fullName}
-                          onChange={(e) => setUserSettings(prev => ({ ...prev, fullName: e.target.value }))}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                          placeholder="Enter your full name"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
-                        <input
-                          type="email"
-                          value={userSettings.email}
-                          onChange={(e) => setUserSettings(prev => ({ ...prev, email: e.target.value }))}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                          placeholder="Enter your email"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Password Section */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                      <svg className="w-5 h-5 mr-2 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                      </svg>
-                      Change Password
-                    </h3>
-                    <div className="space-y-4">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Current Password</label>
-                        <input
-                          type="password"
-                          value={userSettings.currentPassword}
-                          onChange={(e) => setUserSettings(prev => ({ ...prev, currentPassword: e.target.value }))}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                          placeholder="Enter current password"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">New Password</label>
-                        <input
-                          type="password"
-                          value={userSettings.newPassword}
-                          onChange={(e) => setUserSettings(prev => ({ ...prev, newPassword: e.target.value }))}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                          placeholder="Enter new password"
-                        />
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Confirm New Password</label>
-                        <input
-                          type="password"
-                          value={userSettings.confirmPassword}
-                          onChange={(e) => setUserSettings(prev => ({ ...prev, confirmPassword: e.target.value }))}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                          placeholder="Confirm new password"
-                        />
-                      </div>
-                    </div>
-                  </div>
+            <div className="p-6">
+              <div className="space-y-6">
+                {/* Form Fields */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Username</label>
+                  <input
+                    type="text"
+                    value={userSettings.fullName}
+                    onChange={(e) => setUserSettings(prev => ({ ...prev, fullName: e.target.value }))}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    placeholder="Enter your username"
+                  />
                 </div>
 
-                {/* Preferences & Notifications Section */}
-                <div className="space-y-6">
-                  {/* Notifications */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                      <svg className="w-5 h-5 mr-2 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 17h5l-5 5v-5zM4 19h6v-2H4v2zM4 15h8v-2H4v2zM4 11h10V9H4v2zM4 7h12V5H4v2z" />
-                      </svg>
-                      Notifications
-                    </h3>
-                    <div className="space-y-4">
-                      <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
-                        <div>
-                          <p className="font-medium text-gray-900">Email Notifications</p>
-                          <p className="text-sm text-gray-500">Receive updates via email</p>
-                        </div>
-                        <label className="relative inline-flex items-center cursor-pointer">
-                          <input
-                            type="checkbox"
-                            checked={userSettings.notifications.email}
-                            onChange={(e) => setUserSettings(prev => ({
-                              ...prev,
-                              notifications: { ...prev.notifications, email: e.target.checked }
-                            }))}
-                            className="sr-only peer"
-                          />
-                          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-                        </label>
-                      </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                  <input
+                    type="email"
+                    value={userSettings.email}
+                    onChange={(e) => setUserSettings(prev => ({ ...prev, email: e.target.value }))}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    placeholder="Enter your email"
+                  />
+                </div>
 
-                      <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
-                        <div>
-                          <p className="font-medium text-gray-900">Push Notifications</p>
-                          <p className="text-sm text-gray-500">Browser notifications</p>
-                        </div>
-                        <label className="relative inline-flex items-center cursor-pointer">
-                          <input
-                            type="checkbox"
-                            checked={userSettings.notifications.push}
-                            onChange={(e) => setUserSettings(prev => ({
-                              ...prev,
-                              notifications: { ...prev.notifications, push: e.target.checked }
-                            }))}
-                            className="sr-only peer"
-                          />
-                          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-                        </label>
-                      </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Current Password</label>
+                  <input
+                    type="password"
+                    value={userSettings.currentPassword}
+                    onChange={(e) => setUserSettings(prev => ({ ...prev, currentPassword: e.target.value }))}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    placeholder="Enter current password"
+                  />
+                </div>
 
-                      <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
-                        <div>
-                          <p className="font-medium text-gray-900">Trade Alerts</p>
-                          <p className="text-sm text-gray-500">Notifications for trade updates</p>
-                        </div>
-                        <label className="relative inline-flex items-center cursor-pointer">
-                          <input
-                            type="checkbox"
-                            checked={userSettings.notifications.trades}
-                            onChange={(e) => setUserSettings(prev => ({
-                              ...prev,
-                              notifications: { ...prev.notifications, trades: e.target.checked }
-                            }))}
-                            className="sr-only peer"
-                          />
-                          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-                        </label>
-                      </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">New Password</label>
+                  <input
+                    type="password"
+                    value={userSettings.newPassword}
+                    onChange={(e) => setUserSettings(prev => ({ ...prev, newPassword: e.target.value }))}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    placeholder="Enter new password"
+                  />
+                </div>
 
-                      <div className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
-                        <div>
-                          <p className="font-medium text-gray-900">Weekly Reports</p>
-                          <p className="text-sm text-gray-500">Performance summaries</p>
-                        </div>
-                        <label className="relative inline-flex items-center cursor-pointer">
-                          <input
-                            type="checkbox"
-                            checked={userSettings.notifications.reports}
-                            onChange={(e) => setUserSettings(prev => ({
-                              ...prev,
-                              notifications: { ...prev.notifications, reports: e.target.checked }
-                            }))}
-                            className="sr-only peer"
-                          />
-                          <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-0.5 after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Preferences */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                      <svg className="w-5 h-5 mr-2 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4" />
-                      </svg>
-                      Preferences
-                    </h3>
-                    <div className="space-y-4">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Theme</label>
-                        <select
-                          value={userSettings.preferences.theme}
-                          onChange={(e) => setUserSettings(prev => ({
-                            ...prev,
-                            preferences: { ...prev.preferences, theme: e.target.value }
-                          }))}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                        >
-                          <option value="light">Light</option>
-                          <option value="dark">Dark</option>
-                          <option value="auto">Auto</option>
-                        </select>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Currency</label>
-                        <select
-                          value={userSettings.preferences.currency}
-                          onChange={(e) => setUserSettings(prev => ({
-                            ...prev,
-                            preferences: { ...prev.preferences, currency: e.target.value }
-                          }))}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                        >
-                          <option value="USD">USD - US Dollar</option>
-                          <option value="EUR">EUR - Euro</option>
-                          <option value="GBP">GBP - British Pound</option>
-                          <option value="JPY">JPY - Japanese Yen</option>
-                          <option value="CAD">CAD - Canadian Dollar</option>
-                          <option value="AUD">AUD - Australian Dollar</option>
-                        </select>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Timezone</label>
-                        <select
-                          value={userSettings.preferences.timezone}
-                          onChange={(e) => setUserSettings(prev => ({
-                            ...prev,
-                            preferences: { ...prev.preferences, timezone: e.target.value }
-                          }))}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                        >
-                          <option value="UTC">UTC</option>
-                          <option value="America/New_York">Eastern Time</option>
-                          <option value="America/Chicago">Central Time</option>
-                          <option value="America/Denver">Mountain Time</option>
-                          <option value="America/Los_Angeles">Pacific Time</option>
-                          <option value="Europe/London">London</option>
-                          <option value="Europe/Paris">Paris</option>
-                          <option value="Asia/Tokyo">Tokyo</option>
-                        </select>
-                      </div>
-
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">Language</label>
-                        <select
-                          value={userSettings.preferences.language}
-                          onChange={(e) => setUserSettings(prev => ({
-                            ...prev,
-                            preferences: { ...prev.preferences, language: e.target.value }
-                          }))}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                        >
-                          <option value="en">English</option>
-                          <option value="es">Spanish</option>
-                          <option value="fr">French</option>
-                          <option value="de">German</option>
-                          <option value="it">Italian</option>
-                          <option value="pt">Portuguese</option>
-                          <option value="ja">Japanese</option>
-                          <option value="zh">Chinese</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Confirm New Password</label>
+                  <input
+                    type="password"
+                    value={userSettings.confirmPassword}
+                    onChange={(e) => setUserSettings(prev => ({ ...prev, confirmPassword: e.target.value }))}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                    placeholder="Confirm new password"
+                  />
                 </div>
               </div>
 
               {/* Modal Footer */}
-              <div className="flex items-center justify-between pt-6 mt-8 border-t border-gray-200">
-                <div className="flex items-center space-x-3">
-                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-sm text-gray-600">Changes will be saved automatically</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <button
-                    onClick={() => setShowSettingsModal(false)}
-                    className="px-6 py-2 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition-colors font-medium"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    onClick={handleSaveSettings}
-                    className="px-6 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors font-medium shadow-lg"
-                  >
-                    Save Changes
-                  </button>
-                </div>
+              <div className="flex items-center justify-end pt-6 mt-8 border-t border-gray-200 space-x-3">
+                <button
+                  onClick={() => setShowSettingsModal(false)}
+                  className="px-6 py-2 border border-gray-300 text-gray-700 rounded-xl hover:bg-gray-50 transition-colors font-medium"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleSaveSettings}
+                  className="px-6 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors font-medium shadow-lg"
+                >
+                  Save Changes
+                </button>
               </div>
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );
