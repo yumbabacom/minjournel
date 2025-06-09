@@ -60,6 +60,18 @@ export default function Sidebar({
     }
   }, [pathname]);
 
+  // Update userSettings when user prop changes
+  useEffect(() => {
+    if (user) {
+      setUserSettings(prev => ({
+        ...prev,
+        fullName: user.fullName || user.name || '',
+        email: user.email || '',
+        avatar: user.avatar || null
+      }));
+    }
+  }, [user]);
+
   // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -157,6 +169,21 @@ export default function Sidebar({
       };
       reader.readAsDataURL(file);
     }
+  };
+
+  const handleOpenSettings = () => {
+    // Reset form with current user data when opening
+    setUserSettings(prev => ({
+      ...prev,
+      fullName: user?.fullName || user?.name || '',
+      email: user?.email || '',
+      currentPassword: '',
+      newPassword: '',
+      confirmPassword: '',
+      avatar: user?.avatar || null
+    }));
+    setShowSettingsModal(true);
+    setShowUserDropdown(false);
   };
 
   const handleSaveSettings = () => {
@@ -380,10 +407,7 @@ export default function Sidebar({
                 {/* Menu Items */}
                 <div className="space-y-1">
                   <button
-                    onClick={() => {
-                      setShowSettingsModal(true);
-                      setShowUserDropdown(false);
-                    }}
+                    onClick={handleOpenSettings}
                     className="w-full flex items-center space-x-3 px-4 py-3 text-gray-700 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 rounded-xl transition-all duration-200 text-sm font-medium group"
                   >
                     <div className="w-8 h-8 bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg flex items-center justify-center group-hover:from-blue-200 group-hover:to-blue-300 transition-all duration-200">
