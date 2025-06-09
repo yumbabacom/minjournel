@@ -18,7 +18,7 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
-function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAddAccount, onEditAccount, onDeleteAccount, onLogout, onUpdateUser }) {
+function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAddAccount, onEditAccount, onDeleteAccount, onLogout, onUpdateUser, isMobileOpen = false, onMobileToggle }) {
     _s();
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["usePathname"])();
@@ -276,7 +276,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                         d: "M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2 2z"
                     }, void 0, false, {
                         fileName: "[project]/components/Sidebar.js",
-                        lineNumber: 276,
+                        lineNumber: 278,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -286,13 +286,13 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                         d: "M8 5a2 2 0 012-2h4a2 2 0 012 2v4H8V5z"
                     }, void 0, false, {
                         fileName: "[project]/components/Sidebar.js",
-                        lineNumber: 277,
+                        lineNumber: 279,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 275,
+                lineNumber: 277,
                 columnNumber: 9
             }, this)
         },
@@ -311,12 +311,12 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                     d: "M12 4v16m8-8H4"
                 }, void 0, false, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 286,
+                    lineNumber: 288,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 285,
+                lineNumber: 287,
                 columnNumber: 9
             }, this),
             highlight: true
@@ -336,12 +336,12 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                     d: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253"
                 }, void 0, false, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 296,
+                    lineNumber: 298,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 295,
+                lineNumber: 297,
                 columnNumber: 9
             }, this)
         }
@@ -364,7 +364,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                         d: "M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2 2z"
                     }, void 0, false, {
                         fileName: "[project]/components/Sidebar.js",
-                        lineNumber: 309,
+                        lineNumber: 311,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -374,13 +374,13 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                         d: "M8 5a2 2 0 012-2h4a2 2 0 012 2v4H8V5z"
                     }, void 0, false, {
                         fileName: "[project]/components/Sidebar.js",
-                        lineNumber: 310,
+                        lineNumber: 312,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 308,
+                lineNumber: 310,
                 columnNumber: 9
             }, this)
         },
@@ -399,12 +399,12 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                     d: "M12 4v16m8-8H4"
                 }, void 0, false, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 319,
+                    lineNumber: 321,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 318,
+                lineNumber: 320,
                 columnNumber: 9
             }, this),
             highlight: true
@@ -424,12 +424,12 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                     d: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253"
                 }, void 0, false, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 329,
+                    lineNumber: 331,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 328,
+                lineNumber: 330,
                 columnNumber: 9
             }, this)
         },
@@ -448,12 +448,12 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                     d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                 }, void 0, false, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 338,
+                    lineNumber: 340,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 337,
+                lineNumber: 339,
                 columnNumber: 9
             }, this)
         },
@@ -472,12 +472,12 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                     d: "M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
                 }, void 0, false, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 347,
+                    lineNumber: 349,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 346,
+                lineNumber: 348,
                 columnNumber: 9
             }, this)
         },
@@ -496,12 +496,12 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                     d: "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
                 }, void 0, false, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 356,
+                    lineNumber: 358,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 355,
+                lineNumber: 357,
                 columnNumber: 9
             }, this)
         },
@@ -520,12 +520,12 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                     d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 }, void 0, false, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 365,
+                    lineNumber: 367,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 364,
+                lineNumber: 366,
                 columnNumber: 9
             }, this)
         },
@@ -544,12 +544,12 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                     d: "M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
                 }, void 0, false, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 374,
+                    lineNumber: 376,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 373,
+                lineNumber: 375,
                 columnNumber: 9
             }, this)
         },
@@ -568,12 +568,12 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                     d: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                 }, void 0, false, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 383,
+                    lineNumber: 385,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 382,
+                lineNumber: 384,
                 columnNumber: 9
             }, this)
         }
@@ -625,7 +625,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                 className: "w-10 h-10 rounded-xl object-cover border-2 border-gray-200/60 group-hover:border-blue-300/60 transition-all duration-200 shadow-sm"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Sidebar.js",
-                                                lineNumber: 426,
+                                                lineNumber: 428,
                                                 columnNumber: 17
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "w-10 h-10 bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-600 rounded-xl flex items-center justify-center border-2 border-gray-200/60 group-hover:border-blue-300/60 transition-all duration-200 shadow-lg",
@@ -634,12 +634,12 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     children: getInitials(user?.fullName || user?.name)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 433,
+                                                    lineNumber: 435,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Sidebar.js",
-                                                lineNumber: 432,
+                                                lineNumber: 434,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -648,18 +648,18 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     className: "w-full h-full bg-green-500 rounded-full animate-pulse"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 439,
+                                                    lineNumber: 441,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Sidebar.js",
-                                                lineNumber: 438,
+                                                lineNumber: 440,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/Sidebar.js",
-                                        lineNumber: 424,
+                                        lineNumber: 426,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -670,7 +670,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                 children: user?.fullName || user?.name || 'User'
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Sidebar.js",
-                                                lineNumber: 443,
+                                                lineNumber: 445,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -682,25 +682,25 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                             className: "w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5 animate-pulse"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Sidebar.js",
-                                                            lineNumber: 448,
+                                                            lineNumber: 450,
                                                             columnNumber: 19
                                                         }, this),
                                                         "Online"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 447,
+                                                    lineNumber: 449,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Sidebar.js",
-                                                lineNumber: 446,
+                                                lineNumber: 448,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/Sidebar.js",
-                                        lineNumber: 442,
+                                        lineNumber: 444,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -717,23 +717,23 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                 d: "M19 9l-7 7-7-7"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Sidebar.js",
-                                                lineNumber: 460,
+                                                lineNumber: 462,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 454,
+                                            lineNumber: 456,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/Sidebar.js",
-                                        lineNumber: 453,
+                                        lineNumber: 455,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/Sidebar.js",
-                                lineNumber: 420,
+                                lineNumber: 422,
                                 columnNumber: 11
                             }, this),
                             showUserDropdown && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -749,7 +749,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     children: user?.fullName || user?.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 471,
+                                                    lineNumber: 473,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -757,13 +757,13 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     children: user?.email
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 472,
+                                                    lineNumber: 474,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 470,
+                                            lineNumber: 472,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -788,7 +788,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                         d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/Sidebar.js",
-                                                                        lineNumber: 483,
+                                                                        lineNumber: 485,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -798,38 +798,38 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                         d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/Sidebar.js",
-                                                                        lineNumber: 484,
+                                                                        lineNumber: 486,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/Sidebar.js",
-                                                                lineNumber: 482,
+                                                                lineNumber: 484,
                                                                 columnNumber: 23
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Sidebar.js",
-                                                            lineNumber: 481,
+                                                            lineNumber: 483,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             children: "Account Settings"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Sidebar.js",
-                                                            lineNumber: 487,
+                                                            lineNumber: 489,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 477,
+                                                    lineNumber: 479,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "border-t border-gray-200/60 my-3"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 490,
+                                                    lineNumber: 492,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -850,53 +850,53 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                     d: "M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/Sidebar.js",
-                                                                    lineNumber: 498,
+                                                                    lineNumber: 500,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/Sidebar.js",
-                                                                lineNumber: 497,
+                                                                lineNumber: 499,
                                                                 columnNumber: 23
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Sidebar.js",
-                                                            lineNumber: 496,
+                                                            lineNumber: 498,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             children: "Sign Out"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Sidebar.js",
-                                                            lineNumber: 501,
+                                                            lineNumber: 503,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 492,
+                                                    lineNumber: 494,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 476,
+                                            lineNumber: 478,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 468,
+                                    lineNumber: 470,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/Sidebar.js",
-                                lineNumber: 467,
+                                lineNumber: 469,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Sidebar.js",
-                        lineNumber: 419,
+                        lineNumber: 421,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -924,7 +924,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                 className: `w-3 h-3 rounded-full ${currentAccount.color} shadow-sm`
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/Sidebar.js",
-                                                                lineNumber: 523,
+                                                                lineNumber: 525,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -932,13 +932,13 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                 children: "Balance"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/Sidebar.js",
-                                                                lineNumber: 524,
+                                                                lineNumber: 526,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/Sidebar.js",
-                                                        lineNumber: 522,
+                                                        lineNumber: 524,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -946,13 +946,13 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                         children: getTagDisplayName(currentAccount.tag)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Sidebar.js",
-                                                        lineNumber: 526,
+                                                        lineNumber: 528,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/Sidebar.js",
-                                                lineNumber: 521,
+                                                lineNumber: 523,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -963,7 +963,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/Sidebar.js",
-                                                lineNumber: 536,
+                                                lineNumber: 538,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -974,7 +974,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                         children: currentAccount.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Sidebar.js",
-                                                        lineNumber: 538,
+                                                        lineNumber: 540,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -989,34 +989,34 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                             d: "M19 9l-7 7-7-7"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Sidebar.js",
-                                                            lineNumber: 545,
+                                                            lineNumber: 547,
                                                             columnNumber: 21
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Sidebar.js",
-                                                        lineNumber: 539,
+                                                        lineNumber: 541,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/Sidebar.js",
-                                                lineNumber: 537,
+                                                lineNumber: 539,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/Sidebar.js",
-                                        lineNumber: 520,
+                                        lineNumber: 522,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 519,
+                                    lineNumber: 521,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/Sidebar.js",
-                                lineNumber: 511,
+                                lineNumber: 513,
                                 columnNumber: 11
                             }, this),
                             showAccountDropdown && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1050,17 +1050,17 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                             d: "M12 4v16m8-8H4"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Sidebar.js",
-                                                            lineNumber: 573,
+                                                            lineNumber: 575,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Sidebar.js",
-                                                        lineNumber: 572,
+                                                        lineNumber: 574,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 571,
+                                                    lineNumber: 573,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1071,7 +1071,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                             children: "Add New Account"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Sidebar.js",
-                                                            lineNumber: 577,
+                                                            lineNumber: 579,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1079,26 +1079,26 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                             children: "Create a new trading account"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Sidebar.js",
-                                                            lineNumber: 578,
+                                                            lineNumber: 580,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 576,
+                                                    lineNumber: 578,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 560,
+                                            lineNumber: 562,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "border-t border-gray-200 my-3"
                                         }, void 0, false, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 582,
+                                            lineNumber: 584,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1127,20 +1127,20 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                             className: `w-3 h-3 rounded-full ${account.color} shadow-sm`
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/Sidebar.js",
-                                                                            lineNumber: 610,
+                                                                            lineNumber: 612,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         isCurrentAccount && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                             className: "absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-green-500 rounded-full border border-white"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/Sidebar.js",
-                                                                            lineNumber: 612,
+                                                                            lineNumber: 614,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/Sidebar.js",
-                                                                    lineNumber: 609,
+                                                                    lineNumber: 611,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1151,7 +1151,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                             children: account.name
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/Sidebar.js",
-                                                                            lineNumber: 616,
+                                                                            lineNumber: 618,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1171,7 +1171,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                                         placeholder: "Enter balance"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/components/Sidebar.js",
-                                                                                        lineNumber: 622,
+                                                                                        lineNumber: 624,
                                                                                         columnNumber: 35
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1193,17 +1193,17 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                                                 d: "M5 13l4 4L19 7"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/components/Sidebar.js",
-                                                                                                lineNumber: 642,
+                                                                                                lineNumber: 644,
                                                                                                 columnNumber: 39
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/components/Sidebar.js",
-                                                                                            lineNumber: 641,
+                                                                                            lineNumber: 643,
                                                                                             columnNumber: 37
                                                                                         }, this)
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/components/Sidebar.js",
-                                                                                        lineNumber: 633,
+                                                                                        lineNumber: 635,
                                                                                         columnNumber: 35
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1226,23 +1226,23 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                                                 d: "M6 18L18 6M6 6l12 12"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/components/Sidebar.js",
-                                                                                                lineNumber: 655,
+                                                                                                lineNumber: 657,
                                                                                                 columnNumber: 39
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/components/Sidebar.js",
-                                                                                            lineNumber: 654,
+                                                                                            lineNumber: 656,
                                                                                             columnNumber: 37
                                                                                         }, this)
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/components/Sidebar.js",
-                                                                                        lineNumber: 645,
+                                                                                        lineNumber: 647,
                                                                                         columnNumber: 35
                                                                                     }, this)
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/components/Sidebar.js",
-                                                                                lineNumber: 621,
+                                                                                lineNumber: 623,
                                                                                 columnNumber: 33
                                                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
                                                                                 children: [
@@ -1254,7 +1254,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                                         ]
                                                                                     }, void 0, true, {
                                                                                         fileName: "[project]/components/Sidebar.js",
-                                                                                        lineNumber: 661,
+                                                                                        lineNumber: 663,
                                                                                         columnNumber: 35
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1262,26 +1262,26 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                                         children: getTagDisplayName(account.tag)
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/components/Sidebar.js",
-                                                                                        lineNumber: 662,
+                                                                                        lineNumber: 664,
                                                                                         columnNumber: 35
                                                                                     }, this)
                                                                                 ]
                                                                             }, void 0, true)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/Sidebar.js",
-                                                                            lineNumber: 619,
+                                                                            lineNumber: 621,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/Sidebar.js",
-                                                                    lineNumber: 615,
+                                                                    lineNumber: 617,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/Sidebar.js",
-                                                            lineNumber: 608,
+                                                            lineNumber: 610,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1307,17 +1307,17 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                             d: "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/Sidebar.js",
-                                                                            lineNumber: 689,
+                                                                            lineNumber: 691,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/Sidebar.js",
-                                                                        lineNumber: 688,
+                                                                        lineNumber: 690,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/Sidebar.js",
-                                                                    lineNumber: 679,
+                                                                    lineNumber: 681,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 accounts.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1342,35 +1342,35 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                             d: "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/Sidebar.js",
-                                                                            lineNumber: 705,
+                                                                            lineNumber: 707,
                                                                             columnNumber: 33
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/Sidebar.js",
-                                                                        lineNumber: 704,
+                                                                        lineNumber: 706,
                                                                         columnNumber: 31
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/Sidebar.js",
-                                                                    lineNumber: 693,
+                                                                    lineNumber: 695,
                                                                     columnNumber: 29
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/Sidebar.js",
-                                                            lineNumber: 678,
+                                                            lineNumber: 680,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, `${accountId}-${currentAccountId}`, true, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 595,
+                                                    lineNumber: 597,
                                                     columnNumber: 23
                                                 }, this);
                                             })
                                         }, void 0, false, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 585,
+                                            lineNumber: 587,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1385,29 +1385,29 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/Sidebar.js",
-                                                lineNumber: 717,
+                                                lineNumber: 719,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 716,
+                                            lineNumber: 718,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 558,
+                                    lineNumber: 560,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/Sidebar.js",
-                                lineNumber: 554,
+                                lineNumber: 556,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Sidebar.js",
-                        lineNumber: 510,
+                        lineNumber: 512,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1424,7 +1424,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     className: "w-1.5 h-1.5 bg-gradient-to-r from-orange-400 to-amber-500 rounded-full"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 731,
+                                                    lineNumber: 733,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1432,13 +1432,13 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     children: "AM Trade Mode"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 732,
+                                                    lineNumber: 734,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 730,
+                                            lineNumber: 732,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1446,13 +1446,13 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                             children: "Morning trading interface"
                                         }, void 0, false, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 734,
+                                            lineNumber: 736,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 729,
+                                    lineNumber: 731,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -1465,37 +1465,37 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                             className: "sr-only peer"
                                         }, void 0, false, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 737,
+                                            lineNumber: 739,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "w-10 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-3 peer-focus:ring-orange-300/50 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all after:shadow-sm peer-checked:bg-gradient-to-r peer-checked:from-orange-500 peer-checked:to-amber-500"
                                         }, void 0, false, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 743,
+                                            lineNumber: 745,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 736,
+                                    lineNumber: 738,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/Sidebar.js",
-                            lineNumber: 728,
+                            lineNumber: 730,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/Sidebar.js",
-                        lineNumber: 727,
+                        lineNumber: 729,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 418,
+                lineNumber: 420,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -1514,7 +1514,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                     children: item.icon
                                 }, void 0, false, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 779,
+                                    lineNumber: 781,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1522,31 +1522,31 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                     children: item.name
                                 }, void 0, false, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 788,
+                                    lineNumber: 790,
                                     columnNumber: 17
                                 }, this),
                                 isActive && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "w-1.5 h-1.5 bg-white rounded-full"
                                 }, void 0, false, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 790,
+                                    lineNumber: 792,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, item.id, true, {
                             fileName: "[project]/components/Sidebar.js",
-                            lineNumber: 768,
+                            lineNumber: 770,
                             columnNumber: 15
                         }, this);
                     })
                 }, void 0, false, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 751,
+                    lineNumber: 753,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 750,
+                lineNumber: 752,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1569,17 +1569,17 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                     d: "M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
                                 }, void 0, false, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 806,
+                                    lineNumber: 808,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/Sidebar.js",
-                                lineNumber: 805,
+                                lineNumber: 807,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/Sidebar.js",
-                            lineNumber: 804,
+                            lineNumber: 806,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1587,18 +1587,18 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                             children: "Sign Out"
                         }, void 0, false, {
                             fileName: "[project]/components/Sidebar.js",
-                            lineNumber: 809,
+                            lineNumber: 811,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 800,
+                    lineNumber: 802,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 799,
+                lineNumber: 801,
                 columnNumber: 7
             }, this),
             showSettingsModal && typeof document !== 'undefined' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2d$dom$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createPortal"])(/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1632,7 +1632,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                         d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Sidebar.js",
-                                                        lineNumber: 829,
+                                                        lineNumber: 831,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1642,18 +1642,18 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                         d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Sidebar.js",
-                                                        lineNumber: 830,
+                                                        lineNumber: 832,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/Sidebar.js",
-                                                lineNumber: 828,
+                                                lineNumber: 830,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 827,
+                                            lineNumber: 829,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1663,7 +1663,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     children: "Account Settings"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 834,
+                                                    lineNumber: 836,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1671,19 +1671,19 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     children: "Update your account information"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 835,
+                                                    lineNumber: 837,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 833,
+                                            lineNumber: 835,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 826,
+                                    lineNumber: 828,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1701,23 +1701,23 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                             d: "M6 18L18 6M6 6l12 12"
                                         }, void 0, false, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 843,
+                                            lineNumber: 845,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/Sidebar.js",
-                                        lineNumber: 842,
+                                        lineNumber: 844,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 838,
+                                    lineNumber: 840,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/Sidebar.js",
-                            lineNumber: 825,
+                            lineNumber: 827,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1733,7 +1733,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     children: "Username"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 853,
+                                                    lineNumber: 855,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1747,13 +1747,13 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     placeholder: "Enter your username"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 854,
+                                                    lineNumber: 856,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 852,
+                                            lineNumber: 854,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1763,7 +1763,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     children: "Email Address"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 864,
+                                                    lineNumber: 866,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1777,13 +1777,13 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     placeholder: "Enter your email"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 865,
+                                                    lineNumber: 867,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 863,
+                                            lineNumber: 865,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1793,7 +1793,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     children: "Current Password"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 875,
+                                                    lineNumber: 877,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1807,13 +1807,13 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     placeholder: "Enter current password"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 876,
+                                                    lineNumber: 878,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 874,
+                                            lineNumber: 876,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1823,7 +1823,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     children: "New Password"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 886,
+                                                    lineNumber: 888,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1837,13 +1837,13 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     placeholder: "Enter new password"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 887,
+                                                    lineNumber: 889,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 885,
+                                            lineNumber: 887,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1853,7 +1853,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     children: "Confirm New Password"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 897,
+                                                    lineNumber: 899,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1867,19 +1867,19 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     placeholder: "Confirm new password"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 898,
+                                                    lineNumber: 900,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 896,
+                                            lineNumber: 898,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 850,
+                                    lineNumber: 852,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1891,7 +1891,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                             children: "Cancel"
                                         }, void 0, false, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 910,
+                                            lineNumber: 912,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1900,36 +1900,36 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                             children: "Save Changes"
                                         }, void 0, false, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 916,
+                                            lineNumber: 918,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 909,
+                                    lineNumber: 911,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/Sidebar.js",
-                            lineNumber: 849,
+                            lineNumber: 851,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 823,
+                    lineNumber: 825,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 815,
+                lineNumber: 817,
                 columnNumber: 9
             }, this), document.body)
         ]
     }, void 0, true, {
         fileName: "[project]/components/Sidebar.js",
-        lineNumber: 416,
+        lineNumber: 418,
         columnNumber: 5
     }, this);
 }

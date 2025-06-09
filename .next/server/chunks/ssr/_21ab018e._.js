@@ -17,7 +17,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navi
 ;
 ;
 ;
-function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAddAccount, onEditAccount, onDeleteAccount, onLogout, onUpdateUser }) {
+function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAddAccount, onEditAccount, onDeleteAccount, onLogout, onUpdateUser, isMobileOpen = false, onMobileToggle }) {
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
     const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["usePathname"])();
     const [showAccountDropdown, setShowAccountDropdown] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
@@ -262,7 +262,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                         d: "M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2 2z"
                     }, void 0, false, {
                         fileName: "[project]/components/Sidebar.js",
-                        lineNumber: 276,
+                        lineNumber: 278,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -272,13 +272,13 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                         d: "M8 5a2 2 0 012-2h4a2 2 0 012 2v4H8V5z"
                     }, void 0, false, {
                         fileName: "[project]/components/Sidebar.js",
-                        lineNumber: 277,
+                        lineNumber: 279,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 275,
+                lineNumber: 277,
                 columnNumber: 9
             }, this)
         },
@@ -297,12 +297,12 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                     d: "M12 4v16m8-8H4"
                 }, void 0, false, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 286,
+                    lineNumber: 288,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 285,
+                lineNumber: 287,
                 columnNumber: 9
             }, this),
             highlight: true
@@ -322,12 +322,12 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                     d: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253"
                 }, void 0, false, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 296,
+                    lineNumber: 298,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 295,
+                lineNumber: 297,
                 columnNumber: 9
             }, this)
         }
@@ -350,7 +350,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                         d: "M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2 2z"
                     }, void 0, false, {
                         fileName: "[project]/components/Sidebar.js",
-                        lineNumber: 309,
+                        lineNumber: 311,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -360,13 +360,13 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                         d: "M8 5a2 2 0 012-2h4a2 2 0 012 2v4H8V5z"
                     }, void 0, false, {
                         fileName: "[project]/components/Sidebar.js",
-                        lineNumber: 310,
+                        lineNumber: 312,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 308,
+                lineNumber: 310,
                 columnNumber: 9
             }, this)
         },
@@ -385,12 +385,12 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                     d: "M12 4v16m8-8H4"
                 }, void 0, false, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 319,
+                    lineNumber: 321,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 318,
+                lineNumber: 320,
                 columnNumber: 9
             }, this),
             highlight: true
@@ -410,12 +410,12 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                     d: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253"
                 }, void 0, false, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 329,
+                    lineNumber: 331,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 328,
+                lineNumber: 330,
                 columnNumber: 9
             }, this)
         },
@@ -434,12 +434,12 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                     d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                 }, void 0, false, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 338,
+                    lineNumber: 340,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 337,
+                lineNumber: 339,
                 columnNumber: 9
             }, this)
         },
@@ -458,12 +458,12 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                     d: "M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"
                 }, void 0, false, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 347,
+                    lineNumber: 349,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 346,
+                lineNumber: 348,
                 columnNumber: 9
             }, this)
         },
@@ -482,12 +482,12 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                     d: "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
                 }, void 0, false, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 356,
+                    lineNumber: 358,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 355,
+                lineNumber: 357,
                 columnNumber: 9
             }, this)
         },
@@ -506,12 +506,12 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                     d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                 }, void 0, false, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 365,
+                    lineNumber: 367,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 364,
+                lineNumber: 366,
                 columnNumber: 9
             }, this)
         },
@@ -530,12 +530,12 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                     d: "M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
                 }, void 0, false, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 374,
+                    lineNumber: 376,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 373,
+                lineNumber: 375,
                 columnNumber: 9
             }, this)
         },
@@ -554,12 +554,12 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                     d: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                 }, void 0, false, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 383,
+                    lineNumber: 385,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 382,
+                lineNumber: 384,
                 columnNumber: 9
             }, this)
         }
@@ -611,7 +611,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                 className: "w-10 h-10 rounded-xl object-cover border-2 border-gray-200/60 group-hover:border-blue-300/60 transition-all duration-200 shadow-sm"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Sidebar.js",
-                                                lineNumber: 426,
+                                                lineNumber: 428,
                                                 columnNumber: 17
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "w-10 h-10 bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-600 rounded-xl flex items-center justify-center border-2 border-gray-200/60 group-hover:border-blue-300/60 transition-all duration-200 shadow-lg",
@@ -620,12 +620,12 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     children: getInitials(user?.fullName || user?.name)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 433,
+                                                    lineNumber: 435,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Sidebar.js",
-                                                lineNumber: 432,
+                                                lineNumber: 434,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -634,18 +634,18 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     className: "w-full h-full bg-green-500 rounded-full animate-pulse"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 439,
+                                                    lineNumber: 441,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Sidebar.js",
-                                                lineNumber: 438,
+                                                lineNumber: 440,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/Sidebar.js",
-                                        lineNumber: 424,
+                                        lineNumber: 426,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -656,7 +656,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                 children: user?.fullName || user?.name || 'User'
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Sidebar.js",
-                                                lineNumber: 443,
+                                                lineNumber: 445,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -668,25 +668,25 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                             className: "w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5 animate-pulse"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Sidebar.js",
-                                                            lineNumber: 448,
+                                                            lineNumber: 450,
                                                             columnNumber: 19
                                                         }, this),
                                                         "Online"
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 447,
+                                                    lineNumber: 449,
                                                     columnNumber: 17
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Sidebar.js",
-                                                lineNumber: 446,
+                                                lineNumber: 448,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/Sidebar.js",
-                                        lineNumber: 442,
+                                        lineNumber: 444,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -703,23 +703,23 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                 d: "M19 9l-7 7-7-7"
                                             }, void 0, false, {
                                                 fileName: "[project]/components/Sidebar.js",
-                                                lineNumber: 460,
+                                                lineNumber: 462,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 454,
+                                            lineNumber: 456,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/Sidebar.js",
-                                        lineNumber: 453,
+                                        lineNumber: 455,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/components/Sidebar.js",
-                                lineNumber: 420,
+                                lineNumber: 422,
                                 columnNumber: 11
                             }, this),
                             showUserDropdown && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -735,7 +735,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     children: user?.fullName || user?.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 471,
+                                                    lineNumber: 473,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -743,13 +743,13 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     children: user?.email
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 472,
+                                                    lineNumber: 474,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 470,
+                                            lineNumber: 472,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -774,7 +774,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                         d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/Sidebar.js",
-                                                                        lineNumber: 483,
+                                                                        lineNumber: 485,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -784,38 +784,38 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                         d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/Sidebar.js",
-                                                                        lineNumber: 484,
+                                                                        lineNumber: 486,
                                                                         columnNumber: 25
                                                                     }, this)
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/components/Sidebar.js",
-                                                                lineNumber: 482,
+                                                                lineNumber: 484,
                                                                 columnNumber: 23
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Sidebar.js",
-                                                            lineNumber: 481,
+                                                            lineNumber: 483,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             children: "Account Settings"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Sidebar.js",
-                                                            lineNumber: 487,
+                                                            lineNumber: 489,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 477,
+                                                    lineNumber: 479,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "border-t border-gray-200/60 my-3"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 490,
+                                                    lineNumber: 492,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -836,53 +836,53 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                     d: "M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/Sidebar.js",
-                                                                    lineNumber: 498,
+                                                                    lineNumber: 500,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/Sidebar.js",
-                                                                lineNumber: 497,
+                                                                lineNumber: 499,
                                                                 columnNumber: 23
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Sidebar.js",
-                                                            lineNumber: 496,
+                                                            lineNumber: 498,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             children: "Sign Out"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Sidebar.js",
-                                                            lineNumber: 501,
+                                                            lineNumber: 503,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 492,
+                                                    lineNumber: 494,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 476,
+                                            lineNumber: 478,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 468,
+                                    lineNumber: 470,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/Sidebar.js",
-                                lineNumber: 467,
+                                lineNumber: 469,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Sidebar.js",
-                        lineNumber: 419,
+                        lineNumber: 421,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -910,7 +910,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                 className: `w-3 h-3 rounded-full ${currentAccount.color} shadow-sm`
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/Sidebar.js",
-                                                                lineNumber: 523,
+                                                                lineNumber: 525,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -918,13 +918,13 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                 children: "Balance"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/components/Sidebar.js",
-                                                                lineNumber: 524,
+                                                                lineNumber: 526,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/components/Sidebar.js",
-                                                        lineNumber: 522,
+                                                        lineNumber: 524,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -932,13 +932,13 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                         children: getTagDisplayName(currentAccount.tag)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Sidebar.js",
-                                                        lineNumber: 526,
+                                                        lineNumber: 528,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/Sidebar.js",
-                                                lineNumber: 521,
+                                                lineNumber: 523,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -949,7 +949,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/Sidebar.js",
-                                                lineNumber: 536,
+                                                lineNumber: 538,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -960,7 +960,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                         children: currentAccount.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Sidebar.js",
-                                                        lineNumber: 538,
+                                                        lineNumber: 540,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -975,34 +975,34 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                             d: "M19 9l-7 7-7-7"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Sidebar.js",
-                                                            lineNumber: 545,
+                                                            lineNumber: 547,
                                                             columnNumber: 21
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Sidebar.js",
-                                                        lineNumber: 539,
+                                                        lineNumber: 541,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/Sidebar.js",
-                                                lineNumber: 537,
+                                                lineNumber: 539,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/components/Sidebar.js",
-                                        lineNumber: 520,
+                                        lineNumber: 522,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 519,
+                                    lineNumber: 521,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/Sidebar.js",
-                                lineNumber: 511,
+                                lineNumber: 513,
                                 columnNumber: 11
                             }, this),
                             showAccountDropdown && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1036,17 +1036,17 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                             d: "M12 4v16m8-8H4"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Sidebar.js",
-                                                            lineNumber: 573,
+                                                            lineNumber: 575,
                                                             columnNumber: 23
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Sidebar.js",
-                                                        lineNumber: 572,
+                                                        lineNumber: 574,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 571,
+                                                    lineNumber: 573,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1057,7 +1057,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                             children: "Add New Account"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Sidebar.js",
-                                                            lineNumber: 577,
+                                                            lineNumber: 579,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1065,26 +1065,26 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                             children: "Create a new trading account"
                                                         }, void 0, false, {
                                                             fileName: "[project]/components/Sidebar.js",
-                                                            lineNumber: 578,
+                                                            lineNumber: 580,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 576,
+                                                    lineNumber: 578,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 560,
+                                            lineNumber: 562,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "border-t border-gray-200 my-3"
                                         }, void 0, false, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 582,
+                                            lineNumber: 584,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1113,20 +1113,20 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                             className: `w-3 h-3 rounded-full ${account.color} shadow-sm`
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/Sidebar.js",
-                                                                            lineNumber: 610,
+                                                                            lineNumber: 612,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         isCurrentAccount && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                             className: "absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-green-500 rounded-full border border-white"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/Sidebar.js",
-                                                                            lineNumber: 612,
+                                                                            lineNumber: 614,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/Sidebar.js",
-                                                                    lineNumber: 609,
+                                                                    lineNumber: 611,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1137,7 +1137,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                             children: account.name
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/Sidebar.js",
-                                                                            lineNumber: 616,
+                                                                            lineNumber: 618,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1157,7 +1157,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                                         placeholder: "Enter balance"
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/components/Sidebar.js",
-                                                                                        lineNumber: 622,
+                                                                                        lineNumber: 624,
                                                                                         columnNumber: 35
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1179,17 +1179,17 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                                                 d: "M5 13l4 4L19 7"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/components/Sidebar.js",
-                                                                                                lineNumber: 642,
+                                                                                                lineNumber: 644,
                                                                                                 columnNumber: 39
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/components/Sidebar.js",
-                                                                                            lineNumber: 641,
+                                                                                            lineNumber: 643,
                                                                                             columnNumber: 37
                                                                                         }, this)
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/components/Sidebar.js",
-                                                                                        lineNumber: 633,
+                                                                                        lineNumber: 635,
                                                                                         columnNumber: 35
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1212,23 +1212,23 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                                                 d: "M6 18L18 6M6 6l12 12"
                                                                                             }, void 0, false, {
                                                                                                 fileName: "[project]/components/Sidebar.js",
-                                                                                                lineNumber: 655,
+                                                                                                lineNumber: 657,
                                                                                                 columnNumber: 39
                                                                                             }, this)
                                                                                         }, void 0, false, {
                                                                                             fileName: "[project]/components/Sidebar.js",
-                                                                                            lineNumber: 654,
+                                                                                            lineNumber: 656,
                                                                                             columnNumber: 37
                                                                                         }, this)
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/components/Sidebar.js",
-                                                                                        lineNumber: 645,
+                                                                                        lineNumber: 647,
                                                                                         columnNumber: 35
                                                                                     }, this)
                                                                                 ]
                                                                             }, void 0, true, {
                                                                                 fileName: "[project]/components/Sidebar.js",
-                                                                                lineNumber: 621,
+                                                                                lineNumber: 623,
                                                                                 columnNumber: 33
                                                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
                                                                                 children: [
@@ -1240,7 +1240,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                                         ]
                                                                                     }, void 0, true, {
                                                                                         fileName: "[project]/components/Sidebar.js",
-                                                                                        lineNumber: 661,
+                                                                                        lineNumber: 663,
                                                                                         columnNumber: 35
                                                                                     }, this),
                                                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1248,26 +1248,26 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                                         children: getTagDisplayName(account.tag)
                                                                                     }, void 0, false, {
                                                                                         fileName: "[project]/components/Sidebar.js",
-                                                                                        lineNumber: 662,
+                                                                                        lineNumber: 664,
                                                                                         columnNumber: 35
                                                                                     }, this)
                                                                                 ]
                                                                             }, void 0, true)
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/Sidebar.js",
-                                                                            lineNumber: 619,
+                                                                            lineNumber: 621,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/components/Sidebar.js",
-                                                                    lineNumber: 615,
+                                                                    lineNumber: 617,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/Sidebar.js",
-                                                            lineNumber: 608,
+                                                            lineNumber: 610,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1293,17 +1293,17 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                             d: "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/Sidebar.js",
-                                                                            lineNumber: 689,
+                                                                            lineNumber: 691,
                                                                             columnNumber: 31
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/Sidebar.js",
-                                                                        lineNumber: 688,
+                                                                        lineNumber: 690,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/Sidebar.js",
-                                                                    lineNumber: 679,
+                                                                    lineNumber: 681,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 accounts.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1328,35 +1328,35 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                                             d: "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/components/Sidebar.js",
-                                                                            lineNumber: 705,
+                                                                            lineNumber: 707,
                                                                             columnNumber: 33
                                                                         }, this)
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/components/Sidebar.js",
-                                                                        lineNumber: 704,
+                                                                        lineNumber: 706,
                                                                         columnNumber: 31
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/components/Sidebar.js",
-                                                                    lineNumber: 693,
+                                                                    lineNumber: 695,
                                                                     columnNumber: 29
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/components/Sidebar.js",
-                                                            lineNumber: 678,
+                                                            lineNumber: 680,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, `${accountId}-${currentAccountId}`, true, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 595,
+                                                    lineNumber: 597,
                                                     columnNumber: 23
                                                 }, this);
                                             })
                                         }, void 0, false, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 585,
+                                            lineNumber: 587,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1371,29 +1371,29 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/Sidebar.js",
-                                                lineNumber: 717,
+                                                lineNumber: 719,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 716,
+                                            lineNumber: 718,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 558,
+                                    lineNumber: 560,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/Sidebar.js",
-                                lineNumber: 554,
+                                lineNumber: 556,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/components/Sidebar.js",
-                        lineNumber: 510,
+                        lineNumber: 512,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1410,7 +1410,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     className: "w-1.5 h-1.5 bg-gradient-to-r from-orange-400 to-amber-500 rounded-full"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 731,
+                                                    lineNumber: 733,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1418,13 +1418,13 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     children: "AM Trade Mode"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 732,
+                                                    lineNumber: 734,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 730,
+                                            lineNumber: 732,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1432,13 +1432,13 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                             children: "Morning trading interface"
                                         }, void 0, false, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 734,
+                                            lineNumber: 736,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 729,
+                                    lineNumber: 731,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -1451,37 +1451,37 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                             className: "sr-only peer"
                                         }, void 0, false, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 737,
+                                            lineNumber: 739,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "w-10 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-3 peer-focus:ring-orange-300/50 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all after:shadow-sm peer-checked:bg-gradient-to-r peer-checked:from-orange-500 peer-checked:to-amber-500"
                                         }, void 0, false, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 743,
+                                            lineNumber: 745,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 736,
+                                    lineNumber: 738,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/Sidebar.js",
-                            lineNumber: 728,
+                            lineNumber: 730,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/components/Sidebar.js",
-                        lineNumber: 727,
+                        lineNumber: 729,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 418,
+                lineNumber: 420,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
@@ -1500,7 +1500,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                     children: item.icon
                                 }, void 0, false, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 779,
+                                    lineNumber: 781,
                                     columnNumber: 17
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1508,31 +1508,31 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                     children: item.name
                                 }, void 0, false, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 788,
+                                    lineNumber: 790,
                                     columnNumber: 17
                                 }, this),
                                 isActive && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "w-1.5 h-1.5 bg-white rounded-full"
                                 }, void 0, false, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 790,
+                                    lineNumber: 792,
                                     columnNumber: 19
                                 }, this)
                             ]
                         }, item.id, true, {
                             fileName: "[project]/components/Sidebar.js",
-                            lineNumber: 768,
+                            lineNumber: 770,
                             columnNumber: 15
                         }, this);
                     })
                 }, void 0, false, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 751,
+                    lineNumber: 753,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 750,
+                lineNumber: 752,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1555,17 +1555,17 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                     d: "M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
                                 }, void 0, false, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 806,
+                                    lineNumber: 808,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/components/Sidebar.js",
-                                lineNumber: 805,
+                                lineNumber: 807,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/components/Sidebar.js",
-                            lineNumber: 804,
+                            lineNumber: 806,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1573,18 +1573,18 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                             children: "Sign Out"
                         }, void 0, false, {
                             fileName: "[project]/components/Sidebar.js",
-                            lineNumber: 809,
+                            lineNumber: 811,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 800,
+                    lineNumber: 802,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 799,
+                lineNumber: 801,
                 columnNumber: 7
             }, this),
             showSettingsModal && typeof document !== 'undefined' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$dom$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["createPortal"])(/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1618,7 +1618,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                         d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Sidebar.js",
-                                                        lineNumber: 829,
+                                                        lineNumber: 831,
                                                         columnNumber: 21
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -1628,18 +1628,18 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                         d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                                                     }, void 0, false, {
                                                         fileName: "[project]/components/Sidebar.js",
-                                                        lineNumber: 830,
+                                                        lineNumber: 832,
                                                         columnNumber: 21
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/components/Sidebar.js",
-                                                lineNumber: 828,
+                                                lineNumber: 830,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 827,
+                                            lineNumber: 829,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1649,7 +1649,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     children: "Account Settings"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 834,
+                                                    lineNumber: 836,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1657,19 +1657,19 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     children: "Update your account information"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 835,
+                                                    lineNumber: 837,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 833,
+                                            lineNumber: 835,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 826,
+                                    lineNumber: 828,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1687,23 +1687,23 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                             d: "M6 18L18 6M6 6l12 12"
                                         }, void 0, false, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 843,
+                                            lineNumber: 845,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/components/Sidebar.js",
-                                        lineNumber: 842,
+                                        lineNumber: 844,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 838,
+                                    lineNumber: 840,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/Sidebar.js",
-                            lineNumber: 825,
+                            lineNumber: 827,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1719,7 +1719,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     children: "Username"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 853,
+                                                    lineNumber: 855,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1733,13 +1733,13 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     placeholder: "Enter your username"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 854,
+                                                    lineNumber: 856,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 852,
+                                            lineNumber: 854,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1749,7 +1749,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     children: "Email Address"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 864,
+                                                    lineNumber: 866,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1763,13 +1763,13 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     placeholder: "Enter your email"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 865,
+                                                    lineNumber: 867,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 863,
+                                            lineNumber: 865,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1779,7 +1779,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     children: "Current Password"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 875,
+                                                    lineNumber: 877,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1793,13 +1793,13 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     placeholder: "Enter current password"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 876,
+                                                    lineNumber: 878,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 874,
+                                            lineNumber: 876,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1809,7 +1809,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     children: "New Password"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 886,
+                                                    lineNumber: 888,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1823,13 +1823,13 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     placeholder: "Enter new password"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 887,
+                                                    lineNumber: 889,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 885,
+                                            lineNumber: 887,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1839,7 +1839,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     children: "Confirm New Password"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 897,
+                                                    lineNumber: 899,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -1853,19 +1853,19 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                                     placeholder: "Confirm new password"
                                                 }, void 0, false, {
                                                     fileName: "[project]/components/Sidebar.js",
-                                                    lineNumber: 898,
+                                                    lineNumber: 900,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 896,
+                                            lineNumber: 898,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 850,
+                                    lineNumber: 852,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1877,7 +1877,7 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                             children: "Cancel"
                                         }, void 0, false, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 910,
+                                            lineNumber: 912,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1886,3546 +1886,49 @@ function Sidebar({ user, currentAccountId, accounts = [], onAccountSwitch, onAdd
                                             children: "Save Changes"
                                         }, void 0, false, {
                                             fileName: "[project]/components/Sidebar.js",
-                                            lineNumber: 916,
+                                            lineNumber: 918,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/components/Sidebar.js",
-                                    lineNumber: 909,
+                                    lineNumber: 911,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/components/Sidebar.js",
-                            lineNumber: 849,
+                            lineNumber: 851,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/components/Sidebar.js",
-                    lineNumber: 823,
+                    lineNumber: 825,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/components/Sidebar.js",
-                lineNumber: 815,
+                lineNumber: 817,
                 columnNumber: 9
             }, this), document.body)
         ]
     }, void 0, true, {
         fileName: "[project]/components/Sidebar.js",
-        lineNumber: 416,
+        lineNumber: 418,
         columnNumber: 5
     }, this);
 }
 }}),
-"[project]/app/am-trade/overview/page.js [app-ssr] (ecmascript)": ((__turbopack_context__) => {
-"use strict";
+"[project]/app/am-trade/overview/page.js [app-ssr] (ecmascript)": (function(__turbopack_context__) {
 
-var { g: global, __dirname } = __turbopack_context__;
+var { g: global, __dirname, m: module, e: exports } = __turbopack_context__;
 {
-__turbopack_context__.s({
-    "default": (()=>AMTradeOverview)
-});
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$js$2d$cookie$2f$dist$2f$js$2e$cookie$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/js-cookie/dist/js.cookie.mjs [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Sidebar$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/components/Sidebar.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$chartjs$2d$2$2f$dist$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/react-chartjs-2/dist/index.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$chart$2e$js$2f$dist$2f$chart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/node_modules/chart.js/dist/chart.js [app-ssr] (ecmascript) <locals>");
-'use client';
-;
-;
-;
-;
-;
-;
-;
-// Register Chart.js components
-__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$chart$2e$js$2f$dist$2f$chart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Chart"].register(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$chart$2e$js$2f$dist$2f$chart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["CategoryScale"], __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$chart$2e$js$2f$dist$2f$chart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["LinearScale"], __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$chart$2e$js$2f$dist$2f$chart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["PointElement"], __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$chart$2e$js$2f$dist$2f$chart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["LineElement"], __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$chart$2e$js$2f$dist$2f$chart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["BarElement"], __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$chart$2e$js$2f$dist$2f$chart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["ArcElement"], __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$chart$2e$js$2f$dist$2f$chart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Title"], __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$chart$2e$js$2f$dist$2f$chart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Tooltip"], __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$chart$2e$js$2f$dist$2f$chart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Legend"], __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$chart$2e$js$2f$dist$2f$chart$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Filler"]);
-function AMTradeOverview() {
-    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
-    const [user, setUser] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
-    const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(true);
-    const [accounts, setAccounts] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
-    const [currentAccountId, setCurrentAccountId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
-    const [showAddAccountModal, setShowAddAccountModal] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [newAccount, setNewAccount] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({
-        name: '',
-        balance: '',
-        tag: 'personal'
-    });
-    const [isMobileSidebarOpen, setIsMobileSidebarOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
-    // Real AM Trade data
-    const [amTrades, setAmTrades] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
-    const [filteredTrades, setFilteredTrades] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])([]);
-    // Filter states
-    const [timeFilter, setTimeFilter] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('all'); // all, 7d, 30d, 90d
-    const [statusFilter, setStatusFilter] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('all'); // all, win, loss, pending
-    const [pairFilter, setPairFilter] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('all'); // all, specific pairs
-    const [strategyFilter, setStrategyFilter] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('all'); // all, specific strategies
-    // Fetch AM Trades data
-    const fetchAMTrades = async ()=>{
-        try {
-            const token = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$js$2d$cookie$2f$dist$2f$js$2e$cookie$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get('auth-token') || localStorage.getItem('auth-token');
-            if (!token || !user?.id && !user?._id) return;
-            const userId = user?.id || user?._id;
-            const response = await fetch(`/api/am-trades?userId=${userId}`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-            if (response.ok) {
-                const data = await response.json();
-                if (data.trades && Array.isArray(data.trades)) {
-                    setAmTrades(data.trades);
-                }
-            }
-        } catch (error) {
-            console.error('Error fetching AM trades:', error);
-        }
-    };
-    // Filter trades based on current account and filters
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        if (!currentAccountId || !amTrades.length) {
-            setFilteredTrades([]);
-            return;
-        }
-        let filtered = amTrades.filter((trade)=>{
-            const tradeAccountId = String(trade.accountId || trade.account);
-            return tradeAccountId === String(currentAccountId);
-        });
-        // Apply time filter
-        if (timeFilter !== 'all') {
-            const now = new Date();
-            const days = timeFilter === '7d' ? 7 : timeFilter === '30d' ? 30 : 90;
-            const cutoffDate = new Date(now.getTime() - days * 24 * 60 * 60 * 1000);
-            filtered = filtered.filter((trade)=>{
-                const tradeDate = new Date(trade.dateTime || trade.createdAt);
-                return tradeDate >= cutoffDate;
-            });
-        }
-        // Apply status filter
-        if (statusFilter !== 'all') {
-            filtered = filtered.filter((trade)=>{
-                if (statusFilter === 'pending') return !trade.status || trade.status === 'pending';
-                return trade.status === statusFilter;
-            });
-        }
-        // Apply pair filter
-        if (pairFilter !== 'all') {
-            filtered = filtered.filter((trade)=>trade.tradingPair === pairFilter);
-        }
-        // Apply strategy filter
-        if (strategyFilter !== 'all') {
-            filtered = filtered.filter((trade)=>trade.strategy === strategyFilter);
-        }
-        setFilteredTrades(filtered);
-    }, [
-        amTrades,
-        currentAccountId,
-        timeFilter,
-        statusFilter,
-        pairFilter,
-        strategyFilter
-    ]);
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        const initializeUser = async ()=>{
-            try {
-                // First check if user is already in localStorage
-                const storedUser = localStorage.getItem('user');
-                if (storedUser) {
-                    const parsedUser = JSON.parse(storedUser);
-                    setUser(parsedUser);
-                    setLoading(false);
-                    return;
-                }
-                // If no user in localStorage, check for auth token and fetch user
-                const token = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$js$2d$cookie$2f$dist$2f$js$2e$cookie$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get('auth-token') || localStorage.getItem('auth-token');
-                if (!token) {
-                    // No authentication, redirect to login
-                    router.push('/login');
-                    return;
-                }
-                // Fetch user with token using the same endpoint as dashboard
-                const response = await fetch('/api/user', {
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    }
-                });
-                if (response.ok) {
-                    const userData = await response.json();
-                    setUser(userData);
-                    // Store user data in localStorage for future use
-                    localStorage.setItem('user', JSON.stringify(userData));
-                    // Fetch accounts for this user
-                    await fetchAccounts(userData);
-                } else {
-                    // Invalid token, redirect to login
-                    router.push('/login');
-                }
-            } catch (error) {
-                console.error('Error fetching user data:', error);
-                router.push('/login');
-            } finally{
-                setLoading(false);
-            }
-        };
-        initializeUser();
-    }, [
-        router
-    ]);
-    // Fetch accounts and trades when user is set
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        if (user?.id || user?._id) {
-            fetchAccounts(user);
-            fetchAMTrades();
-        }
-    }, [
-        user
-    ]);
-    // Fetch trades when account changes
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        if (currentAccountId && user) {
-            fetchAMTrades();
-        }
-    }, [
-        currentAccountId
-    ]);
-    // Close mobile sidebar on window resize (when switching to desktop)
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        const handleResize = ()=>{
-            if (window.innerWidth >= 1024) {
-                setIsMobileSidebarOpen(false);
-            }
-        };
-        window.addEventListener('resize', handleResize);
-        return ()=>window.removeEventListener('resize', handleResize);
-    }, []);
-    // Calculate analytics from real data
-    const analytics = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>{
-        if (!filteredTrades.length) {
-            return {
-                totalTrades: 0,
-                winRate: 0,
-                totalProfit: 0,
-                avgWin: 0,
-                avgLoss: 0,
-                bestTrade: 0,
-                worstTrade: 0,
-                activePositions: 0,
-                profitFactor: 0,
-                sharpeRatio: 0,
-                maxDrawdown: 0,
-                winStreak: 0,
-                lossStreak: 0
-            };
-        }
-        const completedTrades = filteredTrades.filter((trade)=>trade.status && trade.status !== 'pending');
-        const winningTrades = completedTrades.filter((trade)=>trade.status === 'win');
-        const losingTrades = completedTrades.filter((trade)=>trade.status === 'loss');
-        const activeTrades = filteredTrades.filter((trade)=>!trade.status || trade.status === 'pending');
-        const totalProfit = completedTrades.reduce((sum, trade)=>sum + (trade.actualProfit || 0), 0);
-        const totalWins = winningTrades.reduce((sum, trade)=>sum + (trade.actualProfit || 0), 0);
-        const totalLosses = Math.abs(losingTrades.reduce((sum, trade)=>sum + (trade.actualProfit || 0), 0));
-        const winRate = completedTrades.length > 0 ? winningTrades.length / completedTrades.length * 100 : 0;
-        const avgWin = winningTrades.length > 0 ? totalWins / winningTrades.length : 0;
-        const avgLoss = losingTrades.length > 0 ? totalLosses / losingTrades.length : 0;
-        const profitFactor = totalLosses > 0 ? totalWins / totalLosses : totalWins > 0 ? Infinity : 0;
-        const profits = completedTrades.map((trade)=>trade.actualProfit || 0);
-        const bestTrade = profits.length > 0 ? Math.max(...profits) : 0;
-        const worstTrade = profits.length > 0 ? Math.min(...profits) : 0;
-        // Calculate streaks
-        let currentWinStreak = 0;
-        let currentLossStreak = 0;
-        let maxWinStreak = 0;
-        let maxLossStreak = 0;
-        completedTrades.forEach((trade)=>{
-            if (trade.status === 'win') {
-                currentWinStreak++;
-                currentLossStreak = 0;
-                maxWinStreak = Math.max(maxWinStreak, currentWinStreak);
-            } else if (trade.status === 'loss') {
-                currentLossStreak++;
-                currentWinStreak = 0;
-                maxLossStreak = Math.max(maxLossStreak, currentLossStreak);
-            }
-        });
-        return {
-            totalTrades: filteredTrades.length,
-            winRate: parseFloat(winRate.toFixed(1)),
-            totalProfit: parseFloat(totalProfit.toFixed(2)),
-            avgWin: parseFloat(avgWin.toFixed(2)),
-            avgLoss: parseFloat(avgLoss.toFixed(2)),
-            bestTrade: parseFloat(bestTrade.toFixed(2)),
-            worstTrade: parseFloat(worstTrade.toFixed(2)),
-            activePositions: activeTrades.length,
-            profitFactor: parseFloat(profitFactor.toFixed(2)),
-            winStreak: maxWinStreak,
-            lossStreak: maxLossStreak
-        };
-    }, [
-        filteredTrades
-    ]);
-    // Helper function to get week start date (Monday)
-    const getWeekStart = (date)=>{
-        const d = new Date(date);
-        const day = d.getDay();
-        const diff = d.getDate() - day + (day === 0 ? -6 : 1); // Adjust when day is Sunday
-        return new Date(d.setDate(diff));
-    };
-    // Helper function to get week number
-    const getWeekNumber = (date)=>{
-        const d = new Date(date);
-        const yearStart = new Date(d.getFullYear(), 0, 1);
-        const weekStart = getWeekStart(d);
-        const weekNumber = Math.ceil(((weekStart - yearStart) / 86400000 + 1) / 7);
-        return weekNumber;
-    };
-    // Calculate weekly results for the last 4 weeks
-    const weeklyResults = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>{
-        if (!filteredTrades.length) {
-            // Return empty weeks with 0 values when no data
-            const weeks = [];
-            for(let i = 0; i < 4; i++){
-                const weekStart = new Date();
-                weekStart.setDate(weekStart.getDate() - i * 7 - weekStart.getDay() + 1);
-                const weekNumber = getWeekNumber(weekStart);
-                weeks.unshift({
-                    week: `Week ${weekNumber}`,
-                    trades: 0,
-                    winRate: 0,
-                    sumRR: 0,
-                    sumProfitPercent: 0
-                });
-            }
-            return weeks;
-        }
-        const now = new Date();
-        const weeks = [];
-        // Generate last 4 weeks
-        for(let i = 0; i < 4; i++){
-            const weekStart = new Date(now);
-            weekStart.setDate(now.getDate() - i * 7 - now.getDay() + 1); // Start of week (Monday)
-            weekStart.setHours(0, 0, 0, 0);
-            const weekEnd = new Date(weekStart);
-            weekEnd.setDate(weekStart.getDate() + 6); // End of week (Sunday)
-            weekEnd.setHours(23, 59, 59, 999);
-            const weekNumber = getWeekNumber(weekStart);
-            // Filter trades for this week
-            const weekTrades = filteredTrades.filter((trade)=>{
-                const tradeDate = new Date(trade.dateTime || trade.createdAt);
-                return tradeDate >= weekStart && tradeDate <= weekEnd;
-            });
-            const completedWeekTrades = weekTrades.filter((trade)=>trade.status && trade.status !== 'pending');
-            const winningWeekTrades = completedWeekTrades.filter((trade)=>trade.status === 'win');
-            const weekWinRate = completedWeekTrades.length > 0 ? winningWeekTrades.length / completedWeekTrades.length * 100 : 0;
-            const weekProfit = completedWeekTrades.reduce((sum, trade)=>sum + (trade.actualProfit || 0), 0);
-            // Calculate Risk/Reward from planned RR or calculated RR
-            const weekRR = completedWeekTrades.reduce((sum, trade)=>{
-                // Try to get RR from multiple possible sources
-                const rr = trade.calculatedResults?.riskRewardRatio || parseFloat(trade.plannedRR) || trade.riskReward || 0;
-                return sum + rr;
-            }, 0);
-            // Calculate profit percentage based on account size
-            const accountSize = weekTrades.length > 0 ? weekTrades[0].accountSize || 10000 : 10000;
-            const weekProfitPercent = accountSize > 0 ? weekProfit / accountSize * 100 : 0;
-            weeks.unshift({
-                week: `Week ${weekNumber}`,
-                trades: weekTrades.length,
-                winRate: parseFloat(weekWinRate.toFixed(1)),
-                sumRR: parseFloat(weekRR.toFixed(1)),
-                sumProfitPercent: parseFloat(weekProfitPercent.toFixed(2))
-            });
-        }
-        return weeks;
-    }, [
-        filteredTrades
-    ]);
-    // Calculate daily results for the last 5 weekdays
-    const dailyResults = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>{
-        const days = [
-            'Monday',
-            'Tuesday',
-            'Wednesday',
-            'Thursday',
-            'Friday'
-        ];
-        const results = [];
-        days.forEach((dayName)=>{
-            // Use all AM trades (not just filtered) for daily analysis to get historical patterns
-            const allDayTrades = amTrades.filter((trade)=>{
-                // Filter by current account
-                const tradeAccountId = String(trade.accountId || trade.account);
-                if (tradeAccountId !== String(currentAccountId)) return false;
-                // Filter by weekday
-                const tradeDate = new Date(trade.dateTime || trade.createdAt);
-                const tradeDayName = tradeDate.toLocaleDateString('en-US', {
-                    weekday: 'long'
-                });
-                return tradeDayName === dayName;
-            });
-            const completedDayTrades = allDayTrades.filter((trade)=>trade.status && trade.status !== 'pending');
-            const winningDayTrades = completedDayTrades.filter((trade)=>trade.status === 'win');
-            const dayWinRate = completedDayTrades.length > 0 ? winningDayTrades.length / completedDayTrades.length * 100 : 0;
-            const dayProfit = completedDayTrades.reduce((sum, trade)=>sum + (trade.actualProfit || 0), 0);
-            // Calculate Risk/Reward from planned RR or calculated RR
-            const dayRR = allDayTrades.reduce((sum, trade)=>{
-                // Try to get RR from multiple possible sources
-                const rr = trade.calculatedResults?.riskRewardRatio || parseFloat(trade.plannedRR) || trade.riskReward || 0;
-                return sum + rr;
-            }, 0);
-            // Calculate profit percentage based on account size
-            const accountSize = allDayTrades.length > 0 ? allDayTrades[0].accountSize || 10000 : 10000;
-            const dayProfitPercent = accountSize > 0 ? dayProfit / accountSize * 100 : 0;
-            const dayResult = {
-                weekday: dayName,
-                trades: allDayTrades.length,
-                winRate: parseFloat(dayWinRate.toFixed(1)),
-                sumRR: parseFloat(dayRR.toFixed(1)),
-                sumProfitPercent: parseFloat(dayProfitPercent.toFixed(2))
-            };
-            results.push(dayResult);
-        });
-        return results;
-    }, [
-        amTrades,
-        currentAccountId
-    ]);
-    // Get unique values for filters
-    const uniquePairs = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>{
-        const pairs = [
-            ...new Set(amTrades.map((trade)=>trade.tradingPair).filter(Boolean))
-        ];
-        return pairs.sort();
-    }, [
-        amTrades
-    ]);
-    const uniqueStrategies = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useMemo"])(()=>{
-        const strategies = [
-            ...new Set(amTrades.map((trade)=>trade.strategy).filter(Boolean))
-        ];
-        return strategies.sort();
-    }, [
-        amTrades
-    ]);
-    // Helper functions
-    const formatCurrency = (amount)=>{
-        if (amount === null || amount === undefined || isNaN(amount)) return '$0.00';
-        return new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        }).format(amount);
-    };
-    const formatDate = (dateString)=>{
-        if (!dateString) return 'N/A';
-        const date = new Date(dateString);
-        return date.toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'short',
-            day: 'numeric'
-        });
-    };
-    // Helper functions for account tags
-    const getTagColor = (tag)=>{
-        const colors = {
-            personal: 'bg-blue-600',
-            business: 'bg-green-600',
-            demo: 'bg-purple-600',
-            forex: 'bg-orange-600',
-            crypto: 'bg-indigo-600'
-        };
-        return colors[tag] || 'bg-gray-600';
-    };
-    const getTagDisplayName = (tag)=>{
-        const names = {
-            personal: 'Personal',
-            business: 'Business',
-            demo: 'Demo',
-            forex: 'Forex',
-            crypto: 'Crypto'
-        };
-        return names[tag] || 'Personal';
-    };
-    const fetchAccounts = async (userData)=>{
-        try {
-            const userId = userData?.id || userData?._id;
-            if (!userId) {
-                console.error('User ID not found');
-                return;
-            }
-            const token = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$js$2d$cookie$2f$dist$2f$js$2e$cookie$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get('auth-token') || localStorage.getItem('auth-token');
-            if (!token) {
-                console.error('Authentication token is missing');
-                return;
-            }
-            const response = await fetch(`/api/accounts?userId=${userId}`, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-            if (response.ok) {
-                const data = await response.json();
-                if (data.accounts && Array.isArray(data.accounts)) {
-                    setAccounts(data.accounts);
-                    // Set current account from localStorage or use first account
-                    const savedAccountId = localStorage.getItem('currentAccountId');
-                    if (savedAccountId && data.accounts.find((acc)=>String(acc.id || acc._id) === savedAccountId)) {
-                        setCurrentAccountId(savedAccountId);
-                    } else if (data.accounts.length > 0) {
-                        const firstAccountId = data.accounts[0].id || data.accounts[0]._id;
-                        setCurrentAccountId(firstAccountId);
-                        localStorage.setItem('currentAccountId', String(firstAccountId));
-                    }
-                }
-            }
-        } catch (error) {
-            console.error('Error fetching accounts:', error);
-        }
-    };
-    const handleAccountSwitch = (accountId)=>{
-        setCurrentAccountId(accountId);
-        localStorage.setItem('currentAccountId', String(accountId));
-    };
-    const handleAddAccount = async ()=>{
-        if (!newAccount.name || !newAccount.balance) return;
-        const userId = user?.id || user?._id;
-        if (!userId) {
-            alert('User not found. Please login again.');
-            return;
-        }
-        try {
-            const token = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$js$2d$cookie$2f$dist$2f$js$2e$cookie$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get('auth-token') || localStorage.getItem('auth-token');
-            if (!token) {
-                alert('Authentication token is missing. Please login again.');
-                return;
-            }
-            const response = await fetch('/api/accounts', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({
-                    userId: userId,
-                    ...newAccount
-                })
-            });
-            if (response.ok) {
-                const data = await response.json();
-                const accountData = {
-                    id: data.accountId || data._id || Date.now().toString(),
-                    ...newAccount,
-                    balance: parseFloat(newAccount.balance),
-                    color: getTagColor(newAccount.tag),
-                    isActive: accounts.length === 0 // Make first account active
-                };
-                setAccounts([
-                    ...accounts,
-                    accountData
-                ]);
-                // If this is the first account, make it current
-                if (accounts.length === 0) {
-                    setCurrentAccountId(accountData.id);
-                    localStorage.setItem('currentAccountId', accountData.id);
-                }
-                setNewAccount({
-                    name: '',
-                    balance: '',
-                    tag: 'personal'
-                });
-                setShowAddAccountModal(false);
-                // Refresh accounts to ensure we have the latest data
-                await fetchAccounts(user);
-            } else {
-                const errorData = await response.json();
-                console.error('Failed to create account:', errorData);
-                alert('Failed to create account. Please try again.');
-            }
-        } catch (error) {
-            console.error('Error adding account:', error);
-            alert('Error adding account. Please try again.');
-        }
-    };
-    const handleEditAccount = async (accountId, updates)=>{
-        try {
-            const token = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$js$2d$cookie$2f$dist$2f$js$2e$cookie$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get('auth-token') || localStorage.getItem('auth-token');
-            const response = await fetch(`/api/accounts/${accountId}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify(updates)
-            });
-            if (response.ok) {
-                const updatedAccount = await response.json();
-                setAccounts((prev)=>prev.map((acc)=>acc.id === accountId || acc._id === accountId ? updatedAccount : acc));
-            }
-        } catch (error) {
-            console.error('Error updating account:', error);
-        }
-    };
-    const handleDeleteAccount = async (accountId)=>{
-        try {
-            const token = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$js$2d$cookie$2f$dist$2f$js$2e$cookie$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get('auth-token') || localStorage.getItem('auth-token');
-            const response = await fetch(`/api/accounts/${accountId}`, {
-                method: 'DELETE',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-            if (response.ok) {
-                setAccounts((prev)=>prev.filter((acc)=>acc.id !== accountId && acc._id !== accountId));
-                // If deleted account was current, switch to first available
-                if (String(currentAccountId) === String(accountId)) {
-                    const remainingAccounts = accounts.filter((acc)=>acc.id !== accountId && acc._id !== accountId);
-                    if (remainingAccounts.length > 0) {
-                        const newCurrentId = remainingAccounts[0].id || remainingAccounts[0]._id;
-                        setCurrentAccountId(newCurrentId);
-                        localStorage.setItem('currentAccountId', String(newCurrentId));
-                    }
-                }
-            }
-        } catch (error) {
-            console.error('Error deleting account:', error);
-        }
-    };
-    const handleLogout = ()=>{
-        // Clear all authentication data (same as dashboard)
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$js$2d$cookie$2f$dist$2f$js$2e$cookie$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].remove('auth-token');
-        localStorage.removeItem('auth-token');
-        localStorage.removeItem('user');
-        localStorage.removeItem('isAMTradeMode');
-        router.push('/login');
-    };
-    if (loading) {
-        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "min-h-screen flex items-center justify-center bg-gray-50",
-            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "animate-spin rounded-full h-12 w-12 border-2 border-blue-600 border-t-transparent"
-            }, void 0, false, {
-                fileName: "[project]/app/am-trade/overview/page.js",
-                lineNumber: 644,
-                columnNumber: 9
-            }, this)
-        }, void 0, false, {
-            fileName: "[project]/app/am-trade/overview/page.js",
-            lineNumber: 643,
-            columnNumber: 7
-        }, this);
-    }
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "min-h-screen bg-gray-50 flex",
-        children: [
-            isMobileSidebarOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden",
-                onClick: ()=>setIsMobileSidebarOpen(false)
-            }, void 0, false, {
-                fileName: "[project]/app/am-trade/overview/page.js",
-                lineNumber: 653,
-                columnNumber: 9
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: `fixed inset-y-0 left-0 z-50 w-64 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`,
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Sidebar$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
-                    user: user,
-                    currentAccountId: currentAccountId,
-                    accounts: accounts,
-                    onAccountSwitch: handleAccountSwitch,
-                    onAddAccount: ()=>setShowAddAccountModal(true),
-                    onEditAccount: handleEditAccount,
-                    onDeleteAccount: handleDeleteAccount,
-                    onLogout: handleLogout,
-                    onUpdateUser: (updatedUser)=>setUser(updatedUser)
-                }, void 0, false, {
-                    fileName: "[project]/app/am-trade/overview/page.js",
-                    lineNumber: 663,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/app/am-trade/overview/page.js",
-                lineNumber: 660,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
-                className: "flex-1 lg:ml-64 p-4 sm:p-6 lg:p-8",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "max-w-7xl mx-auto",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "mb-6 sm:mb-8",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex items-center justify-between",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex items-center space-x-4",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                onClick: ()=>setIsMobileSidebarOpen(true),
-                                                className: "lg:hidden p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                    className: "w-6 h-6",
-                                                    fill: "none",
-                                                    stroke: "currentColor",
-                                                    viewBox: "0 0 24 24",
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                        strokeLinecap: "round",
-                                                        strokeLinejoin: "round",
-                                                        strokeWidth: 2,
-                                                        d: "M4 6h16M4 12h16M4 18h16"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 689,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 688,
-                                                    columnNumber: 19
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 684,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                                        className: "text-2xl sm:text-3xl font-bold text-gray-900",
-                                                        children: "AM Trade Overview"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 694,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-gray-600 mt-1 sm:mt-2 text-sm sm:text-base",
-                                                        children: "Your morning trading session dashboard"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 695,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 693,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 682,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex items-center space-x-2 sm:space-x-4",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "bg-green-100 text-green-800 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium",
-                                                children: "AM Session Active"
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 700,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                onClick: ()=>router.push('/am-trade/add-am-trade'),
-                                                className: "bg-blue-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm sm:text-base",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "hidden sm:inline",
-                                                        children: "Add AM Trade"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 707,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                        className: "sm:hidden",
-                                                        children: "Add"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 708,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 703,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 699,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/app/am-trade/overview/page.js",
-                                lineNumber: 681,
-                                columnNumber: 13
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/app/am-trade/overview/page.js",
-                            lineNumber: 680,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "bg-gradient-to-br from-white via-gray-50/50 to-blue-50/30 rounded-2xl sm:rounded-3xl border border-gray-200/60 p-4 sm:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 mb-6 sm:mb-8",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0 lg:space-x-6",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex flex-col sm:flex-row sm:items-center space-y-4 sm:space-y-0 sm:space-x-4",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                        className: "block text-sm font-medium text-gray-700 mb-2",
-                                                        children: "Time Period"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 720,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
-                                                        value: timeFilter,
-                                                        onChange: (e)=>setTimeFilter(e.target.value),
-                                                        className: "px-3 py-2.5 sm:px-4 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none bg-white transition-all duration-200 shadow-sm hover:shadow-md text-sm sm:text-base min-w-[140px]",
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                value: "all",
-                                                                children: "All Time"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 726,
-                                                                columnNumber: 21
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                value: "7d",
-                                                                children: "Last 7 Days"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 727,
-                                                                columnNumber: 21
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                value: "30d",
-                                                                children: "Last 30 Days"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 728,
-                                                                columnNumber: 21
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                value: "90d",
-                                                                children: "Last 90 Days"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 729,
-                                                                columnNumber: 21
-                                                            }, this)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 721,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 719,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                        className: "block text-sm font-medium text-gray-700 mb-2",
-                                                        children: "Status"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 735,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
-                                                        value: statusFilter,
-                                                        onChange: (e)=>setStatusFilter(e.target.value),
-                                                        className: "px-3 py-2.5 sm:px-4 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none bg-white transition-all duration-200 shadow-sm hover:shadow-md text-sm sm:text-base min-w-[140px]",
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                value: "all",
-                                                                children: "All Status"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 741,
-                                                                columnNumber: 21
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                value: "pending",
-                                                                children: "Pending"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 742,
-                                                                columnNumber: 21
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                value: "win",
-                                                                children: "Wins"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 743,
-                                                                columnNumber: 21
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                value: "loss",
-                                                                children: "Losses"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 744,
-                                                                columnNumber: 21
-                                                            }, this)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 736,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 734,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                        className: "block text-sm font-medium text-gray-700 mb-2",
-                                                        children: "Trading Pair"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 750,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
-                                                        value: pairFilter,
-                                                        onChange: (e)=>setPairFilter(e.target.value),
-                                                        className: "px-3 py-2.5 sm:px-4 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none bg-white transition-all duration-200 shadow-sm hover:shadow-md text-sm sm:text-base min-w-[140px]",
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                value: "all",
-                                                                children: "All Pairs"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 756,
-                                                                columnNumber: 21
-                                                            }, this),
-                                                            uniquePairs.map((pair)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                    value: pair,
-                                                                    children: pair
-                                                                }, pair, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 758,
-                                                                    columnNumber: 23
-                                                                }, this))
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 751,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 749,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                                        className: "block text-sm font-medium text-gray-700 mb-2",
-                                                        children: "Strategy"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 765,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
-                                                        value: strategyFilter,
-                                                        onChange: (e)=>setStrategyFilter(e.target.value),
-                                                        className: "px-3 py-2.5 sm:px-4 sm:py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent appearance-none bg-white transition-all duration-200 shadow-sm hover:shadow-md text-sm sm:text-base min-w-[140px]",
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                value: "all",
-                                                                children: "All Strategies"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 771,
-                                                                columnNumber: 21
-                                                            }, this),
-                                                            uniqueStrategies.map((strategy)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
-                                                                    value: strategy,
-                                                                    children: strategy
-                                                                }, strategy, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 773,
-                                                                    columnNumber: 23
-                                                                }, this))
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 766,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 764,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 717,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                        onClick: ()=>{
-                                            setTimeFilter('all');
-                                            setStatusFilter('all');
-                                            setPairFilter('all');
-                                            setStrategyFilter('all');
-                                        },
-                                        className: "px-4 py-2 text-gray-600 bg-white border border-gray-300 rounded-xl hover:bg-gray-50 transition-all duration-200 text-sm font-medium",
-                                        children: "Reset Filters"
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 780,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/app/am-trade/overview/page.js",
-                                lineNumber: 716,
-                                columnNumber: 13
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/app/am-trade/overview/page.js",
-                            lineNumber: 715,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/30 p-6 rounded-2xl border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex items-center justify-between",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-sm text-gray-600 font-medium",
-                                                        children: "Total AM Trades"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 799,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-3xl font-bold text-gray-900 mt-1",
-                                                        children: analytics.totalTrades
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 800,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-xs text-gray-500 mt-1",
-                                                        children: [
-                                                            analytics.activePositions,
-                                                            " active"
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 801,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 798,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "p-3 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl shadow-lg",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                    className: "w-6 h-6 text-white",
-                                                    fill: "none",
-                                                    stroke: "currentColor",
-                                                    viewBox: "0 0 24 24",
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                        strokeLinecap: "round",
-                                                        strokeLinejoin: "round",
-                                                        strokeWidth: 1.5,
-                                                        d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 807,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 806,
-                                                    columnNumber: 19
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 805,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 797,
-                                        columnNumber: 15
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 796,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "bg-gradient-to-br from-white via-green-50/30 to-emerald-50/30 p-6 rounded-2xl border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex items-center justify-between",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-sm text-gray-600 font-medium",
-                                                        children: "Win Rate"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 816,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-3xl font-bold text-gray-900 mt-1",
-                                                        children: [
-                                                            analytics.winRate,
-                                                            "%"
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 817,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-xs text-gray-500 mt-1",
-                                                        children: [
-                                                            "Profit Factor: ",
-                                                            analytics.profitFactor
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 818,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 815,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "p-3 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-lg",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                    className: "w-6 h-6 text-white",
-                                                    fill: "none",
-                                                    stroke: "currentColor",
-                                                    viewBox: "0 0 24 24",
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                        strokeLinecap: "round",
-                                                        strokeLinejoin: "round",
-                                                        strokeWidth: 1.5,
-                                                        d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 824,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 823,
-                                                    columnNumber: 19
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 822,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 814,
-                                        columnNumber: 15
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 813,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "bg-gradient-to-br from-white via-purple-50/30 to-violet-50/30 p-6 rounded-2xl border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex items-center justify-between",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-sm text-gray-600 font-medium",
-                                                        children: "Total P&L"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 833,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: `text-3xl font-bold mt-1 ${analytics.totalProfit > 0 ? 'text-green-600' : analytics.totalProfit < 0 ? 'text-red-600' : 'text-gray-900'}`,
-                                                        children: formatCurrency(analytics.totalProfit)
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 834,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-xs text-gray-500 mt-1",
-                                                        children: [
-                                                            "Best: ",
-                                                            formatCurrency(analytics.bestTrade)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 840,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 832,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: `p-3 rounded-xl shadow-lg ${analytics.totalProfit > 0 ? 'bg-gradient-to-br from-green-500 to-emerald-600' : 'bg-gradient-to-br from-red-500 to-rose-600'}`,
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                    className: "w-6 h-6 text-white",
-                                                    fill: "none",
-                                                    stroke: "currentColor",
-                                                    viewBox: "0 0 24 24",
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                        strokeLinecap: "round",
-                                                        strokeLinejoin: "round",
-                                                        strokeWidth: 1.5,
-                                                        d: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 850,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 849,
-                                                    columnNumber: 19
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 844,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 831,
-                                        columnNumber: 15
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 830,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "bg-gradient-to-br from-white via-orange-50/30 to-amber-50/30 p-6 rounded-2xl border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex items-center justify-between",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-sm text-gray-600 font-medium",
-                                                        children: "Avg Win/Loss"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 859,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "flex items-center space-x-2 mt-1",
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                className: "text-lg font-bold text-green-600",
-                                                                children: formatCurrency(analytics.avgWin)
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 861,
-                                                                columnNumber: 21
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                className: "text-gray-400",
-                                                                children: "/"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 862,
-                                                                columnNumber: 21
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                className: "text-lg font-bold text-red-600",
-                                                                children: formatCurrency(analytics.avgLoss)
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 863,
-                                                                columnNumber: 21
-                                                            }, this)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 860,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "text-xs text-gray-500 mt-1",
-                                                        children: [
-                                                            "Win Streak: ",
-                                                            analytics.winStreak
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 865,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 858,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "p-3 bg-gradient-to-br from-orange-500 to-amber-600 rounded-xl shadow-lg",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                    className: "w-6 h-6 text-white",
-                                                    fill: "none",
-                                                    stroke: "currentColor",
-                                                    viewBox: "0 0 24 24",
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                        strokeLinecap: "round",
-                                                        strokeLinejoin: "round",
-                                                        strokeWidth: 1.5,
-                                                        d: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 871,
-                                                        columnNumber: 21
-                                                    }, this)
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 870,
-                                                    columnNumber: 19
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 869,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 857,
-                                        columnNumber: 15
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 856,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/app/am-trade/overview/page.js",
-                            lineNumber: 795,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "bg-gradient-to-br from-white via-gray-50/50 to-blue-50/30 p-6 rounded-2xl border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "flex items-center justify-between mb-6",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                    className: "text-xl font-bold text-gray-900",
-                                                    children: "P&L Performance"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 883,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "flex items-center space-x-2",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "w-3 h-3 bg-green-500 rounded-full"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 885,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "text-sm text-gray-600",
-                                                            children: "Cumulative P&L"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 886,
-                                                            columnNumber: 19
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 884,
-                                                    columnNumber: 17
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 882,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "h-80",
-                                            children: filteredTrades.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$chartjs$2d$2$2f$dist$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Line"], {
-                                                data: {
-                                                    labels: filteredTrades.filter((trade)=>trade.status && trade.status !== 'pending').sort((a, b)=>new Date(a.dateTime || a.createdAt) - new Date(b.dateTime || b.createdAt)).map((trade, index)=>`Trade ${index + 1}`),
-                                                    datasets: [
-                                                        {
-                                                            label: 'Cumulative P&L',
-                                                            data: filteredTrades.filter((trade)=>trade.status && trade.status !== 'pending').sort((a, b)=>new Date(a.dateTime || a.createdAt) - new Date(b.dateTime || b.createdAt)).reduce((acc, trade, index)=>{
-                                                                const cumulative = index === 0 ? trade.actualProfit || 0 : acc[index - 1] + (trade.actualProfit || 0);
-                                                                acc.push(cumulative);
-                                                                return acc;
-                                                            }, []),
-                                                            borderColor: 'rgb(34, 197, 94)',
-                                                            backgroundColor: 'rgba(34, 197, 94, 0.1)',
-                                                            borderWidth: 3,
-                                                            fill: true,
-                                                            tension: 0.4,
-                                                            pointBackgroundColor: 'rgb(34, 197, 94)',
-                                                            pointBorderColor: 'white',
-                                                            pointBorderWidth: 2,
-                                                            pointRadius: 5,
-                                                            pointHoverRadius: 8
-                                                        }
-                                                    ]
-                                                },
-                                                options: {
-                                                    responsive: true,
-                                                    maintainAspectRatio: false,
-                                                    plugins: {
-                                                        legend: {
-                                                            display: false
-                                                        },
-                                                        tooltip: {
-                                                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                                                            titleColor: 'white',
-                                                            bodyColor: 'white',
-                                                            borderColor: 'rgba(34, 197, 94, 0.5)',
-                                                            borderWidth: 1,
-                                                            cornerRadius: 8,
-                                                            displayColors: false,
-                                                            callbacks: {
-                                                                label: function(context) {
-                                                                    return `P&L: ${formatCurrency(context.parsed.y)}`;
-                                                                }
-                                                            }
-                                                        }
-                                                    },
-                                                    scales: {
-                                                        x: {
-                                                            grid: {
-                                                                display: false
-                                                            },
-                                                            ticks: {
-                                                                color: '#6B7280',
-                                                                font: {
-                                                                    size: 12
-                                                                }
-                                                            }
-                                                        },
-                                                        y: {
-                                                            grid: {
-                                                                color: 'rgba(0, 0, 0, 0.05)'
-                                                            },
-                                                            ticks: {
-                                                                color: '#6B7280',
-                                                                font: {
-                                                                    size: 12
-                                                                },
-                                                                callback: function(value) {
-                                                                    return formatCurrency(value);
-                                                                }
-                                                            }
-                                                        }
-                                                    },
-                                                    interaction: {
-                                                        intersect: false,
-                                                        mode: 'index'
-                                                    }
-                                                }
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 891,
-                                                columnNumber: 19
-                                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "h-full flex items-center justify-center",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "text-center",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                            className: "w-16 h-16 mx-auto text-gray-300 mb-4",
-                                                            fill: "none",
-                                                            stroke: "currentColor",
-                                                            viewBox: "0 0 24 24",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                                strokeLinecap: "round",
-                                                                strokeLinejoin: "round",
-                                                                strokeWidth: 1,
-                                                                d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 980,
-                                                                columnNumber: 25
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 979,
-                                                            columnNumber: 23
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                            className: "text-gray-500 font-medium",
-                                                            children: "No trade data available"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 982,
-                                                            columnNumber: 23
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                            className: "text-gray-400 text-sm",
-                                                            children: "Add some AM trades to see performance charts"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 983,
-                                                            columnNumber: 23
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 978,
-                                                    columnNumber: 21
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 977,
-                                                columnNumber: 19
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 889,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 881,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "bg-gradient-to-br from-white via-gray-50/50 to-purple-50/30 p-6 rounded-2xl border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "flex items-center justify-between mb-6",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                    className: "text-xl font-bold text-gray-900",
-                                                    children: "Win/Loss Distribution"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 993,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "flex items-center space-x-4",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "flex items-center space-x-2",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: "w-3 h-3 bg-green-500 rounded-full"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 996,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-sm text-gray-600",
-                                                                    children: "Wins"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 997,
-                                                                    columnNumber: 21
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 995,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "flex items-center space-x-2",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: "w-3 h-3 bg-red-500 rounded-full"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1000,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-sm text-gray-600",
-                                                                    children: "Losses"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1001,
-                                                                    columnNumber: 21
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 999,
-                                                            columnNumber: 19
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 994,
-                                                    columnNumber: 17
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 992,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "h-80",
-                                            children: filteredTrades.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$chartjs$2d$2$2f$dist$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Doughnut"], {
-                                                data: {
-                                                    labels: [
-                                                        'Wins',
-                                                        'Losses',
-                                                        'Pending'
-                                                    ],
-                                                    datasets: [
-                                                        {
-                                                            data: [
-                                                                filteredTrades.filter((trade)=>trade.status === 'win').length,
-                                                                filteredTrades.filter((trade)=>trade.status === 'loss').length,
-                                                                filteredTrades.filter((trade)=>!trade.status || trade.status === 'pending').length
-                                                            ],
-                                                            backgroundColor: [
-                                                                'rgba(34, 197, 94, 0.8)',
-                                                                'rgba(239, 68, 68, 0.8)',
-                                                                'rgba(156, 163, 175, 0.8)'
-                                                            ],
-                                                            borderColor: [
-                                                                'rgb(34, 197, 94)',
-                                                                'rgb(239, 68, 68)',
-                                                                'rgb(156, 163, 175)'
-                                                            ],
-                                                            borderWidth: 3,
-                                                            hoverBackgroundColor: [
-                                                                'rgba(34, 197, 94, 0.9)',
-                                                                'rgba(239, 68, 68, 0.9)',
-                                                                'rgba(156, 163, 175, 0.9)'
-                                                            ]
-                                                        }
-                                                    ]
-                                                },
-                                                options: {
-                                                    responsive: true,
-                                                    maintainAspectRatio: false,
-                                                    plugins: {
-                                                        legend: {
-                                                            position: 'bottom',
-                                                            labels: {
-                                                                padding: 20,
-                                                                usePointStyle: true,
-                                                                font: {
-                                                                    size: 14,
-                                                                    weight: '500'
-                                                                }
-                                                            }
-                                                        },
-                                                        tooltip: {
-                                                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                                                            titleColor: 'white',
-                                                            bodyColor: 'white',
-                                                            borderColor: 'rgba(156, 163, 175, 0.5)',
-                                                            borderWidth: 1,
-                                                            cornerRadius: 8,
-                                                            callbacks: {
-                                                                label: function(context) {
-                                                                    const total = context.dataset.data.reduce((a, b)=>a + b, 0);
-                                                                    const percentage = (context.parsed / total * 100).toFixed(1);
-                                                                    return `${context.label}: ${context.parsed} (${percentage}%)`;
-                                                                }
-                                                            }
-                                                        }
-                                                    },
-                                                    cutout: '60%'
-                                                }
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1007,
-                                                columnNumber: 19
-                                            }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "h-full flex items-center justify-center",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "text-center",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                            className: "w-16 h-16 mx-auto text-gray-300 mb-4",
-                                                            fill: "none",
-                                                            stroke: "currentColor",
-                                                            viewBox: "0 0 24 24",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                                strokeLinecap: "round",
-                                                                strokeLinejoin: "round",
-                                                                strokeWidth: 1,
-                                                                d: "M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 1074,
-                                                                columnNumber: 25
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1073,
-                                                            columnNumber: 23
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                            className: "text-gray-500 font-medium",
-                                                            children: "No trade data available"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1076,
-                                                            columnNumber: 23
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                            className: "text-gray-400 text-sm",
-                                                            children: "Add some AM trades to see distribution"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1077,
-                                                            columnNumber: 23
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1072,
-                                                    columnNumber: 21
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1071,
-                                                columnNumber: 19
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1005,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 991,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/app/am-trade/overview/page.js",
-                            lineNumber: 879,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "bg-gradient-to-br from-white via-gray-50/50 to-indigo-50/30 rounded-2xl border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300 mb-8",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "p-6 border-b border-gray-200/60",
-                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex items-center justify-between",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                className: "text-xl font-bold text-gray-900",
-                                                children: "Recent AM Trades"
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1089,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                onClick: ()=>router.push('/am-trade/journal'),
-                                                className: "px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 text-sm font-medium shadow-lg hover:shadow-xl",
-                                                children: "View All"
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1090,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 1088,
-                                        columnNumber: 15
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 1087,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "p-6",
-                                    children: filteredTrades.length > 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "space-y-4",
-                                        children: [
-                                            filteredTrades.sort((a, b)=>new Date(b.dateTime || b.createdAt) - new Date(a.dateTime || a.createdAt)).slice(0, 5).map((trade)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "flex items-center justify-between p-4 bg-white rounded-xl border border-gray-200/60 hover:shadow-md transition-all duration-200",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "flex items-center space-x-4",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: `w-3 h-3 rounded-full ${trade.status === 'win' ? 'bg-green-500' : trade.status === 'loss' ? 'bg-red-500' : 'bg-gray-400'}`
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1110,
-                                                                    columnNumber: 27
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    children: [
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                            className: "flex items-center space-x-2",
-                                                                            children: [
-                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                    className: "font-semibold text-gray-900",
-                                                                                    children: trade.tradingPair
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                                    lineNumber: 1117,
-                                                                                    columnNumber: 31
-                                                                                }, this),
-                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                    className: `px-2 py-1 rounded-lg text-xs font-medium ${trade.direction === 'long' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`,
-                                                                                    children: trade.direction?.toUpperCase()
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                                    lineNumber: 1118,
-                                                                                    columnNumber: 31
-                                                                                }, this)
-                                                                            ]
-                                                                        }, void 0, true, {
-                                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                                            lineNumber: 1116,
-                                                                            columnNumber: 29
-                                                                        }, this),
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                            className: "flex items-center space-x-4 mt-1",
-                                                                            children: [
-                                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                    className: "text-sm text-gray-600",
-                                                                                    children: formatDate(trade.dateTime || trade.createdAt)
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                                    lineNumber: 1127,
-                                                                                    columnNumber: 31
-                                                                                }, this),
-                                                                                trade.strategy && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                                    className: "text-sm text-gray-500",
-                                                                                    children: trade.strategy
-                                                                                }, void 0, false, {
-                                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                                    lineNumber: 1131,
-                                                                                    columnNumber: 33
-                                                                                }, this)
-                                                                            ]
-                                                                        }, void 0, true, {
-                                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                                            lineNumber: 1126,
-                                                                            columnNumber: 29
-                                                                        }, this)
-                                                                    ]
-                                                                }, void 0, true, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1115,
-                                                                    columnNumber: 27
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1109,
-                                                            columnNumber: 25
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "text-right",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: `text-lg font-bold ${trade.actualProfit > 0 ? 'text-green-600' : trade.actualProfit < 0 ? 'text-red-600' : 'text-gray-600'}`,
-                                                                    children: trade.actualProfit ? formatCurrency(trade.actualProfit) : 'Pending'
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1139,
-                                                                    columnNumber: 27
-                                                                }, this),
-                                                                trade.status && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: `text-xs font-medium mt-1 ${trade.status === 'win' ? 'text-green-600' : trade.status === 'loss' ? 'text-red-600' : 'text-gray-600'}`,
-                                                                    children: trade.status.charAt(0).toUpperCase() + trade.status.slice(1)
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1147,
-                                                                    columnNumber: 29
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1138,
-                                                            columnNumber: 25
-                                                        }, this)
-                                                    ]
-                                                }, trade._id, true, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1105,
-                                                    columnNumber: 23
-                                                }, this)),
-                                            filteredTrades.length > 5 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "text-center pt-4",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                    onClick: ()=>router.push('/am-trade/journal'),
-                                                    className: "text-blue-600 hover:text-blue-700 text-sm font-medium",
-                                                    children: [
-                                                        "View ",
-                                                        filteredTrades.length - 5,
-                                                        " more trades →"
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1161,
-                                                    columnNumber: 23
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1160,
-                                                columnNumber: 21
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 1100,
-                                        columnNumber: 17
-                                    }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "text-center py-12",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                className: "w-16 h-16 mx-auto mb-4 text-gray-300",
-                                                fill: "none",
-                                                stroke: "currentColor",
-                                                viewBox: "0 0 24 24",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                    strokeLinecap: "round",
-                                                    strokeLinejoin: "round",
-                                                    strokeWidth: 1.5,
-                                                    d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1173,
-                                                    columnNumber: 21
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1172,
-                                                columnNumber: 19
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-gray-500 mb-2 font-medium",
-                                                children: "No AM trades found"
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1175,
-                                                columnNumber: 19
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-sm text-gray-400 mb-6",
-                                                children: "Start your morning trading session to see analytics"
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1176,
-                                                columnNumber: 19
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                onClick: ()=>router.push('/am-trade/add-am-trade'),
-                                                className: "px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 font-medium shadow-lg hover:shadow-xl",
-                                                children: "Add Your First AM Trade"
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1177,
-                                                columnNumber: 19
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 1171,
-                                        columnNumber: 17
-                                    }, this)
-                                }, void 0, false, {
-                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 1098,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/app/am-trade/overview/page.js",
-                            lineNumber: 1086,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "bg-gradient-to-br from-white via-gray-50/50 to-purple-50/30 rounded-2xl border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "p-6 border-b border-gray-200/60",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                className: "text-xl font-bold text-gray-900 flex items-center",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                        className: "w-6 h-6 mr-3 text-purple-600",
-                                                        fill: "none",
-                                                        stroke: "currentColor",
-                                                        viewBox: "0 0 24 24",
-                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                            strokeLinecap: "round",
-                                                            strokeLinejoin: "round",
-                                                            strokeWidth: 2,
-                                                            d: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1195,
-                                                            columnNumber: 21
-                                                        }, this)
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 1194,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    "Trading Week Results"
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1193,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1192,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "p-4 sm:p-6",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "grid grid-cols-5 gap-2 sm:gap-4 mb-4 pb-3 border-b border-gray-200/60",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "flex items-center space-x-2",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                                    className: "w-4 h-4 text-gray-500",
-                                                                    fill: "none",
-                                                                    stroke: "currentColor",
-                                                                    viewBox: "0 0 24 24",
-                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                                        strokeLinecap: "round",
-                                                                        strokeLinejoin: "round",
-                                                                        strokeWidth: 2,
-                                                                        d: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                                        lineNumber: 1205,
-                                                                        columnNumber: 23
-                                                                    }, this)
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1204,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-xs sm:text-sm font-medium text-gray-600",
-                                                                    children: "Week"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1207,
-                                                                    columnNumber: 21
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1203,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "flex items-center space-x-2",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                                    className: "w-4 h-4 text-gray-500",
-                                                                    fill: "none",
-                                                                    stroke: "currentColor",
-                                                                    viewBox: "0 0 24 24",
-                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                                        strokeLinecap: "round",
-                                                                        strokeLinejoin: "round",
-                                                                        strokeWidth: 2,
-                                                                        d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                                        lineNumber: 1211,
-                                                                        columnNumber: 23
-                                                                    }, this)
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1210,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-sm font-medium text-gray-600",
-                                                                    children: "Trades"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1213,
-                                                                    columnNumber: 21
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1209,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "flex items-center space-x-2",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                                    className: "w-4 h-4 text-gray-500",
-                                                                    fill: "none",
-                                                                    stroke: "currentColor",
-                                                                    viewBox: "0 0 24 24",
-                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                                        strokeLinecap: "round",
-                                                                        strokeLinejoin: "round",
-                                                                        strokeWidth: 2,
-                                                                        d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                                        lineNumber: 1217,
-                                                                        columnNumber: 23
-                                                                    }, this)
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1216,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-sm font-medium text-gray-600",
-                                                                    children: "Win Rate"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1219,
-                                                                    columnNumber: 21
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1215,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "flex items-center space-x-2",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                                    className: "w-4 h-4 text-gray-500",
-                                                                    fill: "none",
-                                                                    stroke: "currentColor",
-                                                                    viewBox: "0 0 24 24",
-                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                                        strokeLinecap: "round",
-                                                                        strokeLinejoin: "round",
-                                                                        strokeWidth: 2,
-                                                                        d: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                                        lineNumber: 1223,
-                                                                        columnNumber: 23
-                                                                    }, this)
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1222,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-sm font-medium text-gray-600",
-                                                                    children: "Sum RR"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1225,
-                                                                    columnNumber: 21
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1221,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "flex items-center space-x-2",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                                    className: "w-4 h-4 text-gray-500",
-                                                                    fill: "none",
-                                                                    stroke: "currentColor",
-                                                                    viewBox: "0 0 24 24",
-                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                                        strokeLinecap: "round",
-                                                                        strokeLinejoin: "round",
-                                                                        strokeWidth: 2,
-                                                                        d: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                                        lineNumber: 1229,
-                                                                        columnNumber: 23
-                                                                    }, this)
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1228,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-sm font-medium text-gray-600",
-                                                                    children: "Sum Profit %"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1231,
-                                                                    columnNumber: 21
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1227,
-                                                            columnNumber: 19
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1202,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "space-y-3",
-                                                    children: weeklyResults.map((week, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "grid grid-cols-5 gap-4 p-3 bg-white rounded-xl border border-gray-200/60 hover:shadow-md transition-all duration-200",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: "font-medium text-gray-900",
-                                                                    children: week.week
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1239,
-                                                                    columnNumber: 23
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: "font-semibold text-gray-700",
-                                                                    children: week.trades
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1240,
-                                                                    columnNumber: 23
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: `font-semibold ${week.winRate > 50 ? 'text-green-600' : week.winRate > 0 ? 'text-orange-600' : 'text-gray-600'}`,
-                                                                    children: [
-                                                                        week.winRate,
-                                                                        "%"
-                                                                    ]
-                                                                }, void 0, true, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1241,
-                                                                    columnNumber: 23
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: `font-semibold ${week.sumRR > 0 ? 'text-green-600' : week.sumRR < 0 ? 'text-red-600' : 'text-gray-600'}`,
-                                                                    children: week.sumRR
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1247,
-                                                                    columnNumber: 23
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: `font-semibold ${week.sumProfitPercent > 0 ? 'text-green-600' : week.sumProfitPercent < 0 ? 'text-red-600' : 'text-gray-600'}`,
-                                                                    children: [
-                                                                        week.sumProfitPercent > 0 ? '+' : '',
-                                                                        week.sumProfitPercent,
-                                                                        "%"
-                                                                    ]
-                                                                }, void 0, true, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1253,
-                                                                    columnNumber: 23
-                                                                }, this)
-                                                            ]
-                                                        }, index, true, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1238,
-                                                            columnNumber: 21
-                                                        }, this))
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1236,
-                                                    columnNumber: 17
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1200,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 1191,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "bg-gradient-to-br from-white via-gray-50/50 to-orange-50/30 rounded-2xl border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "p-6 border-b border-gray-200/60",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                className: "text-xl font-bold text-gray-900 flex items-center",
-                                                children: [
-                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                        className: "w-6 h-6 mr-3 text-orange-600",
-                                                        fill: "none",
-                                                        stroke: "currentColor",
-                                                        viewBox: "0 0 24 24",
-                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                            strokeLinecap: "round",
-                                                            strokeLinejoin: "round",
-                                                            strokeWidth: 2,
-                                                            d: "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1270,
-                                                            columnNumber: 21
-                                                        }, this)
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 1269,
-                                                        columnNumber: 19
-                                                    }, this),
-                                                    "Trading Day Results"
-                                                ]
-                                            }, void 0, true, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1268,
-                                                columnNumber: 17
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1267,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "p-4 sm:p-6",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "grid grid-cols-5 gap-2 sm:gap-4 mb-4 pb-3 border-b border-gray-200/60",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "flex items-center space-x-2",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                                    className: "w-4 h-4 text-gray-500",
-                                                                    fill: "none",
-                                                                    stroke: "currentColor",
-                                                                    viewBox: "0 0 24 24",
-                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                                        strokeLinecap: "round",
-                                                                        strokeLinejoin: "round",
-                                                                        strokeWidth: 2,
-                                                                        d: "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                                        lineNumber: 1280,
-                                                                        columnNumber: 23
-                                                                    }, this)
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1279,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-sm font-medium text-gray-600",
-                                                                    children: "Weekday"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1282,
-                                                                    columnNumber: 21
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1278,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "flex items-center space-x-2",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                                    className: "w-4 h-4 text-gray-500",
-                                                                    fill: "none",
-                                                                    stroke: "currentColor",
-                                                                    viewBox: "0 0 24 24",
-                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                                        strokeLinecap: "round",
-                                                                        strokeLinejoin: "round",
-                                                                        strokeWidth: 2,
-                                                                        d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                                        lineNumber: 1286,
-                                                                        columnNumber: 23
-                                                                    }, this)
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1285,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-sm font-medium text-gray-600",
-                                                                    children: "Trades"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1288,
-                                                                    columnNumber: 21
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1284,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "flex items-center space-x-2",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                                    className: "w-4 h-4 text-gray-500",
-                                                                    fill: "none",
-                                                                    stroke: "currentColor",
-                                                                    viewBox: "0 0 24 24",
-                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                                        strokeLinecap: "round",
-                                                                        strokeLinejoin: "round",
-                                                                        strokeWidth: 2,
-                                                                        d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                                        lineNumber: 1292,
-                                                                        columnNumber: 23
-                                                                    }, this)
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1291,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-sm font-medium text-gray-600",
-                                                                    children: "Win Rate"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1294,
-                                                                    columnNumber: 21
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1290,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "flex items-center space-x-2",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                                    className: "w-4 h-4 text-gray-500",
-                                                                    fill: "none",
-                                                                    stroke: "currentColor",
-                                                                    viewBox: "0 0 24 24",
-                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                                        strokeLinecap: "round",
-                                                                        strokeLinejoin: "round",
-                                                                        strokeWidth: 2,
-                                                                        d: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                                        lineNumber: 1298,
-                                                                        columnNumber: 23
-                                                                    }, this)
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1297,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-sm font-medium text-gray-600",
-                                                                    children: "Sum RR"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1300,
-                                                                    columnNumber: 21
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1296,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "flex items-center space-x-2",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                                    className: "w-4 h-4 text-gray-500",
-                                                                    fill: "none",
-                                                                    stroke: "currentColor",
-                                                                    viewBox: "0 0 24 24",
-                                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                                        strokeLinecap: "round",
-                                                                        strokeLinejoin: "round",
-                                                                        strokeWidth: 2,
-                                                                        d: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
-                                                                    }, void 0, false, {
-                                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                                        lineNumber: 1304,
-                                                                        columnNumber: 23
-                                                                    }, this)
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1303,
-                                                                    columnNumber: 21
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-sm font-medium text-gray-600",
-                                                                    children: "Sum Profit %"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1306,
-                                                                    columnNumber: 21
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1302,
-                                                            columnNumber: 19
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1277,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "space-y-3",
-                                                    children: dailyResults.map((day, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "grid grid-cols-5 gap-4 p-3 bg-white rounded-xl border border-gray-200/60 hover:shadow-md transition-all duration-200",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: "font-medium text-gray-900",
-                                                                    children: day.weekday
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1314,
-                                                                    columnNumber: 23
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: "font-semibold text-gray-700",
-                                                                    children: day.trades
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1315,
-                                                                    columnNumber: 23
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: `font-semibold ${day.winRate > 50 ? 'text-green-600' : day.winRate > 0 ? 'text-orange-600' : 'text-gray-600'}`,
-                                                                    children: [
-                                                                        day.winRate,
-                                                                        "%"
-                                                                    ]
-                                                                }, void 0, true, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1316,
-                                                                    columnNumber: 23
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: `font-semibold ${day.sumRR > 0 ? 'text-green-600' : day.sumRR < 0 ? 'text-red-600' : 'text-gray-600'}`,
-                                                                    children: day.sumRR
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1322,
-                                                                    columnNumber: 23
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: `font-semibold ${day.sumProfitPercent > 0 ? 'text-green-600' : day.sumProfitPercent < 0 ? 'text-red-600' : 'text-gray-600'}`,
-                                                                    children: [
-                                                                        day.sumProfitPercent > 0 ? '+' : '',
-                                                                        day.sumProfitPercent,
-                                                                        "%"
-                                                                    ]
-                                                                }, void 0, true, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1328,
-                                                                    columnNumber: 23
-                                                                }, this)
-                                                            ]
-                                                        }, index, true, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1313,
-                                                            columnNumber: 21
-                                                        }, this))
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1311,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "mt-6 pt-4 border-t border-gray-200/60",
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                        className: "grid grid-cols-5 gap-4 p-3 bg-gradient-to-r from-gray-50 to-orange-50 rounded-xl border border-gray-200/60",
-                                                        children: [
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: "font-bold text-gray-900",
-                                                                children: "SUM"
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 1341,
-                                                                columnNumber: 21
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: "font-bold text-gray-900",
-                                                                children: dailyResults.reduce((sum, day)=>sum + day.trades, 0)
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 1342,
-                                                                columnNumber: 21
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: "font-bold text-gray-900",
-                                                                children: [
-                                                                    dailyResults.length > 0 ? (dailyResults.reduce((sum, day)=>sum + day.winRate * day.trades, 0) / Math.max(dailyResults.reduce((sum, day)=>sum + day.trades, 0), 1)).toFixed(1) : '0.0',
-                                                                    "%"
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 1345,
-                                                                columnNumber: 21
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: `font-bold ${dailyResults.reduce((sum, day)=>sum + day.sumRR, 0) > 0 ? 'text-green-600' : dailyResults.reduce((sum, day)=>sum + day.sumRR, 0) < 0 ? 'text-red-600' : 'text-gray-600'}`,
-                                                                children: dailyResults.reduce((sum, day)=>sum + day.sumRR, 0).toFixed(1)
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 1350,
-                                                                columnNumber: 21
-                                                            }, this),
-                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                className: `font-bold ${dailyResults.reduce((sum, day)=>sum + day.sumProfitPercent, 0) > 0 ? 'text-green-600' : dailyResults.reduce((sum, day)=>sum + day.sumProfitPercent, 0) < 0 ? 'text-red-600' : 'text-gray-600'}`,
-                                                                children: [
-                                                                    dailyResults.reduce((sum, day)=>sum + day.sumProfitPercent, 0) > 0 ? '+' : '',
-                                                                    dailyResults.reduce((sum, day)=>sum + day.sumProfitPercent, 0).toFixed(2),
-                                                                    "%"
-                                                                ]
-                                                            }, void 0, true, {
-                                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 1356,
-                                                                columnNumber: 21
-                                                            }, this)
-                                                        ]
-                                                    }, void 0, true, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 1340,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1339,
-                                                    columnNumber: 17
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1275,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 1266,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/app/am-trade/overview/page.js",
-                            lineNumber: 1189,
-                            columnNumber: 11
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "grid grid-cols-1 lg:grid-cols-2 gap-6",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "bg-gradient-to-br from-white via-gray-50/50 to-green-50/30 p-6 rounded-2xl border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                            className: "text-xl font-bold text-gray-900 mb-6 flex items-center",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                    className: "w-6 h-6 mr-3 text-green-600",
-                                                    fill: "none",
-                                                    stroke: "currentColor",
-                                                    viewBox: "0 0 24 24",
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                        strokeLinecap: "round",
-                                                        strokeLinejoin: "round",
-                                                        strokeWidth: 2,
-                                                        d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 1375,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1374,
-                                                    columnNumber: 17
-                                                }, this),
-                                                "AM Session Performance"
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1373,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "space-y-4",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "flex justify-between items-center p-3 bg-white rounded-xl border border-gray-200/60",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "text-sm font-medium text-gray-600",
-                                                            children: "Average Win"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1381,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "font-bold text-green-600",
-                                                            children: formatCurrency(analytics.avgWin)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1382,
-                                                            columnNumber: 19
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1380,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "flex justify-between items-center p-3 bg-white rounded-xl border border-gray-200/60",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "text-sm font-medium text-gray-600",
-                                                            children: "Average Loss"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1385,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "font-bold text-red-600",
-                                                            children: formatCurrency(analytics.avgLoss)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1386,
-                                                            columnNumber: 19
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1384,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "flex justify-between items-center p-3 bg-white rounded-xl border border-gray-200/60",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "text-sm font-medium text-gray-600",
-                                                            children: "Best Trade"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1389,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "font-bold text-green-600",
-                                                            children: formatCurrency(analytics.bestTrade)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1390,
-                                                            columnNumber: 19
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1388,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "flex justify-between items-center p-3 bg-white rounded-xl border border-gray-200/60",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "text-sm font-medium text-gray-600",
-                                                            children: "Worst Trade"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1393,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "font-bold text-red-600",
-                                                            children: formatCurrency(analytics.worstTrade)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1394,
-                                                            columnNumber: 19
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1392,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "flex justify-between items-center p-3 bg-white rounded-xl border border-gray-200/60",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "text-sm font-medium text-gray-600",
-                                                            children: "Profit Factor"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1397,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: `font-bold ${analytics.profitFactor > 1 ? 'text-green-600' : 'text-red-600'}`,
-                                                            children: analytics.profitFactor === Infinity ? '∞' : analytics.profitFactor
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1398,
-                                                            columnNumber: 19
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1396,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "flex justify-between items-center p-3 bg-white rounded-xl border border-gray-200/60",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "text-sm font-medium text-gray-600",
-                                                            children: "Win Streak"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1403,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "font-bold text-blue-600",
-                                                            children: analytics.winStreak
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1404,
-                                                            columnNumber: 19
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1402,
-                                                    columnNumber: 17
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1379,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 1372,
-                                    columnNumber: 13
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "bg-gradient-to-br from-white via-gray-50/50 to-blue-50/30 p-6 rounded-2xl border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                            className: "text-xl font-bold text-gray-900 mb-6 flex items-center",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                    className: "w-6 h-6 mr-3 text-blue-600",
-                                                    fill: "none",
-                                                    stroke: "currentColor",
-                                                    viewBox: "0 0 24 24",
-                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                        strokeLinecap: "round",
-                                                        strokeLinejoin: "round",
-                                                        strokeWidth: 2,
-                                                        d: "M13 10V3L4 14h7v7l9-11h-7z"
-                                                    }, void 0, false, {
-                                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 1413,
-                                                        columnNumber: 19
-                                                    }, this)
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1412,
-                                                    columnNumber: 17
-                                                }, this),
-                                                "Quick Actions"
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1411,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "space-y-4 mb-6",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                    onClick: ()=>router.push('/am-trade/add-am-trade'),
-                                                    className: "w-full flex items-center space-x-3 p-4 text-left bg-gradient-to-r from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 rounded-xl transition-all duration-200 border border-blue-200/60 hover:border-blue-300/60",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "p-2 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                                className: "w-5 h-5 text-white",
-                                                                fill: "none",
-                                                                stroke: "currentColor",
-                                                                viewBox: "0 0 24 24",
-                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                                    strokeLinecap: "round",
-                                                                    strokeLinejoin: "round",
-                                                                    strokeWidth: 1.5,
-                                                                    d: "M12 4v16m8-8H4"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1424,
-                                                                    columnNumber: 23
-                                                                }, this)
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 1423,
-                                                                columnNumber: 21
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1422,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "font-semibold text-blue-700",
-                                                            children: "Add New AM Trade"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1427,
-                                                            columnNumber: 19
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1418,
-                                                    columnNumber: 17
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                    onClick: ()=>router.push('/am-trade/journal'),
-                                                    className: "w-full flex items-center space-x-3 p-4 text-left bg-gradient-to-r from-gray-50 to-slate-50 hover:from-gray-100 hover:to-slate-100 rounded-xl transition-all duration-200 border border-gray-200/60 hover:border-gray-300/60",
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "p-2 bg-gradient-to-r from-gray-600 to-slate-600 rounded-lg",
-                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                                className: "w-5 h-5 text-white",
-                                                                fill: "none",
-                                                                stroke: "currentColor",
-                                                                viewBox: "0 0 24 24",
-                                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                                    strokeLinecap: "round",
-                                                                    strokeLinejoin: "round",
-                                                                    strokeWidth: 1.5,
-                                                                    d: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1435,
-                                                                    columnNumber: 23
-                                                                }, this)
-                                                            }, void 0, false, {
-                                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 1434,
-                                                                columnNumber: 21
-                                                            }, this)
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1433,
-                                                            columnNumber: 19
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "font-semibold text-gray-700",
-                                                            children: "View AM Journal"
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1438,
-                                                            columnNumber: 19
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1429,
-                                                    columnNumber: 17
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1417,
-                                            columnNumber: 15
-                                        }, this),
-                                        uniquePairs.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                                    className: "text-lg font-semibold text-gray-900 mb-4",
-                                                    children: "Top Trading Pairs"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1445,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "space-y-2",
-                                                    children: uniquePairs.slice(0, 5).map((pair)=>{
-                                                        const pairTrades = filteredTrades.filter((trade)=>trade.tradingPair === pair);
-                                                        const pairProfit = pairTrades.reduce((sum, trade)=>sum + (trade.actualProfit || 0), 0);
-                                                        const pairWinRate = pairTrades.filter((trade)=>trade.status === 'win').length / pairTrades.length * 100;
-                                                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "flex items-center justify-between p-3 bg-white rounded-lg border border-gray-200/60",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    children: [
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                            className: "font-medium text-gray-900",
-                                                                            children: pair
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                                            lineNumber: 1455,
-                                                                            columnNumber: 29
-                                                                        }, this),
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                            className: "text-xs text-gray-500",
-                                                                            children: [
-                                                                                pairTrades.length,
-                                                                                " trades • ",
-                                                                                pairWinRate.toFixed(0),
-                                                                                "% win rate"
-                                                                            ]
-                                                                        }, void 0, true, {
-                                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                                            lineNumber: 1456,
-                                                                            columnNumber: 29
-                                                                        }, this)
-                                                                    ]
-                                                                }, void 0, true, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1454,
-                                                                    columnNumber: 27
-                                                                }, this),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: `font-bold text-sm ${pairProfit > 0 ? 'text-green-600' : pairProfit < 0 ? 'text-red-600' : 'text-gray-600'}`,
-                                                                    children: formatCurrency(pairProfit)
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1460,
-                                                                    columnNumber: 27
-                                                                }, this)
-                                                            ]
-                                                        }, pair, true, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1453,
-                                                            columnNumber: 25
-                                                        }, this);
-                                                    })
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1446,
-                                                    columnNumber: 19
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1444,
-                                            columnNumber: 17
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 1410,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/app/am-trade/overview/page.js",
-                            lineNumber: 1370,
-                            columnNumber: 11
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/app/am-trade/overview/page.js",
-                    lineNumber: 678,
-                    columnNumber: 9
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/app/am-trade/overview/page.js",
-                lineNumber: 677,
-                columnNumber: 7
-            }, this),
-            showAddAccountModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "fixed inset-0 backdrop-blur-sm bg-gray-900/50 flex items-center justify-center z-50 p-4",
-                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "bg-white rounded-xl shadow-2xl w-full max-w-md transform transition-all",
-                    children: [
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "px-6 py-4 border-b border-gray-200",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex items-center justify-between",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                        className: "text-lg font-semibold text-gray-900",
-                                        children: "Add New Account"
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 1484,
-                                        columnNumber: 17
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                        onClick: ()=>{
-                                            setShowAddAccountModal(false);
-                                            setNewAccount({
-                                                name: '',
-                                                balance: '',
-                                                tag: 'personal'
-                                            });
-                                        },
-                                        className: "p-2 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors",
-                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                            className: "w-5 h-5",
-                                            fill: "none",
-                                            stroke: "currentColor",
-                                            viewBox: "0 0 24 24",
-                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                strokeLinecap: "round",
-                                                strokeLinejoin: "round",
-                                                strokeWidth: 1.5,
-                                                d: "M6 18L18 6M6 6l12 12"
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1493,
-                                                columnNumber: 21
-                                            }, this)
-                                        }, void 0, false, {
-                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1492,
-                                            columnNumber: 19
-                                        }, this)
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 1485,
-                                        columnNumber: 17
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/app/am-trade/overview/page.js",
-                                lineNumber: 1483,
-                                columnNumber: 15
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/app/am-trade/overview/page.js",
-                            lineNumber: 1482,
-                            columnNumber: 13
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "px-6 py-4 space-y-4",
-                            children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                            className: "block text-sm font-medium text-gray-700 mb-2",
-                                            children: "Account Name"
-                                        }, void 0, false, {
-                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1503,
-                                            columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                            type: "text",
-                                            value: newAccount.name,
-                                            onChange: (e)=>setNewAccount({
-                                                    ...newAccount,
-                                                    name: e.target.value
-                                                }),
-                                            placeholder: "e.g., My AM Trading Account",
-                                            className: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                                        }, void 0, false, {
-                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1506,
-                                            columnNumber: 17
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 1502,
-                                    columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                            className: "block text-sm font-medium text-gray-700 mb-2",
-                                            children: "Initial Balance"
-                                        }, void 0, false, {
-                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1517,
-                                            columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "relative",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                    className: "absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500",
-                                                    children: "$"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1521,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                                    type: "number",
-                                                    value: newAccount.balance,
-                                                    onChange: (e)=>setNewAccount({
-                                                            ...newAccount,
-                                                            balance: e.target.value
-                                                        }),
-                                                    placeholder: "0.00",
-                                                    className: "w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1522,
-                                                    columnNumber: 19
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1520,
-                                            columnNumber: 17
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 1516,
-                                    columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                            className: "block text-sm font-medium text-gray-700 mb-3",
-                                            children: "Account Type"
-                                        }, void 0, false, {
-                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1534,
-                                            columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "grid grid-cols-1 gap-2",
-                                            children: [
-                                                {
-                                                    value: 'personal',
-                                                    label: 'Personal',
-                                                    color: 'bg-blue-600'
-                                                },
-                                                {
-                                                    value: 'business',
-                                                    label: 'Business',
-                                                    color: 'bg-green-600'
-                                                },
-                                                {
-                                                    value: 'demo',
-                                                    label: 'Demo',
-                                                    color: 'bg-purple-600'
-                                                },
-                                                {
-                                                    value: 'forex',
-                                                    label: 'Forex',
-                                                    color: 'bg-orange-600'
-                                                },
-                                                {
-                                                    value: 'crypto',
-                                                    label: 'Crypto',
-                                                    color: 'bg-indigo-600'
-                                                }
-                                            ].map((tag)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                    onClick: ()=>setNewAccount({
-                                                            ...newAccount,
-                                                            tag: tag.value
-                                                        }),
-                                                    className: `flex items-center space-x-3 p-3 rounded-lg border-2 transition-all ${newAccount.tag === tag.value ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'}`,
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: `w-4 h-4 rounded-full ${tag.color}`
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1554,
-                                                            columnNumber: 23
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "font-medium text-gray-900",
-                                                            children: tag.label
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1555,
-                                                            columnNumber: 23
-                                                        }, this)
-                                                    ]
-                                                }, tag.value, true, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1545,
-                                                    columnNumber: 21
-                                                }, this))
-                                        }, void 0, false, {
-                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1537,
-                                            columnNumber: 17
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 1533,
-                                    columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "bg-gray-50 rounded-lg p-4",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "text-sm font-medium text-gray-700 mb-2",
-                                            children: "Preview"
-                                        }, void 0, false, {
-                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1563,
-                                            columnNumber: 17
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "flex items-center space-x-3",
-                                            children: [
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: `w-3 h-3 rounded-full ${getTagColor(newAccount.tag)}`
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1565,
-                                                    columnNumber: 19
-                                                }, this),
-                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    children: [
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                            className: "font-medium text-gray-900",
-                                                            children: newAccount.name || 'Account Name'
-                                                        }, void 0, false, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1567,
-                                                            columnNumber: 21
-                                                        }, this),
-                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                            className: "text-sm text-gray-600",
-                                                            children: [
-                                                                "$",
-                                                                newAccount.balance ? parseFloat(newAccount.balance).toLocaleString() : '0.00',
-                                                                " • ",
-                                                                getTagDisplayName(newAccount.tag)
-                                                            ]
-                                                        }, void 0, true, {
-                                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1570,
-                                                            columnNumber: 21
-                                                        }, this)
-                                                    ]
-                                                }, void 0, true, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1566,
-                                                    columnNumber: 19
-                                                }, this)
-                                            ]
-                                        }, void 0, true, {
-                                            fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1564,
-                                            columnNumber: 17
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 1562,
-                                    columnNumber: 15
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/app/am-trade/overview/page.js",
-                            lineNumber: 1500,
-                            columnNumber: 13
-                        }, this),
-                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "px-6 py-4 border-t border-gray-200 bg-gray-50 rounded-b-xl",
-                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex items-center justify-end space-x-3",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                        onClick: ()=>{
-                                            setShowAddAccountModal(false);
-                                            setNewAccount({
-                                                name: '',
-                                                balance: '',
-                                                tag: 'personal'
-                                            });
-                                        },
-                                        className: "px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors",
-                                        children: "Cancel"
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 1581,
-                                        columnNumber: 17
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                        onClick: handleAddAccount,
-                                        disabled: !newAccount.name || !newAccount.balance,
-                                        className: "px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors flex items-center space-x-2",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
-                                                className: "w-4 h-4",
-                                                fill: "none",
-                                                stroke: "currentColor",
-                                                viewBox: "0 0 24 24",
-                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
-                                                    strokeLinecap: "round",
-                                                    strokeLinejoin: "round",
-                                                    strokeWidth: 1.5,
-                                                    d: "M12 4v16m8-8H4"
-                                                }, void 0, false, {
-                                                    fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1596,
-                                                    columnNumber: 21
-                                                }, this)
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1595,
-                                                columnNumber: 19
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                children: "Add Account"
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1598,
-                                                columnNumber: 19
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 1590,
-                                        columnNumber: 17
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/app/am-trade/overview/page.js",
-                                lineNumber: 1580,
-                                columnNumber: 15
-                            }, this)
-                        }, void 0, false, {
-                            fileName: "[project]/app/am-trade/overview/page.js",
-                            lineNumber: 1579,
-                            columnNumber: 13
-                        }, this)
-                    ]
-                }, void 0, true, {
-                    fileName: "[project]/app/am-trade/overview/page.js",
-                    lineNumber: 1480,
-                    columnNumber: 11
-                }, this)
-            }, void 0, false, {
-                fileName: "[project]/app/am-trade/overview/page.js",
-                lineNumber: 1479,
-                columnNumber: 9
-            }, this)
-        ]
-    }, void 0, true, {
-        fileName: "[project]/app/am-trade/overview/page.js",
-        lineNumber: 650,
-        columnNumber: 5
-    }, this);
-}
-}}),
+const e = new Error(`Could not parse module '[project]/app/am-trade/overview/page.js'
+
+Expected ',', got '{'`);
+e.code = 'MODULE_UNPARSEABLE';
+throw e;}}),
 
 };
 

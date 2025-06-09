@@ -2,7 +2,8 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
-import Sidebar from '../../../components/Sidebar';
+import SidebarWrapper from '../../../components/SidebarWrapper';
+import MobileHeader from '../../../components/MobileHeader';
 
 export default function AddAMTrade() {
   const router = useRouter();
@@ -789,42 +790,36 @@ export default function AddAMTrade() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 flex">
-      <Sidebar
-        user={user}
-        currentAccountId={currentAccountId}
-        accounts={accounts}
-        onAccountSwitch={handleAccountSwitch}
-        onAddAccount={() => setShowAddAccountModal(true)}
-        onEditAccount={handleEditAccount}
-        onDeleteAccount={handleDeleteAccount}
-        onLogout={handleLogout}
-        onUpdateUser={(updatedUser) => setUser(updatedUser)}
-      />
-
-      {/* Main Content */}
-      <main className="flex-1 lg:ml-64 p-3 sm:p-6 lg:p-8">
+    <SidebarWrapper
+      user={user}
+      currentAccountId={currentAccountId}
+      accounts={accounts}
+      onAccountSwitch={handleAccountSwitch}
+      onAddAccount={() => setShowAddAccountModal(true)}
+      onEditAccount={handleEditAccount}
+      onDeleteAccount={handleDeleteAccount}
+      onLogout={handleLogout}
+      onUpdateUser={(updatedUser) => setUser(updatedUser)}
+    >
+      {({ toggleMobileSidebar }) => (
         <div className="max-w-7xl mx-auto">
-          {/* Header */}
-          <div className="mb-6 sm:mb-8">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div>
-                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent">
-                  Add AM Trade
-                </h1>
-                <p className="text-gray-600 mt-1 sm:mt-2 text-sm sm:text-base">Record your morning trading session</p>
-              </div>
+          {/* Mobile Header */}
+          <MobileHeader
+            title="Add AM Trade"
+            subtitle="Record your morning trading session"
+            onMenuToggle={toggleMobileSidebar}
+            rightContent={
               <button
                 onClick={() => router.push('/am-trade/overview')}
-                className="text-gray-600 hover:text-gray-800 flex items-center space-x-2 px-4 py-2 rounded-xl hover:bg-white/50 transition-all duration-200 self-start sm:self-auto"
+                className="text-gray-600 hover:text-gray-800 flex items-center space-x-2 px-4 py-2 rounded-xl hover:bg-white/50 transition-all duration-200"
               >
                 <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
                 <span className="text-sm sm:text-base">Back to Overview</span>
               </button>
-            </div>
-          </div>
+            }
+          />
 
           {/* Trade Form */}
           <div className="space-y-6 sm:space-y-8">
@@ -1830,10 +1825,9 @@ export default function AddAMTrade() {
             </form>
           </div>
         </div>
-      </main>
 
-      {/* Add New Account Modal */}
-      {showAddAccountModal && (
+        {/* Add New Account Modal */}
+        {showAddAccountModal && (
         <div className="fixed inset-0 backdrop-blur-sm bg-gray-900/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-md transform transition-all">
             {/* Modal Header */}
@@ -2074,7 +2068,8 @@ export default function AddAMTrade() {
             </div>
           </div>
         </div>
+        )}
       )}
-    </div>
+    </SidebarWrapper>
   );
 }

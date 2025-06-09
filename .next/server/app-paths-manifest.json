@@ -1,14 +1,11 @@
 {
-  "/am-trade/journal/page": "app/am-trade/journal/page.js",
-  "/am-trade/overview/page": "app/am-trade/overview/page.js",
   "/am-trade/page": "app/am-trade/page.js",
   "/api/accounts/route": "app/api/accounts/route.js",
-  "/api/am-trades/route": "app/api/am-trades/route.js",
   "/api/auth/login/route": "app/api/auth/login/route.js",
   "/api/scraper/dashboard-load/route": "app/api/scraper/dashboard-load/route.js",
   "/api/trades/route": "app/api/trades/route.js",
-  "/api/user/profile/route": "app/api/user/profile/route.js",
   "/dashboard/page": "app/dashboard/page.js",
+  "/journal/page": "app/journal/page.js",
   "/login/page": "app/login/page.js",
   "/page": "app/page.js"
 }

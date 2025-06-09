@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
-import Sidebar from '../../../components/Sidebar';
+import SidebarWrapper from '../../../components/SidebarWrapper';
+import MobileHeader from '../../../components/MobileHeader';
 
 export default function AMTradeJournal() {
   const router = useRouter();
@@ -793,33 +794,25 @@ export default function AMTradeJournal() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-purple-50/30 flex">
-      <Sidebar
-        user={user}
-        currentAccountId={currentAccountId}
-        accounts={accounts}
-        onAccountSwitch={handleAccountSwitch}
-        onAddAccount={() => setShowAddAccountModal(true)}
-        onEditAccount={handleEditAccount}
-        onDeleteAccount={handleDeleteAccount}
-        onLogout={handleLogout}
-        onUpdateUser={(updatedUser) => setUser(updatedUser)}
-      />
-
-      {/* Main Content */}
-      <main className="flex-1 lg:ml-64 p-3 sm:p-6 lg:p-8">
+    <SidebarWrapper
+      user={user}
+      currentAccountId={currentAccountId}
+      accounts={accounts}
+      onAccountSwitch={handleAccountSwitch}
+      onAddAccount={() => setShowAddAccountModal(true)}
+      onEditAccount={handleEditAccount}
+      onDeleteAccount={handleDeleteAccount}
+      onLogout={handleLogout}
+      onUpdateUser={(updatedUser) => setUser(updatedUser)}
+    >
+      {({ toggleMobileSidebar }) => (
         <div className="max-w-8xl mx-auto">
-          {/* Header */}
-          <div className="mb-6 sm:mb-8">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div>
-                <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 bg-clip-text text-transparent">
-                  AM Trade Journal
-                </h1>
-                <p className="text-gray-600 mt-1 sm:mt-2 text-sm sm:text-base">
-                  Track and analyze your Asian Market trading performance
-                </p>
-              </div>
+          {/* Mobile Header */}
+          <MobileHeader
+            title="AM Trade Journal"
+            subtitle="Track and analyze your Asian Market trading performance"
+            onMenuToggle={toggleMobileSidebar}
+            rightContent={
               <button
                 onClick={() => router.push('/am-trade/add-am-trade')}
                 className="px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:via-purple-700 hover:to-indigo-700 transition-all duration-200 font-medium text-sm sm:text-base shadow-lg hover:shadow-xl flex items-center justify-center space-x-2 transform hover:scale-105 active:scale-95"
@@ -829,8 +822,8 @@ export default function AMTradeJournal() {
                 </svg>
                 <span>Add New Trade</span>
               </button>
-            </div>
-          </div>
+            }
+          />
 
           {/* Filters and Search */}
           <div className="bg-gradient-to-br from-white via-gray-50/50 to-blue-50/30 rounded-2xl sm:rounded-3xl border border-gray-200/60 p-4 sm:p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-300 mb-6 sm:mb-8">
@@ -1080,10 +1073,9 @@ export default function AMTradeJournal() {
             </div>
           )}
         </div>
-      </main>
 
-      {/* Add New Account Modal */}
-      {showAddAccountModal && (
+        {/* Add New Account Modal */}
+        {showAddAccountModal && (
         <div className="fixed inset-0 backdrop-blur-sm bg-gray-900/50 flex items-center justify-center z-50 p-4">
           <div className="bg-white rounded-xl shadow-2xl w-full max-w-md transform transition-all">
             {/* Modal Header */}
@@ -2449,8 +2441,9 @@ export default function AMTradeJournal() {
             </div>
           </div>
         </div>
+        )}
       )}
-    </div>
+    </SidebarWrapper>
   );
 }
 
