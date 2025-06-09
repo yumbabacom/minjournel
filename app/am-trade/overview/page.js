@@ -44,6 +44,7 @@ export default function AMTradeOverview() {
     balance: '',
     tag: 'personal'
   });
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
 
   // Real AM Trade data
   const [amTrades, setAmTrades] = useState([]);
@@ -189,6 +190,18 @@ export default function AMTradeOverview() {
       fetchAMTrades();
     }
   }, [currentAccountId]);
+
+  // Close mobile sidebar on window resize (when switching to desktop)
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) { // lg breakpoint
+        setIsMobileSidebarOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Calculate analytics from real data
   const analytics = useMemo(() => {
@@ -355,13 +368,6 @@ export default function AMTradeOverview() {
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
     const results = [];
 
-    // Debug logging
-    console.log('Daily Results Calculation:', {
-      totalAmTrades: amTrades.length,
-      currentAccountId,
-      sampleTrade: amTrades[0]
-    });
-
     days.forEach(dayName => {
       // Use all AM trades (not just filtered) for daily analysis to get historical patterns
       const allDayTrades = amTrades.filter(trade => {
@@ -403,16 +409,8 @@ export default function AMTradeOverview() {
         sumProfitPercent: parseFloat(dayProfitPercent.toFixed(2))
       };
 
-      console.log(`${dayName} Results:`, {
-        allDayTrades: allDayTrades.length,
-        completedDayTrades: completedDayTrades.length,
-        dayResult
-      });
-
       results.push(dayResult);
     });
-
-    console.log('Final Daily Results:', results);
     return results;
   }, [amTrades, currentAccountId]);
 
@@ -650,37 +648,64 @@ export default function AMTradeOverview() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex">
-      <Sidebar
-        user={user}
-        currentAccountId={currentAccountId}
-        accounts={accounts}
-        onAccountSwitch={handleAccountSwitch}
-        onAddAccount={() => setShowAddAccountModal(true)}
-        onEditAccount={handleEditAccount}
-        onDeleteAccount={handleDeleteAccount}
-        onLogout={handleLogout}
-        onUpdateUser={(updatedUser) => setUser(updatedUser)}
-      />
+      {/* Mobile Sidebar Overlay */}
+      {isMobileSidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+          onClick={() => setIsMobileSidebarOpen(false)}
+        />
+      )}
+
+      {/* Sidebar */}
+      <div className={`fixed inset-y-0 left-0 z-50 w-64 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${
+        isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+      }`}>
+        <Sidebar
+          user={user}
+          currentAccountId={currentAccountId}
+          accounts={accounts}
+          onAccountSwitch={handleAccountSwitch}
+          onAddAccount={() => setShowAddAccountModal(true)}
+          onEditAccount={handleEditAccount}
+          onDeleteAccount={handleDeleteAccount}
+          onLogout={handleLogout}
+          onUpdateUser={(updatedUser) => setUser(updatedUser)}
+        />
+      </div>
 
       {/* Main Content */}
-      <main className="flex-1 ml-64 p-8">
+      <main className="flex-1 lg:ml-64 p-4 sm:p-6 lg:p-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="mb-8">
+          <div className="mb-6 sm:mb-8">
             <div className="flex items-center justify-between">
-              <div>
-                <h1 className="text-3xl font-bold text-gray-900">AM Trade Overview</h1>
-                <p className="text-gray-600 mt-2">Your morning trading session dashboard</p>
-              </div>
               <div className="flex items-center space-x-4">
-                <div className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
+                {/* Mobile Menu Button */}
+                <button
+                  onClick={() => setIsMobileSidebarOpen(true)}
+                  className="lg:hidden p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                </button>
+
+                <div>
+                  <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">AM Trade Overview</h1>
+                  <p className="text-gray-600 mt-1 sm:mt-2 text-sm sm:text-base">Your morning trading session dashboard</p>
+                </div>
+              </div>
+
+              <div className="flex items-center space-x-2 sm:space-x-4">
+                <div className="bg-green-100 text-green-800 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium">
                   AM Session Active
                 </div>
                 <button
                   onClick={() => router.push('/am-trade/add-am-trade')}
-                  className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                  className="bg-blue-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm sm:text-base"
                 >
-                  Add AM Trade
+                  <span className="hidden sm:inline">Add AM Trade</span>
+                  <span className="sm:hidden">Add</span>
                 </button>
               </div>
             </div>
@@ -1161,7 +1186,7 @@ export default function AMTradeOverview() {
           </div>
 
           {/* Trading Week Results & Trading Day Results */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+          <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
             {/* Trading Week Results */}
             <div className="bg-gradient-to-br from-white via-gray-50/50 to-purple-50/30 rounded-2xl border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300">
               <div className="p-6 border-b border-gray-200/60">
@@ -1172,14 +1197,14 @@ export default function AMTradeOverview() {
                   Trading Week Results
                 </h3>
               </div>
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 {/* Week Results Header */}
-                <div className="grid grid-cols-5 gap-4 mb-4 pb-3 border-b border-gray-200/60">
+                <div className="grid grid-cols-5 gap-2 sm:gap-4 mb-4 pb-3 border-b border-gray-200/60">
                   <div className="flex items-center space-x-2">
                     <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span className="text-sm font-medium text-gray-600">Week</span>
+                    <span className="text-xs sm:text-sm font-medium text-gray-600">Week</span>
                   </div>
                   <div className="flex items-center space-x-2">
                     <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1247,9 +1272,9 @@ export default function AMTradeOverview() {
                   Trading Day Results
                 </h3>
               </div>
-              <div className="p-6">
+              <div className="p-4 sm:p-6">
                 {/* Day Results Header */}
-                <div className="grid grid-cols-5 gap-4 mb-4 pb-3 border-b border-gray-200/60">
+                <div className="grid grid-cols-5 gap-2 sm:gap-4 mb-4 pb-3 border-b border-gray-200/60">
                   <div className="flex items-center space-x-2">
                     <svg className="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />

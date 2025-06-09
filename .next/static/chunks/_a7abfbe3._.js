@@ -1985,6 +1985,7 @@ function AMTradeOverview() {
         balance: '',
         tag: 'personal'
     });
+    const [isMobileSidebarOpen, setIsMobileSidebarOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     // Real AM Trade data
     const [amTrades, setAmTrades] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
     const [filteredTrades, setFilteredTrades] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
@@ -2142,6 +2143,22 @@ function AMTradeOverview() {
     }["AMTradeOverview.useEffect"], [
         currentAccountId
     ]);
+    // Close mobile sidebar on window resize (when switching to desktop)
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "AMTradeOverview.useEffect": ()=>{
+            const handleResize = {
+                "AMTradeOverview.useEffect.handleResize": ()=>{
+                    if (window.innerWidth >= 1024) {
+                        setIsMobileSidebarOpen(false);
+                    }
+                }
+            }["AMTradeOverview.useEffect.handleResize"];
+            window.addEventListener('resize', handleResize);
+            return ({
+                "AMTradeOverview.useEffect": ()=>window.removeEventListener('resize', handleResize)
+            })["AMTradeOverview.useEffect"];
+        }
+    }["AMTradeOverview.useEffect"], []);
     // Calculate analytics from real data
     const analytics = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useMemo"])({
         "AMTradeOverview.useMemo[analytics]": ()=>{
@@ -2325,12 +2342,6 @@ function AMTradeOverview() {
                 'Friday'
             ];
             const results = [];
-            // Debug logging
-            console.log('Daily Results Calculation:', {
-                totalAmTrades: amTrades.length,
-                currentAccountId,
-                sampleTrade: amTrades[0]
-            });
             days.forEach({
                 "AMTradeOverview.useMemo[dailyResults]": (dayName)=>{
                     // Use all AM trades (not just filtered) for daily analysis to get historical patterns
@@ -2375,15 +2386,9 @@ function AMTradeOverview() {
                         sumRR: parseFloat(dayRR.toFixed(1)),
                         sumProfitPercent: parseFloat(dayProfitPercent.toFixed(2))
                     };
-                    console.log(`${dayName} Results:`, {
-                        allDayTrades: allDayTrades.length,
-                        completedDayTrades: completedDayTrades.length,
-                        dayResult
-                    });
                     results.push(dayResult);
                 }
             }["AMTradeOverview.useMemo[dailyResults]"]);
-            console.log('Final Daily Results:', results);
             return results;
         }
     }["AMTradeOverview.useMemo[dailyResults]"], [
@@ -2615,102 +2620,171 @@ function AMTradeOverview() {
                 className: "animate-spin rounded-full h-12 w-12 border-2 border-blue-600 border-t-transparent"
             }, void 0, false, {
                 fileName: "[project]/app/am-trade/overview/page.js",
-                lineNumber: 646,
+                lineNumber: 644,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/app/am-trade/overview/page.js",
-            lineNumber: 645,
+            lineNumber: 643,
             columnNumber: 7
         }, this);
     }
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "min-h-screen bg-gray-50 flex",
         children: [
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Sidebar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                user: user,
-                currentAccountId: currentAccountId,
-                accounts: accounts,
-                onAccountSwitch: handleAccountSwitch,
-                onAddAccount: ()=>setShowAddAccountModal(true),
-                onEditAccount: handleEditAccount,
-                onDeleteAccount: handleDeleteAccount,
-                onLogout: handleLogout,
-                onUpdateUser: (updatedUser)=>setUser(updatedUser)
+            isMobileSidebarOpen && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden",
+                onClick: ()=>setIsMobileSidebarOpen(false)
             }, void 0, false, {
                 fileName: "[project]/app/am-trade/overview/page.js",
                 lineNumber: 653,
+                columnNumber: 9
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: `fixed inset-y-0 left-0 z-50 w-64 transform transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0 ${isMobileSidebarOpen ? 'translate-x-0' : '-translate-x-full'}`,
+                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$components$2f$Sidebar$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                    user: user,
+                    currentAccountId: currentAccountId,
+                    accounts: accounts,
+                    onAccountSwitch: handleAccountSwitch,
+                    onAddAccount: ()=>setShowAddAccountModal(true),
+                    onEditAccount: handleEditAccount,
+                    onDeleteAccount: handleDeleteAccount,
+                    onLogout: handleLogout,
+                    onUpdateUser: (updatedUser)=>setUser(updatedUser)
+                }, void 0, false, {
+                    fileName: "[project]/app/am-trade/overview/page.js",
+                    lineNumber: 663,
+                    columnNumber: 9
+                }, this)
+            }, void 0, false, {
+                fileName: "[project]/app/am-trade/overview/page.js",
+                lineNumber: 660,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
-                className: "flex-1 ml-64 p-8",
+                className: "flex-1 lg:ml-64 p-4 sm:p-6 lg:p-8",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "max-w-7xl mx-auto",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "mb-8",
+                            className: "mb-6 sm:mb-8",
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "flex items-center justify-between",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex items-center space-x-4",
                                         children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                                className: "text-3xl font-bold text-gray-900",
-                                                children: "AM Trade Overview"
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                onClick: ()=>setIsMobileSidebarOpen(true),
+                                                className: "lg:hidden p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors",
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                                    className: "w-6 h-6",
+                                                    fill: "none",
+                                                    stroke: "currentColor",
+                                                    viewBox: "0 0 24 24",
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                                        strokeLinecap: "round",
+                                                        strokeLinejoin: "round",
+                                                        strokeWidth: 2,
+                                                        d: "M4 6h16M4 12h16M4 18h16"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/am-trade/overview/page.js",
+                                                        lineNumber: 689,
+                                                        columnNumber: 21
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/am-trade/overview/page.js",
+                                                    lineNumber: 688,
+                                                    columnNumber: 19
+                                                }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 672,
+                                                lineNumber: 684,
                                                 columnNumber: 17
                                             }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: "text-gray-600 mt-2",
-                                                children: "Your morning trading session dashboard"
-                                            }, void 0, false, {
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
+                                                        className: "text-2xl sm:text-3xl font-bold text-gray-900",
+                                                        children: "AM Trade Overview"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/am-trade/overview/page.js",
+                                                        lineNumber: 694,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "text-gray-600 mt-1 sm:mt-2 text-sm sm:text-base",
+                                                        children: "Your morning trading session dashboard"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/am-trade/overview/page.js",
+                                                        lineNumber: 695,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 673,
+                                                lineNumber: 693,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 671,
+                                        lineNumber: 682,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex items-center space-x-4",
+                                        className: "flex items-center space-x-2 sm:space-x-4",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium",
+                                                className: "bg-green-100 text-green-800 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium",
                                                 children: "AM Session Active"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 676,
+                                                lineNumber: 700,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                 onClick: ()=>router.push('/am-trade/add-am-trade'),
-                                                className: "bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors",
-                                                children: "Add AM Trade"
-                                            }, void 0, false, {
+                                                className: "bg-blue-600 text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm sm:text-base",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: "hidden sm:inline",
+                                                        children: "Add AM Trade"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/am-trade/overview/page.js",
+                                                        lineNumber: 707,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                        className: "sm:hidden",
+                                                        children: "Add"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/am-trade/overview/page.js",
+                                                        lineNumber: 708,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 679,
+                                                lineNumber: 703,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 675,
+                                        lineNumber: 699,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                lineNumber: 670,
+                                lineNumber: 681,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/am-trade/overview/page.js",
-                            lineNumber: 669,
+                            lineNumber: 680,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2728,7 +2802,7 @@ function AMTradeOverview() {
                                                         children: "Time Period"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 695,
+                                                        lineNumber: 720,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -2741,7 +2815,7 @@ function AMTradeOverview() {
                                                                 children: "All Time"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 701,
+                                                                lineNumber: 726,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2749,7 +2823,7 @@ function AMTradeOverview() {
                                                                 children: "Last 7 Days"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 702,
+                                                                lineNumber: 727,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2757,7 +2831,7 @@ function AMTradeOverview() {
                                                                 children: "Last 30 Days"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 703,
+                                                                lineNumber: 728,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2765,19 +2839,19 @@ function AMTradeOverview() {
                                                                 children: "Last 90 Days"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 704,
+                                                                lineNumber: 729,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 696,
+                                                        lineNumber: 721,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 694,
+                                                lineNumber: 719,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2787,7 +2861,7 @@ function AMTradeOverview() {
                                                         children: "Status"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 710,
+                                                        lineNumber: 735,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -2800,7 +2874,7 @@ function AMTradeOverview() {
                                                                 children: "All Status"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 716,
+                                                                lineNumber: 741,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2808,7 +2882,7 @@ function AMTradeOverview() {
                                                                 children: "Pending"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 717,
+                                                                lineNumber: 742,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2816,7 +2890,7 @@ function AMTradeOverview() {
                                                                 children: "Wins"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 718,
+                                                                lineNumber: 743,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2824,19 +2898,19 @@ function AMTradeOverview() {
                                                                 children: "Losses"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 719,
+                                                                lineNumber: 744,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 711,
+                                                        lineNumber: 736,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 709,
+                                                lineNumber: 734,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2846,7 +2920,7 @@ function AMTradeOverview() {
                                                         children: "Trading Pair"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 725,
+                                                        lineNumber: 750,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -2859,7 +2933,7 @@ function AMTradeOverview() {
                                                                 children: "All Pairs"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 731,
+                                                                lineNumber: 756,
                                                                 columnNumber: 21
                                                             }, this),
                                                             uniquePairs.map((pair)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2867,19 +2941,19 @@ function AMTradeOverview() {
                                                                     children: pair
                                                                 }, pair, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 733,
+                                                                    lineNumber: 758,
                                                                     columnNumber: 23
                                                                 }, this))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 726,
+                                                        lineNumber: 751,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 724,
+                                                lineNumber: 749,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2889,7 +2963,7 @@ function AMTradeOverview() {
                                                         children: "Strategy"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 740,
+                                                        lineNumber: 765,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
@@ -2902,7 +2976,7 @@ function AMTradeOverview() {
                                                                 children: "All Strategies"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 746,
+                                                                lineNumber: 771,
                                                                 columnNumber: 21
                                                             }, this),
                                                             uniqueStrategies.map((strategy)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -2910,25 +2984,25 @@ function AMTradeOverview() {
                                                                     children: strategy
                                                                 }, strategy, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 748,
+                                                                    lineNumber: 773,
                                                                     columnNumber: 23
                                                                 }, this))
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 741,
+                                                        lineNumber: 766,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 739,
+                                                lineNumber: 764,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 692,
+                                        lineNumber: 717,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -2942,18 +3016,18 @@ function AMTradeOverview() {
                                         children: "Reset Filters"
                                     }, void 0, false, {
                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 755,
+                                        lineNumber: 780,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                lineNumber: 691,
+                                lineNumber: 716,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/am-trade/overview/page.js",
-                            lineNumber: 690,
+                            lineNumber: 715,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2971,7 +3045,7 @@ function AMTradeOverview() {
                                                         children: "Total AM Trades"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 774,
+                                                        lineNumber: 799,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2979,7 +3053,7 @@ function AMTradeOverview() {
                                                         children: analytics.totalTrades
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 775,
+                                                        lineNumber: 800,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2990,13 +3064,13 @@ function AMTradeOverview() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 776,
+                                                        lineNumber: 801,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 773,
+                                                lineNumber: 798,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3013,28 +3087,28 @@ function AMTradeOverview() {
                                                         d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 782,
+                                                        lineNumber: 807,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 781,
+                                                    lineNumber: 806,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 780,
+                                                lineNumber: 805,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 772,
+                                        lineNumber: 797,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 771,
+                                    lineNumber: 796,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3049,7 +3123,7 @@ function AMTradeOverview() {
                                                         children: "Win Rate"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 791,
+                                                        lineNumber: 816,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3060,7 +3134,7 @@ function AMTradeOverview() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 792,
+                                                        lineNumber: 817,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3071,13 +3145,13 @@ function AMTradeOverview() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 793,
+                                                        lineNumber: 818,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 790,
+                                                lineNumber: 815,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3094,28 +3168,28 @@ function AMTradeOverview() {
                                                         d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 799,
+                                                        lineNumber: 824,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 798,
+                                                    lineNumber: 823,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 797,
+                                                lineNumber: 822,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 789,
+                                        lineNumber: 814,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 788,
+                                    lineNumber: 813,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3130,7 +3204,7 @@ function AMTradeOverview() {
                                                         children: "Total P&L"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 808,
+                                                        lineNumber: 833,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3138,7 +3212,7 @@ function AMTradeOverview() {
                                                         children: formatCurrency(analytics.totalProfit)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 809,
+                                                        lineNumber: 834,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3149,13 +3223,13 @@ function AMTradeOverview() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 815,
+                                                        lineNumber: 840,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 807,
+                                                lineNumber: 832,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3172,28 +3246,28 @@ function AMTradeOverview() {
                                                         d: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 825,
+                                                        lineNumber: 850,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 824,
+                                                    lineNumber: 849,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 819,
+                                                lineNumber: 844,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 806,
+                                        lineNumber: 831,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 805,
+                                    lineNumber: 830,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3208,7 +3282,7 @@ function AMTradeOverview() {
                                                         children: "Avg Win/Loss"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 834,
+                                                        lineNumber: 859,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3219,7 +3293,7 @@ function AMTradeOverview() {
                                                                 children: formatCurrency(analytics.avgWin)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 836,
+                                                                lineNumber: 861,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3227,7 +3301,7 @@ function AMTradeOverview() {
                                                                 children: "/"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 837,
+                                                                lineNumber: 862,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3235,13 +3309,13 @@ function AMTradeOverview() {
                                                                 children: formatCurrency(analytics.avgLoss)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 838,
+                                                                lineNumber: 863,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 835,
+                                                        lineNumber: 860,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3252,13 +3326,13 @@ function AMTradeOverview() {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 840,
+                                                        lineNumber: 865,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 833,
+                                                lineNumber: 858,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3275,34 +3349,34 @@ function AMTradeOverview() {
                                                         d: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 846,
+                                                        lineNumber: 871,
                                                         columnNumber: 21
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 845,
+                                                    lineNumber: 870,
                                                     columnNumber: 19
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 844,
+                                                lineNumber: 869,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 832,
+                                        lineNumber: 857,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 831,
+                                    lineNumber: 856,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/am-trade/overview/page.js",
-                            lineNumber: 770,
+                            lineNumber: 795,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3319,7 +3393,7 @@ function AMTradeOverview() {
                                                     children: "P&L Performance"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 858,
+                                                    lineNumber: 883,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3329,7 +3403,7 @@ function AMTradeOverview() {
                                                             className: "w-3 h-3 bg-green-500 rounded-full"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 860,
+                                                            lineNumber: 885,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3337,19 +3411,19 @@ function AMTradeOverview() {
                                                             children: "Cumulative P&L"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 861,
+                                                            lineNumber: 886,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 859,
+                                                    lineNumber: 884,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 857,
+                                            lineNumber: 882,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3434,7 +3508,7 @@ function AMTradeOverview() {
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 866,
+                                                lineNumber: 891,
                                                 columnNumber: 19
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "h-full flex items-center justify-center",
@@ -3453,12 +3527,12 @@ function AMTradeOverview() {
                                                                 d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 955,
+                                                                lineNumber: 980,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 954,
+                                                            lineNumber: 979,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3466,7 +3540,7 @@ function AMTradeOverview() {
                                                             children: "No trade data available"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 957,
+                                                            lineNumber: 982,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3474,29 +3548,29 @@ function AMTradeOverview() {
                                                             children: "Add some AM trades to see performance charts"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 958,
+                                                            lineNumber: 983,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 953,
+                                                    lineNumber: 978,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 952,
+                                                lineNumber: 977,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 864,
+                                            lineNumber: 889,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 856,
+                                    lineNumber: 881,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3510,7 +3584,7 @@ function AMTradeOverview() {
                                                     children: "Win/Loss Distribution"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 968,
+                                                    lineNumber: 993,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3523,7 +3597,7 @@ function AMTradeOverview() {
                                                                     className: "w-3 h-3 bg-green-500 rounded-full"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 971,
+                                                                    lineNumber: 996,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3531,13 +3605,13 @@ function AMTradeOverview() {
                                                                     children: "Wins"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 972,
+                                                                    lineNumber: 997,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 970,
+                                                            lineNumber: 995,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3547,7 +3621,7 @@ function AMTradeOverview() {
                                                                     className: "w-3 h-3 bg-red-500 rounded-full"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 975,
+                                                                    lineNumber: 1000,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3555,25 +3629,25 @@ function AMTradeOverview() {
                                                                     children: "Losses"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 976,
+                                                                    lineNumber: 1001,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 974,
+                                                            lineNumber: 999,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 969,
+                                                    lineNumber: 994,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 967,
+                                            lineNumber: 992,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3646,7 +3720,7 @@ function AMTradeOverview() {
                                                 }
                                             }, void 0, false, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 982,
+                                                lineNumber: 1007,
                                                 columnNumber: 19
                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "h-full flex items-center justify-center",
@@ -3665,12 +3739,12 @@ function AMTradeOverview() {
                                                                 d: "M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 1049,
+                                                                lineNumber: 1074,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1048,
+                                                            lineNumber: 1073,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3678,7 +3752,7 @@ function AMTradeOverview() {
                                                             children: "No trade data available"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1051,
+                                                            lineNumber: 1076,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3686,35 +3760,35 @@ function AMTradeOverview() {
                                                             children: "Add some AM trades to see distribution"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1052,
+                                                            lineNumber: 1077,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1047,
+                                                    lineNumber: 1072,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1046,
+                                                lineNumber: 1071,
                                                 columnNumber: 19
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 980,
+                                            lineNumber: 1005,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 966,
+                                    lineNumber: 991,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/am-trade/overview/page.js",
-                            lineNumber: 854,
+                            lineNumber: 879,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3730,7 +3804,7 @@ function AMTradeOverview() {
                                                 children: "Recent AM Trades"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1064,
+                                                lineNumber: 1089,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3739,18 +3813,18 @@ function AMTradeOverview() {
                                                 children: "View All"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1065,
+                                                lineNumber: 1090,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 1063,
+                                        lineNumber: 1088,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 1062,
+                                    lineNumber: 1087,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3768,7 +3842,7 @@ function AMTradeOverview() {
                                                                     className: `w-3 h-3 rounded-full ${trade.status === 'win' ? 'bg-green-500' : trade.status === 'loss' ? 'bg-red-500' : 'bg-gray-400'}`
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1085,
+                                                                    lineNumber: 1110,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3781,7 +3855,7 @@ function AMTradeOverview() {
                                                                                     children: trade.tradingPair
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                                    lineNumber: 1092,
+                                                                                    lineNumber: 1117,
                                                                                     columnNumber: 31
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3789,13 +3863,13 @@ function AMTradeOverview() {
                                                                                     children: trade.direction?.toUpperCase()
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                                    lineNumber: 1093,
+                                                                                    lineNumber: 1118,
                                                                                     columnNumber: 31
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                                            lineNumber: 1091,
+                                                                            lineNumber: 1116,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3806,7 +3880,7 @@ function AMTradeOverview() {
                                                                                     children: formatDate(trade.dateTime || trade.createdAt)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                                    lineNumber: 1102,
+                                                                                    lineNumber: 1127,
                                                                                     columnNumber: 31
                                                                                 }, this),
                                                                                 trade.strategy && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3814,25 +3888,25 @@ function AMTradeOverview() {
                                                                                     children: trade.strategy
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                                    lineNumber: 1106,
+                                                                                    lineNumber: 1131,
                                                                                     columnNumber: 33
                                                                                 }, this)
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                                            lineNumber: 1101,
+                                                                            lineNumber: 1126,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1090,
+                                                                    lineNumber: 1115,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1084,
+                                                            lineNumber: 1109,
                                                             columnNumber: 25
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3843,7 +3917,7 @@ function AMTradeOverview() {
                                                                     children: trade.actualProfit ? formatCurrency(trade.actualProfit) : 'Pending'
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1114,
+                                                                    lineNumber: 1139,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 trade.status && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3851,19 +3925,19 @@ function AMTradeOverview() {
                                                                     children: trade.status.charAt(0).toUpperCase() + trade.status.slice(1)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1122,
+                                                                    lineNumber: 1147,
                                                                     columnNumber: 29
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1113,
+                                                            lineNumber: 1138,
                                                             columnNumber: 25
                                                         }, this)
                                                     ]
                                                 }, trade._id, true, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1080,
+                                                    lineNumber: 1105,
                                                     columnNumber: 23
                                                 }, this)),
                                             filteredTrades.length > 5 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3878,18 +3952,18 @@ function AMTradeOverview() {
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1136,
+                                                    lineNumber: 1161,
                                                     columnNumber: 23
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1135,
+                                                lineNumber: 1160,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 1075,
+                                        lineNumber: 1100,
                                         columnNumber: 17
                                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: "text-center py-12",
@@ -3906,12 +3980,12 @@ function AMTradeOverview() {
                                                     d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1148,
+                                                    lineNumber: 1173,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1147,
+                                                lineNumber: 1172,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3919,7 +3993,7 @@ function AMTradeOverview() {
                                                 children: "No AM trades found"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1150,
+                                                lineNumber: 1175,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3927,7 +4001,7 @@ function AMTradeOverview() {
                                                 children: "Start your morning trading session to see analytics"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1151,
+                                                lineNumber: 1176,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3936,28 +4010,28 @@ function AMTradeOverview() {
                                                 children: "Add Your First AM Trade"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1152,
+                                                lineNumber: 1177,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 1146,
+                                        lineNumber: 1171,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 1073,
+                                    lineNumber: 1098,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/am-trade/overview/page.js",
-                            lineNumber: 1061,
+                            lineNumber: 1086,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8",
+                            className: "grid grid-cols-1 xl:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8",
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "bg-gradient-to-br from-white via-gray-50/50 to-purple-50/30 rounded-2xl border border-gray-200/60 shadow-lg hover:shadow-xl transition-all duration-300",
@@ -3979,31 +4053,31 @@ function AMTradeOverview() {
                                                             d: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1170,
+                                                            lineNumber: 1195,
                                                             columnNumber: 21
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 1169,
+                                                        lineNumber: 1194,
                                                         columnNumber: 19
                                                     }, this),
                                                     "Trading Week Results"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1168,
+                                                lineNumber: 1193,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1167,
+                                            lineNumber: 1192,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "p-6",
+                                            className: "p-4 sm:p-6",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "grid grid-cols-5 gap-4 mb-4 pb-3 border-b border-gray-200/60",
+                                                    className: "grid grid-cols-5 gap-2 sm:gap-4 mb-4 pb-3 border-b border-gray-200/60",
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "flex items-center space-x-2",
@@ -4020,26 +4094,26 @@ function AMTradeOverview() {
                                                                         d: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                                        lineNumber: 1180,
+                                                                        lineNumber: 1205,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1179,
+                                                                    lineNumber: 1204,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-sm font-medium text-gray-600",
+                                                                    className: "text-xs sm:text-sm font-medium text-gray-600",
                                                                     children: "Week"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1182,
+                                                                    lineNumber: 1207,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1178,
+                                                            lineNumber: 1203,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4057,12 +4131,12 @@ function AMTradeOverview() {
                                                                         d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                                        lineNumber: 1186,
+                                                                        lineNumber: 1211,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1185,
+                                                                    lineNumber: 1210,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4070,13 +4144,13 @@ function AMTradeOverview() {
                                                                     children: "Trades"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1188,
+                                                                    lineNumber: 1213,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1184,
+                                                            lineNumber: 1209,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4094,12 +4168,12 @@ function AMTradeOverview() {
                                                                         d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                                        lineNumber: 1192,
+                                                                        lineNumber: 1217,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1191,
+                                                                    lineNumber: 1216,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4107,13 +4181,13 @@ function AMTradeOverview() {
                                                                     children: "Win Rate"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1194,
+                                                                    lineNumber: 1219,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1190,
+                                                            lineNumber: 1215,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4131,12 +4205,12 @@ function AMTradeOverview() {
                                                                         d: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                                        lineNumber: 1198,
+                                                                        lineNumber: 1223,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1197,
+                                                                    lineNumber: 1222,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4144,13 +4218,13 @@ function AMTradeOverview() {
                                                                     children: "Sum RR"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1200,
+                                                                    lineNumber: 1225,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1196,
+                                                            lineNumber: 1221,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4168,12 +4242,12 @@ function AMTradeOverview() {
                                                                         d: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                                        lineNumber: 1204,
+                                                                        lineNumber: 1229,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1203,
+                                                                    lineNumber: 1228,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4181,19 +4255,19 @@ function AMTradeOverview() {
                                                                     children: "Sum Profit %"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1206,
+                                                                    lineNumber: 1231,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1202,
+                                                            lineNumber: 1227,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1177,
+                                                    lineNumber: 1202,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4206,7 +4280,7 @@ function AMTradeOverview() {
                                                                     children: week.week
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1214,
+                                                                    lineNumber: 1239,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4214,7 +4288,7 @@ function AMTradeOverview() {
                                                                     children: week.trades
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1215,
+                                                                    lineNumber: 1240,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4225,7 +4299,7 @@ function AMTradeOverview() {
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1216,
+                                                                    lineNumber: 1241,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4233,7 +4307,7 @@ function AMTradeOverview() {
                                                                     children: week.sumRR
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1222,
+                                                                    lineNumber: 1247,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4245,30 +4319,30 @@ function AMTradeOverview() {
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1228,
+                                                                    lineNumber: 1253,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, index, true, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1213,
+                                                            lineNumber: 1238,
                                                             columnNumber: 21
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1211,
+                                                    lineNumber: 1236,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1175,
+                                            lineNumber: 1200,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 1166,
+                                    lineNumber: 1191,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4291,31 +4365,31 @@ function AMTradeOverview() {
                                                             d: "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1245,
+                                                            lineNumber: 1270,
                                                             columnNumber: 21
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 1244,
+                                                        lineNumber: 1269,
                                                         columnNumber: 19
                                                     }, this),
                                                     "Trading Day Results"
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1243,
+                                                lineNumber: 1268,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1242,
+                                            lineNumber: 1267,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "p-6",
+                                            className: "p-4 sm:p-6",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "grid grid-cols-5 gap-4 mb-4 pb-3 border-b border-gray-200/60",
+                                                    className: "grid grid-cols-5 gap-2 sm:gap-4 mb-4 pb-3 border-b border-gray-200/60",
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "flex items-center space-x-2",
@@ -4332,12 +4406,12 @@ function AMTradeOverview() {
                                                                         d: "M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                                        lineNumber: 1255,
+                                                                        lineNumber: 1280,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1254,
+                                                                    lineNumber: 1279,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4345,13 +4419,13 @@ function AMTradeOverview() {
                                                                     children: "Weekday"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1257,
+                                                                    lineNumber: 1282,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1253,
+                                                            lineNumber: 1278,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4369,12 +4443,12 @@ function AMTradeOverview() {
                                                                         d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                                        lineNumber: 1261,
+                                                                        lineNumber: 1286,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1260,
+                                                                    lineNumber: 1285,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4382,13 +4456,13 @@ function AMTradeOverview() {
                                                                     children: "Trades"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1263,
+                                                                    lineNumber: 1288,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1259,
+                                                            lineNumber: 1284,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4406,12 +4480,12 @@ function AMTradeOverview() {
                                                                         d: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                                        lineNumber: 1267,
+                                                                        lineNumber: 1292,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1266,
+                                                                    lineNumber: 1291,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4419,13 +4493,13 @@ function AMTradeOverview() {
                                                                     children: "Win Rate"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1269,
+                                                                    lineNumber: 1294,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1265,
+                                                            lineNumber: 1290,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4443,12 +4517,12 @@ function AMTradeOverview() {
                                                                         d: "M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                                        lineNumber: 1273,
+                                                                        lineNumber: 1298,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1272,
+                                                                    lineNumber: 1297,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4456,13 +4530,13 @@ function AMTradeOverview() {
                                                                     children: "Sum RR"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1275,
+                                                                    lineNumber: 1300,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1271,
+                                                            lineNumber: 1296,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4480,12 +4554,12 @@ function AMTradeOverview() {
                                                                         d: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                                        lineNumber: 1279,
+                                                                        lineNumber: 1304,
                                                                         columnNumber: 23
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1278,
+                                                                    lineNumber: 1303,
                                                                     columnNumber: 21
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4493,19 +4567,19 @@ function AMTradeOverview() {
                                                                     children: "Sum Profit %"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1281,
+                                                                    lineNumber: 1306,
                                                                     columnNumber: 21
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1277,
+                                                            lineNumber: 1302,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1252,
+                                                    lineNumber: 1277,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4518,7 +4592,7 @@ function AMTradeOverview() {
                                                                     children: day.weekday
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1289,
+                                                                    lineNumber: 1314,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4526,7 +4600,7 @@ function AMTradeOverview() {
                                                                     children: day.trades
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1290,
+                                                                    lineNumber: 1315,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4537,7 +4611,7 @@ function AMTradeOverview() {
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1291,
+                                                                    lineNumber: 1316,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4545,7 +4619,7 @@ function AMTradeOverview() {
                                                                     children: day.sumRR
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1297,
+                                                                    lineNumber: 1322,
                                                                     columnNumber: 23
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4557,18 +4631,18 @@ function AMTradeOverview() {
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1303,
+                                                                    lineNumber: 1328,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             ]
                                                         }, index, true, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1288,
+                                                            lineNumber: 1313,
                                                             columnNumber: 21
                                                         }, this))
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1286,
+                                                    lineNumber: 1311,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4581,7 +4655,7 @@ function AMTradeOverview() {
                                                                 children: "SUM"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 1316,
+                                                                lineNumber: 1341,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4589,7 +4663,7 @@ function AMTradeOverview() {
                                                                 children: dailyResults.reduce((sum, day)=>sum + day.trades, 0)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 1317,
+                                                                lineNumber: 1342,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4600,7 +4674,7 @@ function AMTradeOverview() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 1320,
+                                                                lineNumber: 1345,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4608,7 +4682,7 @@ function AMTradeOverview() {
                                                                 children: dailyResults.reduce((sum, day)=>sum + day.sumRR, 0).toFixed(1)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 1325,
+                                                                lineNumber: 1350,
                                                                 columnNumber: 21
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4620,36 +4694,36 @@ function AMTradeOverview() {
                                                                 ]
                                                             }, void 0, true, {
                                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 1331,
+                                                                lineNumber: 1356,
                                                                 columnNumber: 21
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 1315,
+                                                        lineNumber: 1340,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1314,
+                                                    lineNumber: 1339,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1250,
+                                            lineNumber: 1275,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 1241,
+                                    lineNumber: 1266,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/am-trade/overview/page.js",
-                            lineNumber: 1164,
+                            lineNumber: 1189,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4673,19 +4747,19 @@ function AMTradeOverview() {
                                                         d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 1350,
+                                                        lineNumber: 1375,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1349,
+                                                    lineNumber: 1374,
                                                     columnNumber: 17
                                                 }, this),
                                                 "AM Session Performance"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1348,
+                                            lineNumber: 1373,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4699,7 +4773,7 @@ function AMTradeOverview() {
                                                             children: "Average Win"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1356,
+                                                            lineNumber: 1381,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4707,13 +4781,13 @@ function AMTradeOverview() {
                                                             children: formatCurrency(analytics.avgWin)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1357,
+                                                            lineNumber: 1382,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1355,
+                                                    lineNumber: 1380,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4724,7 +4798,7 @@ function AMTradeOverview() {
                                                             children: "Average Loss"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1360,
+                                                            lineNumber: 1385,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4732,13 +4806,13 @@ function AMTradeOverview() {
                                                             children: formatCurrency(analytics.avgLoss)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1361,
+                                                            lineNumber: 1386,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1359,
+                                                    lineNumber: 1384,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4749,7 +4823,7 @@ function AMTradeOverview() {
                                                             children: "Best Trade"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1364,
+                                                            lineNumber: 1389,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4757,13 +4831,13 @@ function AMTradeOverview() {
                                                             children: formatCurrency(analytics.bestTrade)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1365,
+                                                            lineNumber: 1390,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1363,
+                                                    lineNumber: 1388,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4774,7 +4848,7 @@ function AMTradeOverview() {
                                                             children: "Worst Trade"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1368,
+                                                            lineNumber: 1393,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4782,13 +4856,13 @@ function AMTradeOverview() {
                                                             children: formatCurrency(analytics.worstTrade)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1369,
+                                                            lineNumber: 1394,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1367,
+                                                    lineNumber: 1392,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4799,7 +4873,7 @@ function AMTradeOverview() {
                                                             children: "Profit Factor"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1372,
+                                                            lineNumber: 1397,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4807,13 +4881,13 @@ function AMTradeOverview() {
                                                             children: analytics.profitFactor === Infinity ? '∞' : analytics.profitFactor
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1373,
+                                                            lineNumber: 1398,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1371,
+                                                    lineNumber: 1396,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4824,7 +4898,7 @@ function AMTradeOverview() {
                                                             children: "Win Streak"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1378,
+                                                            lineNumber: 1403,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4832,25 +4906,25 @@ function AMTradeOverview() {
                                                             children: analytics.winStreak
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1379,
+                                                            lineNumber: 1404,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1377,
+                                                    lineNumber: 1402,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1354,
+                                            lineNumber: 1379,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 1347,
+                                    lineNumber: 1372,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4871,19 +4945,19 @@ function AMTradeOverview() {
                                                         d: "M13 10V3L4 14h7v7l9-11h-7z"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                                        lineNumber: 1388,
+                                                        lineNumber: 1413,
                                                         columnNumber: 19
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1387,
+                                                    lineNumber: 1412,
                                                     columnNumber: 17
                                                 }, this),
                                                 "Quick Actions"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1386,
+                                            lineNumber: 1411,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4907,17 +4981,17 @@ function AMTradeOverview() {
                                                                     d: "M12 4v16m8-8H4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1399,
+                                                                    lineNumber: 1424,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 1398,
+                                                                lineNumber: 1423,
                                                                 columnNumber: 21
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1397,
+                                                            lineNumber: 1422,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4925,13 +4999,13 @@ function AMTradeOverview() {
                                                             children: "Add New AM Trade"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1402,
+                                                            lineNumber: 1427,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1393,
+                                                    lineNumber: 1418,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -4952,17 +5026,17 @@ function AMTradeOverview() {
                                                                     d: "M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1410,
+                                                                    lineNumber: 1435,
                                                                     columnNumber: 23
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                                lineNumber: 1409,
+                                                                lineNumber: 1434,
                                                                 columnNumber: 21
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1408,
+                                                            lineNumber: 1433,
                                                             columnNumber: 19
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -4970,19 +5044,19 @@ function AMTradeOverview() {
                                                             children: "View AM Journal"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1413,
+                                                            lineNumber: 1438,
                                                             columnNumber: 19
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1404,
+                                                    lineNumber: 1429,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1392,
+                                            lineNumber: 1417,
                                             columnNumber: 15
                                         }, this),
                                         uniquePairs.length > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -4992,7 +5066,7 @@ function AMTradeOverview() {
                                                     children: "Top Trading Pairs"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1420,
+                                                    lineNumber: 1445,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5011,7 +5085,7 @@ function AMTradeOverview() {
                                                                             children: pair
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                                            lineNumber: 1430,
+                                                                            lineNumber: 1455,
                                                                             columnNumber: 29
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5024,13 +5098,13 @@ function AMTradeOverview() {
                                                                             ]
                                                                         }, void 0, true, {
                                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                                            lineNumber: 1431,
+                                                                            lineNumber: 1456,
                                                                             columnNumber: 29
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1429,
+                                                                    lineNumber: 1454,
                                                                     columnNumber: 27
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5038,48 +5112,48 @@ function AMTradeOverview() {
                                                                     children: formatCurrency(pairProfit)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                                    lineNumber: 1435,
+                                                                    lineNumber: 1460,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, pair, true, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1428,
+                                                            lineNumber: 1453,
                                                             columnNumber: 25
                                                         }, this);
                                                     })
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1421,
+                                                    lineNumber: 1446,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1419,
+                                            lineNumber: 1444,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 1385,
+                                    lineNumber: 1410,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/am-trade/overview/page.js",
-                            lineNumber: 1345,
+                            lineNumber: 1370,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/am-trade/overview/page.js",
-                    lineNumber: 667,
+                    lineNumber: 678,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/am-trade/overview/page.js",
-                lineNumber: 666,
+                lineNumber: 677,
                 columnNumber: 7
             }, this),
             showAddAccountModal && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5097,7 +5171,7 @@ function AMTradeOverview() {
                                         children: "Add New Account"
                                     }, void 0, false, {
                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 1459,
+                                        lineNumber: 1484,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -5122,28 +5196,28 @@ function AMTradeOverview() {
                                                 d: "M6 18L18 6M6 6l12 12"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1468,
+                                                lineNumber: 1493,
                                                 columnNumber: 21
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1467,
+                                            lineNumber: 1492,
                                             columnNumber: 19
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 1460,
+                                        lineNumber: 1485,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                lineNumber: 1458,
+                                lineNumber: 1483,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/am-trade/overview/page.js",
-                            lineNumber: 1457,
+                            lineNumber: 1482,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5156,7 +5230,7 @@ function AMTradeOverview() {
                                             children: "Account Name"
                                         }, void 0, false, {
                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1478,
+                                            lineNumber: 1503,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -5170,13 +5244,13 @@ function AMTradeOverview() {
                                             className: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                                         }, void 0, false, {
                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1481,
+                                            lineNumber: 1506,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 1477,
+                                    lineNumber: 1502,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5186,7 +5260,7 @@ function AMTradeOverview() {
                                             children: "Initial Balance"
                                         }, void 0, false, {
                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1492,
+                                            lineNumber: 1517,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5197,7 +5271,7 @@ function AMTradeOverview() {
                                                     children: "$"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1496,
+                                                    lineNumber: 1521,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -5211,19 +5285,19 @@ function AMTradeOverview() {
                                                     className: "w-full pl-8 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1497,
+                                                    lineNumber: 1522,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1495,
+                                            lineNumber: 1520,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 1491,
+                                    lineNumber: 1516,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5233,7 +5307,7 @@ function AMTradeOverview() {
                                             children: "Account Type"
                                         }, void 0, false, {
                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1509,
+                                            lineNumber: 1534,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5275,7 +5349,7 @@ function AMTradeOverview() {
                                                             className: `w-4 h-4 rounded-full ${tag.color}`
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1529,
+                                                            lineNumber: 1554,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -5283,24 +5357,24 @@ function AMTradeOverview() {
                                                             children: tag.label
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1530,
+                                                            lineNumber: 1555,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, tag.value, true, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1520,
+                                                    lineNumber: 1545,
                                                     columnNumber: 21
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1512,
+                                            lineNumber: 1537,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 1508,
+                                    lineNumber: 1533,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5311,7 +5385,7 @@ function AMTradeOverview() {
                                             children: "Preview"
                                         }, void 0, false, {
                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1538,
+                                            lineNumber: 1563,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5321,7 +5395,7 @@ function AMTradeOverview() {
                                                     className: `w-3 h-3 rounded-full ${getTagColor(newAccount.tag)}`
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1540,
+                                                    lineNumber: 1565,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5331,7 +5405,7 @@ function AMTradeOverview() {
                                                             children: newAccount.name || 'Account Name'
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1542,
+                                                            lineNumber: 1567,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -5344,31 +5418,31 @@ function AMTradeOverview() {
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                                            lineNumber: 1545,
+                                                            lineNumber: 1570,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1541,
+                                                    lineNumber: 1566,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/am-trade/overview/page.js",
-                                            lineNumber: 1539,
+                                            lineNumber: 1564,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                    lineNumber: 1537,
+                                    lineNumber: 1562,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/am-trade/overview/page.js",
-                            lineNumber: 1475,
+                            lineNumber: 1500,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -5389,7 +5463,7 @@ function AMTradeOverview() {
                                         children: "Cancel"
                                     }, void 0, false, {
                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 1556,
+                                        lineNumber: 1581,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -5409,57 +5483,57 @@ function AMTradeOverview() {
                                                     d: "M12 4v16m8-8H4"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/am-trade/overview/page.js",
-                                                    lineNumber: 1571,
+                                                    lineNumber: 1596,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1570,
+                                                lineNumber: 1595,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                 children: "Add Account"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                                lineNumber: 1573,
+                                                lineNumber: 1598,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/am-trade/overview/page.js",
-                                        lineNumber: 1565,
+                                        lineNumber: 1590,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/am-trade/overview/page.js",
-                                lineNumber: 1555,
+                                lineNumber: 1580,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/am-trade/overview/page.js",
-                            lineNumber: 1554,
+                            lineNumber: 1579,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/am-trade/overview/page.js",
-                    lineNumber: 1455,
+                    lineNumber: 1480,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/app/am-trade/overview/page.js",
-                lineNumber: 1454,
+                lineNumber: 1479,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/am-trade/overview/page.js",
-        lineNumber: 652,
+        lineNumber: 650,
         columnNumber: 5
     }, this);
 }
-_s(AMTradeOverview, "4+BxD4YEADZn8sF7zb1AgYUL9Zc=", false, function() {
+_s(AMTradeOverview, "wkwcl++NQwFyXAPVwddfBZ36i7c=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"]
     ];
