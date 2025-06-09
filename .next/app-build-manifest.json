@@ -51,19 +51,19 @@
       "static/chunks/main-app-480a15f526da5073.js",
       "static/chunks/app/api/economic-calendar/route-b774a1080ed85757.js"
     ],
-    "/api/scraper/dashboard-load/route": [
-      "static/chunks/webpack-b4d0cc3d60214c08.js",
-      "static/chunks/4bd1b696-abcda5a4a33b73b0.js",
-      "static/chunks/684-7ebe3d5a2c885ed4.js",
-      "static/chunks/main-app-480a15f526da5073.js",
-      "static/chunks/app/api/scraper/dashboard-load/route-e725844340048452.js"
-    ],
     "/api/strategies/route": [
       "static/chunks/webpack-b4d0cc3d60214c08.js",
       "static/chunks/4bd1b696-abcda5a4a33b73b0.js",
       "static/chunks/684-7ebe3d5a2c885ed4.js",
       "static/chunks/main-app-480a15f526da5073.js",
       "static/chunks/app/api/strategies/route-d78baf229504fe95.js"
+    ],
+    "/api/scraper/dashboard-load/route": [
+      "static/chunks/webpack-b4d0cc3d60214c08.js",
+      "static/chunks/4bd1b696-abcda5a4a33b73b0.js",
+      "static/chunks/684-7ebe3d5a2c885ed4.js",
+      "static/chunks/main-app-480a15f526da5073.js",
+      "static/chunks/app/api/scraper/dashboard-load/route-e725844340048452.js"
     ],
     "/api/trades/route": [
       "static/chunks/webpack-b4d0cc3d60214c08.js",
@@ -79,14 +79,6 @@
       "static/chunks/main-app-480a15f526da5073.js",
       "static/chunks/app/api/user/profile/route-60072eaa5a00889a.js"
     ],
-    "/add-trade/page": [
-      "static/chunks/webpack-b4d0cc3d60214c08.js",
-      "static/chunks/4bd1b696-abcda5a4a33b73b0.js",
-      "static/chunks/684-7ebe3d5a2c885ed4.js",
-      "static/chunks/main-app-480a15f526da5073.js",
-      "static/chunks/387-05e8e17f6179d5d9.js",
-      "static/chunks/app/add-trade/page-11c305ba0e2d3735.js"
-    ],
     "/account-debug/page": [
       "static/chunks/webpack-b4d0cc3d60214c08.js",
       "static/chunks/4bd1b696-abcda5a4a33b73b0.js",
@@ -95,13 +87,13 @@
       "static/chunks/874-4effb3e643e2c4ee.js",
       "static/chunks/app/account-debug/page-94c72f30e1019b14.js"
     ],
-    "/am-trade/journal/page": [
+    "/add-trade/page": [
       "static/chunks/webpack-b4d0cc3d60214c08.js",
       "static/chunks/4bd1b696-abcda5a4a33b73b0.js",
       "static/chunks/684-7ebe3d5a2c885ed4.js",
       "static/chunks/main-app-480a15f526da5073.js",
       "static/chunks/387-05e8e17f6179d5d9.js",
-      "static/chunks/app/am-trade/journal/page-48640765bee88adb.js"
+      "static/chunks/app/add-trade/page-11c305ba0e2d3735.js"
     ],
     "/am-trade/add-am-trade/page": [
       "static/chunks/webpack-b4d0cc3d60214c08.js",
@@ -110,6 +102,14 @@
       "static/chunks/main-app-480a15f526da5073.js",
       "static/chunks/387-05e8e17f6179d5d9.js",
       "static/chunks/app/am-trade/add-am-trade/page-a3048a819d73c37e.js"
+    ],
+    "/am-trade/journal/page": [
+      "static/chunks/webpack-b4d0cc3d60214c08.js",
+      "static/chunks/4bd1b696-abcda5a4a33b73b0.js",
+      "static/chunks/684-7ebe3d5a2c885ed4.js",
+      "static/chunks/main-app-480a15f526da5073.js",
+      "static/chunks/387-05e8e17f6179d5d9.js",
+      "static/chunks/app/am-trade/journal/page-48640765bee88adb.js"
     ],
     "/am-trade/overview/page": [
       "static/chunks/webpack-b4d0cc3d60214c08.js",
@@ -128,14 +128,6 @@
       "static/chunks/main-app-480a15f526da5073.js",
       "static/chunks/app/am-trade/page-b393f1f9d34ef2a4.js"
     ],
-    "/dashboard/page": [
-      "static/chunks/webpack-b4d0cc3d60214c08.js",
-      "static/chunks/4bd1b696-abcda5a4a33b73b0.js",
-      "static/chunks/684-7ebe3d5a2c885ed4.js",
-      "static/chunks/main-app-480a15f526da5073.js",
-      "static/chunks/387-05e8e17f6179d5d9.js",
-      "static/chunks/app/dashboard/page-3b14ef26b5e021c1.js"
-    ],
     "/login/page": [
       "static/chunks/webpack-b4d0cc3d60214c08.js",
       "static/chunks/4bd1b696-abcda5a4a33b73b0.js",
@@ -143,6 +135,14 @@
       "static/chunks/main-app-480a15f526da5073.js",
       "static/chunks/874-4effb3e643e2c4ee.js",
       "static/chunks/app/login/page-cfae586eab0f9e91.js"
+    ],
+    "/dashboard/page": [
+      "static/chunks/webpack-b4d0cc3d60214c08.js",
+      "static/chunks/4bd1b696-abcda5a4a33b73b0.js",
+      "static/chunks/684-7ebe3d5a2c885ed4.js",
+      "static/chunks/main-app-480a15f526da5073.js",
+      "static/chunks/387-05e8e17f6179d5d9.js",
+      "static/chunks/app/dashboard/page-3b14ef26b5e021c1.js"
     ],
     "/journal/page": [
       "static/chunks/webpack-b4d0cc3d60214c08.js",
