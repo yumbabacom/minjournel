@@ -1,5 +1,0 @@
-{
-  "/am-trade/journal/page": "app/am-trade/journal/page.js",
-  "/api/accounts/route": "app/api/accounts/route.js",
-  "/api/am-trades/route": "app/api/am-trades/route.js"
-}
