@@ -1,4 +1,4 @@
-// File: E:\trading-journal-app\app\api\trades\route.js
+// File: /home/runner/work/minjournel/minjournel/app/api/trades/route.js
 import * as entry from '../../../../../app/api/trades/route.js'
 import type { NextRequest } from 'next/server.js'
 

@@ -401,15 +401,36 @@ export default function Journal() {
     setShowTradeModal(true);
   };
 
-  // Delete trade
+  // Delete trade with account balance update
   const deleteTrade = async (tradeId) => {
-    if (!confirm('Are you sure you want to delete this trade?')) {
+    if (!confirm('Are you sure you want to delete this trade? This action cannot be undone.')) {
       return;
     }
 
     try {
       const token = Cookies.get('auth-token') || localStorage.getItem('auth-token');
-      const response = await fetch(`/api/trades?id=${tradeId}`, {
+      const userData = localStorage.getItem('user');
+      const user = userData ? JSON.parse(userData) : null;
+      const userId = user?.id || user?._id;
+
+      // Find the trade to get its P&L impact before deletion
+      const tradeToDelete = trades.find(trade => trade._id === tradeId);
+      let shouldUpdateBalance = false;
+      let balanceAdjustment = 0;
+
+      if (tradeToDelete && tradeToDelete.actualProfit && currentAccount &&
+          (tradeToDelete.status === 'win' || tradeToDelete.status === 'loss')) {
+        shouldUpdateBalance = true;
+        balanceAdjustment = -tradeToDelete.actualProfit; // Reverse the P&L impact
+        console.log('Trade deletion will reverse P&L impact:', {
+          tradeId,
+          actualProfit: tradeToDelete.actualProfit,
+          balanceAdjustment,
+          currentBalance: currentAccount.balance
+        });
+      }
+
+      const response = await fetch(`/api/trades?id=${tradeId}&userId=${userId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -419,6 +440,57 @@ export default function Journal() {
 
       const result = await response.json();
       if (response.ok && result.success) {
+        // Update account balance if needed
+        if (shouldUpdateBalance) {
+          const newBalance = currentAccount.balance + balanceAdjustment;
+
+          console.log('Updating account balance after trade deletion:', {
+            currentBalance: currentAccount.balance,
+            balanceAdjustment,
+            newBalance,
+            accountId: currentAccount.id || currentAccount._id
+          });
+
+          const accountResponse = await fetch('/api/accounts', {
+            method: 'PUT',
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              accountId: currentAccount.id || currentAccount._id,
+              userId: userId,
+              updates: { balance: newBalance }
+            })
+          });
+
+          if (accountResponse.ok) {
+            const updatedAccount = { ...currentAccount, balance: newBalance };
+            console.log('Account balance updated successfully after deletion:', updatedAccount);
+
+            // Update local account state
+            setAccounts(prev => prev.map(acc =>
+              (acc.id === updatedAccount.id || acc._id === updatedAccount._id)
+                ? updatedAccount : acc
+            ));
+
+            // Dispatch custom event for real-time sync
+            const event = new CustomEvent('accountBalanceUpdated', {
+              detail: {
+                accountId: currentAccount.id || currentAccount._id,
+                newBalance: newBalance,
+                source: 'main-trade-delete'
+              }
+            });
+            window.dispatchEvent(event);
+
+          } else {
+            const errorData = await accountResponse.json();
+            console.error('Failed to update account balance after deletion:', errorData);
+            alert('Trade deleted but failed to update account balance. Please refresh the page.');
+          }
+        }
+
         // Remove trade from local state
         setTrades(prev => prev.filter(trade => trade._id !== tradeId));
         console.log('Trade deleted successfully');
@@ -2703,7 +2775,94 @@ function StatusUpdateModal({ trade, accounts, onClose, onStatusUpdated }) {
   // Get current account
   const currentAccount = accounts.find(acc => acc.id === trade.accountId || acc._id === trade.accountId);
 
-  // Auto-calculate P&L and metrics
+  // Trading pairs data (same as AM Trade for consistency)
+  const tradingPairs = {
+    forex: [
+      { pair: 'EUR/USD', name: 'Euro/US Dollar' },
+      { pair: 'GBP/USD', name: 'British Pound/US Dollar' },
+      { pair: 'USD/JPY', name: 'US Dollar/Japanese Yen' },
+      { pair: 'USD/CHF', name: 'US Dollar/Swiss Franc' },
+      { pair: 'AUD/USD', name: 'Australian Dollar/US Dollar' },
+      { pair: 'USD/CAD', name: 'US Dollar/Canadian Dollar' },
+      { pair: 'NZD/USD', name: 'New Zealand Dollar/US Dollar' }
+    ],
+    commodities: [
+      { pair: 'XAUUSD', name: 'Gold/US Dollar' },
+      { pair: 'XAGUSD', name: 'Silver/US Dollar' },
+      { pair: 'XTIUSD', name: 'Crude Oil/US Dollar' },
+      { pair: 'XBRUSD', name: 'Brent Oil/US Dollar' }
+    ],
+    crypto: [
+      { pair: 'BTC/USD', name: 'Bitcoin/US Dollar' },
+      { pair: 'ETH/USD', name: 'Ethereum/US Dollar' },
+      { pair: 'LTC/USD', name: 'Litecoin/US Dollar' },
+      { pair: 'XRP/USD', name: 'Ripple/US Dollar' }
+    ]
+  };
+
+  // Get trading pair details
+  const getTradingPairDetails = (pairSymbol) => {
+    for (const [category, pairs] of Object.entries(tradingPairs)) {
+      const pair = pairs.find(p => p.pair === pairSymbol);
+      if (pair) {
+        return { ...pair, category };
+      }
+    }
+    return null;
+  };
+
+  // Calculate pip value based on pair type (standardized)
+  const calculatePipValue = (pairDetails) => {
+    if (!pairDetails) return 10;
+    const { category, pair } = pairDetails;
+
+    switch (category) {
+      case 'forex':
+        if (pair.includes('JPY')) {
+          return 1000; // JPY pairs: 1 pip = 0.01, so 100,000 * 0.01 = $1000 per lot
+        } else {
+          return 10; // Most forex pairs: 1 pip = 0.0001, so 100,000 * 0.0001 = $10 per lot
+        }
+      case 'crypto':
+        return 1; // Crypto pairs typically have different pip values
+      case 'commodities':
+        if (pair.includes('XAU')) {
+          return 100; // Gold: 1 pip = $1, so 100 oz * $1 = $100 per lot
+        } else {
+          return 10; // Other commodities
+        }
+      default:
+        return 10; // Default forex-like calculation
+    }
+  };
+
+  // Calculate pips based on pair type (standardized)
+  const calculatePips = (pairDetails, price1, price2) => {
+    if (!pairDetails || !price1 || !price2) return 0;
+    const { category, pair } = pairDetails;
+    const priceDiff = Math.abs(price1 - price2);
+
+    switch (category) {
+      case 'forex':
+        if (pair.includes('JPY')) {
+          return priceDiff * 100; // JPY pairs: 1 pip = 0.01, so multiply by 100
+        } else {
+          return priceDiff * 10000; // Most forex pairs: 1 pip = 0.0001, so multiply by 10000
+        }
+      case 'crypto':
+        return priceDiff; // Crypto pairs: 1 pip = 1 unit of price difference
+      case 'commodities':
+        if (pair.includes('XAU')) {
+          return priceDiff * 10; // Gold: 1 pip = $0.1, so multiply by 10
+        } else {
+          return priceDiff * 100; // Other commodities
+        }
+      default:
+        return priceDiff * 10000; // Default forex calculation
+    }
+  };
+
+  // Auto-calculate P&L and metrics (enhanced with proper pair support)
   const calculateMetrics = (data) => {
     const actualEntry = parseFloat(data.actualEntry) || 0;
     const actualExit = parseFloat(data.actualExit) || 0;
@@ -2734,33 +2893,75 @@ function StatusUpdateModal({ trade, accounts, onClose, onStatusUpdated }) {
       };
     }
 
-    // Calculate pips
-    const pips = Math.abs(actualExit - actualEntry) * 10000;
+    // Get trading pair details for accurate calculations
+    const pairDetails = getTradingPairDetails(trade.tradingPair);
+    let pips = 0;
+    let actualPL = 0;
 
-    // Calculate P&L based on direction
-    let priceDifference;
-    if (trade.direction === 'long') {
-      priceDifference = actualExit - actualEntry;
+    if (pairDetails) {
+      // Use proper pair-specific calculation
+      pips = calculatePips(pairDetails, actualEntry, actualExit);
+      const pipValue = calculatePipValue(pairDetails);
+      const lotSize = trade.calculatedResults?.lotSize || 0.1;
+
+      // Calculate P&L based on direction
+      let pipsGained = pips;
+      if (trade.direction === 'short') {
+        // For short positions, profit when price goes down
+        pipsGained = actualEntry > actualExit ? pips : -pips;
+      } else {
+        // For long positions, profit when price goes up
+        pipsGained = actualExit > actualEntry ? pips : -pips;
+      }
+
+      actualPL = pipsGained * pipValue * lotSize;
     } else {
-      priceDifference = actualEntry - actualExit;
+      // Fallback calculation for unknown pairs
+      pips = Math.abs(actualExit - actualEntry) * 10000;
+      let priceDifference;
+      if (trade.direction === 'long') {
+        priceDifference = actualExit - actualEntry;
+      } else {
+        priceDifference = actualEntry - actualExit;
+      }
+      const lotSize = trade.calculatedResults?.lotSize || 0.1;
+      actualPL = (priceDifference * 10000) * 10 * lotSize;
     }
-
-    // Use lot size from trade calculations or default
-    const lotSize = trade.calculations?.lotSize || 0.1;
-    const pipValue = 10; // Simplified pip value
-    const actualPL = (priceDifference * 10000) * pipValue * lotSize;
 
     // Calculate risk/reward ratio
     let riskRewardRatio = 0;
-    if (stopLoss && takeProfit && actualEntry) {
-      const riskPips = Math.abs(actualEntry - stopLoss) * 10000;
-      const rewardPips = Math.abs(takeProfit - actualEntry) * 10000;
-      riskRewardRatio = rewardPips / riskPips;
+    if (pairDetails && stopLoss && takeProfit && actualEntry) {
+      const riskPips = calculatePips(pairDetails, actualEntry, stopLoss);
+      const rewardPips = calculatePips(pairDetails, actualEntry, takeProfit);
+      riskRewardRatio = riskPips > 0 ? (rewardPips / riskPips) : 0;
+    } else {
+      // Fallback calculation
+      const riskAmount = Math.abs(actualEntry - stopLoss) * 10000 * 10 * (trade.calculatedResults?.lotSize || 0.1);
+      const rewardAmount = Math.abs(takeProfit - actualEntry) * 10000 * 10 * (trade.calculatedResults?.lotSize || 0.1);
+      riskRewardRatio = riskAmount > 0 ? (rewardAmount / riskAmount) : 0;
     }
 
-    // Calculate account impact percentage
+    // Calculate account impact
     const accountBalance = currentAccount?.balance || 10000;
-    const accountImpact = (actualPL / accountBalance) * 100;
+    let accountImpact = (actualPL / accountBalance) * 100;
+
+    // Validate calculations and prevent NaN/Infinity
+    if (isNaN(actualPL) || !isFinite(actualPL)) {
+      console.error('Invalid P&L calculation detected:', { actualPL, actualEntry, actualExit, trade });
+      actualPL = 0;
+    }
+    if (isNaN(pips) || !isFinite(pips)) {
+      console.error('Invalid pips calculation detected:', { pips, actualEntry, actualExit, trade });
+      pips = 0;
+    }
+    if (isNaN(riskRewardRatio) || !isFinite(riskRewardRatio)) {
+      console.error('Invalid risk/reward ratio detected:', { riskRewardRatio, stopLoss, takeProfit, actualEntry });
+      riskRewardRatio = 0;
+    }
+    if (isNaN(accountImpact) || !isFinite(accountImpact)) {
+      console.error('Invalid account impact calculation detected:', { accountImpact, actualPL, accountBalance });
+      accountImpact = 0;
+    }
 
     return {
       actualPL: parseFloat(actualPL.toFixed(2)),
