@@ -190,6 +190,48 @@ export default function AMTradeOverview() {
     }
   }, [currentAccountId]);
 
+  // Listen for account balance updates from other components (AM Trade Journal, Main Dashboard, etc.)
+  useEffect(() => {
+    const handleAccountBalanceUpdate = (event) => {
+      const { accountId, newBalance, source } = event.detail;
+      console.log('AM Trade Overview received account balance update:', { accountId, newBalance, source });
+
+      // Update the account in local state
+      setAccounts(prev => prev.map(acc =>
+        (acc.id === accountId || acc._id === accountId)
+          ? { ...acc, balance: newBalance }
+          : acc
+      ));
+
+      // If this is the current account, also refresh trades to recalculate stats
+      if (accountId === currentAccountId || accountId === currentAccountId?.toString()) {
+        console.log('Current account balance updated in AM Trade Overview, refreshing trades...');
+        fetchAMTrades();
+      }
+    };
+
+    const handleTradeUpdate = (event) => {
+      const { tradeId, accountId, actualPL, source } = event.detail;
+      console.log('AM Trade Overview received trade update:', { tradeId, accountId, actualPL, source });
+
+      // Refresh trades to get updated data
+      if (accountId === currentAccountId || accountId === currentAccountId?.toString()) {
+        console.log('Trade updated for current account in AM Trade Overview, refreshing data...');
+        fetchAMTrades();
+      }
+    };
+
+    // Add event listeners
+    window.addEventListener('accountBalanceUpdated', handleAccountBalanceUpdate);
+    window.addEventListener('tradeUpdated', handleTradeUpdate);
+
+    // Cleanup event listeners
+    return () => {
+      window.removeEventListener('accountBalanceUpdated', handleAccountBalanceUpdate);
+      window.removeEventListener('tradeUpdated', handleTradeUpdate);
+    };
+  }, [currentAccountId, fetchAMTrades]);
+
   // Calculate analytics from real data
   const analytics = useMemo(() => {
     if (!filteredTrades.length) {
@@ -597,6 +639,18 @@ export default function AMTradeOverview() {
         setAccounts(prev => prev.map(acc =>
           (acc.id === accountId || acc._id === accountId) ? updatedAccount : acc
         ));
+
+        // Dispatch custom event for real-time sync with other components if balance was updated
+        if (updates.balance !== undefined) {
+          const event = new CustomEvent('accountBalanceUpdated', {
+            detail: {
+              accountId: accountId,
+              newBalance: updates.balance,
+              source: 'am-trade-overview'
+            }
+          });
+          window.dispatchEvent(event);
+        }
       }
     } catch (error) {
       console.error('Error updating account:', error);

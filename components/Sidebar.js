@@ -593,7 +593,7 @@ export default function Sidebar({
 
                     return (
                       <div
-                        key={`${accountId}-${currentAccountId}`}
+                        key={accountId}
                         className={`flex items-center justify-between p-3 rounded-lg transition-all duration-200 border ${
                           isCurrentAccount
                             ? 'bg-blue-50 border-blue-200 shadow-sm'

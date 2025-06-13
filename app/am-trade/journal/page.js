@@ -2181,10 +2181,23 @@ export default function AMTradeJournal() {
               trade._id === updatedTrade._id ? updatedTrade : trade
             ));
             if (updatedAccount) {
-              setAccounts(prev => prev.map(acc =>
-                acc.id === updatedAccount.id || acc._id === updatedAccount._id
-                  ? updatedAccount : acc
-              ));
+              console.log('Updating account in AM Trade Journal:', {
+                updatedAccountId: updatedAccount.id || updatedAccount._id,
+                newBalance: updatedAccount.balance,
+                currentAccounts: accounts.map(acc => ({ id: acc.id || acc._id, balance: acc.balance }))
+              });
+
+              setAccounts(prev => prev.map(acc => {
+                const accountId = acc.id || acc._id;
+                const updatedAccountId = updatedAccount.id || updatedAccount._id;
+
+                // Use string comparison to ensure proper matching
+                if (String(accountId) === String(updatedAccountId)) {
+                  console.log('Account matched and updated:', { accountId, newBalance: updatedAccount.balance });
+                  return updatedAccount;
+                }
+                return acc;
+              }));
             }
             setShowUpdateModal(false);
             setSelectedTrade(null);
@@ -2860,12 +2873,36 @@ function AMTradeStatusUpdateModal({ trade, accounts, onClose, onStatusUpdated })
     const lotSize = trade.calculatedResults?.lotSize || 0.1;
     const pipValue = calculatePipValue(pairDetails);
 
-    // Calculate actual P&L using proper pip calculation
-    // Ensure we don't divide by zero and handle edge cases
+    // Calculate actual P&L using proper calculation
     let actualPL = 0;
-    if (Math.abs(priceDifference) > 0) {
-      const direction = priceDifference > 0 ? 1 : -1;
-      actualPL = direction * pips * pipValue * lotSize;
+    if (actualEntry && actualExit && Math.abs(actualExit - actualEntry) > 0) {
+      // Calculate the raw price difference
+      const rawPriceDifference = actualExit - actualEntry;
+
+      // Apply direction multiplier (long = +1, short = -1)
+      const directionMultiplier = trade.direction === 'long' ? 1 : -1;
+
+      // Calculate P&L: (price difference) * direction * pip value * lot size
+      // For forex pairs, we need to convert price difference to pips first
+      let pipsGained = 0;
+
+      if (pairDetails) {
+        // Use the proper pip calculation based on pair type
+        pipsGained = calculatePips(pairDetails, actualEntry, actualExit);
+        // Apply direction (if price moved in our favor, pips should be positive)
+        if (trade.direction === 'short') {
+          pipsGained = -pipsGained; // Reverse for short positions
+        }
+      } else {
+        // Fallback calculation for unknown pairs
+        pipsGained = rawPriceDifference * 10000; // Assume standard forex
+        if (trade.direction === 'short') {
+          pipsGained = -pipsGained;
+        }
+      }
+
+      // Calculate final P&L
+      actualPL = pipsGained * pipValue * lotSize;
     }
 
     // Calculate risk/reward ratio based on actual execution
@@ -2878,7 +2915,7 @@ function AMTradeStatusUpdateModal({ trade, accounts, onClose, onStatusUpdated })
 
     // Calculate account impact percentage
     const accountBalance = currentAccount?.balance || 10000;
-    const accountImpact = (actualPL / accountBalance) * 100;
+    let accountImpact = (actualPL / accountBalance) * 100;
 
     // Debug logging for calculation verification
     console.log('AM Trade P&L Calculation Debug:', {
@@ -2887,13 +2924,15 @@ function AMTradeStatusUpdateModal({ trade, accounts, onClose, onStatusUpdated })
       direction: trade.direction,
       actualEntry: actualEntry,
       actualExit: actualExit,
+      rawPriceDifference: actualExit - actualEntry,
       priceDifference: priceDifference,
       pips: pips,
       pipValue: pipValue,
       lotSize: lotSize,
       actualPL: actualPL,
       accountBalance: currentAccount?.balance || 10000,
-      accountImpact: accountImpact
+      accountImpact: accountImpact,
+      calculationMethod: 'Fixed P&L calculation with proper direction handling'
     });
 
     // Validate calculations

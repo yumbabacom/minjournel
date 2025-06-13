@@ -918,6 +918,138 @@ export default function AddAMTrade() {
                 </div>
               </div>
 
+              {/* Market & Time Info Section */}
+              <div className="bg-gradient-to-br from-white to-purple-50 rounded-2xl border border-purple-100 p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="flex items-center space-x-4 mb-8">
+                  <div className="p-3 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl shadow-lg">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900">Market & Time Info</h3>
+                    <p className="text-sm text-gray-600">Select your trading market and timeframe</p>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-3">
+                      Month
+                    </label>
+                    <div className="relative">
+                      <select
+                        name="month"
+                        value={tradeData.month}
+                        onChange={handleInputChange}
+                        className="w-full pl-12 pr-10 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent appearance-none bg-white transition-all duration-200 shadow-sm hover:shadow-md hover:border-purple-300"
+                      >
+                        {generateMonthOptions().map(month => (
+                          <option key={month} value={month}>{month}</option>
+                        ))}
+                      </select>
+                      <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-500">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                      <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                        <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-3">
+                      Quarter
+                    </label>
+                    <div className="relative">
+                      <select
+                        name="quarter"
+                        value={tradeData.quarter}
+                        onChange={handleInputChange}
+                        className="w-full pl-12 pr-10 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent appearance-none bg-white transition-all duration-200 shadow-sm hover:shadow-md hover:border-purple-300"
+                      >
+                        {generateQuarterOptions().map(quarter => (
+                          <option key={quarter} value={quarter}>{quarter}</option>
+                        ))}
+                      </select>
+                      <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-500">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                      </div>
+                      <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                        <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="md:col-span-2 lg:col-span-3">
+                    <label className="block text-sm font-medium text-gray-700 mb-3">
+                      Trading Pair *
+                    </label>
+                    <button
+                      type="button"
+                      onClick={() => setShowTradingPairModal(true)}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white hover:bg-gray-50 transition-all duration-200 shadow-sm hover:shadow-md text-left"
+                    >
+                      {tradeData.tradingPair ? (
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-3">
+                            {(() => {
+                              const pairDetails = getTradingPairDetails(tradeData.tradingPair);
+                              if (pairDetails) {
+                                if (pairDetails.flag1 && pairDetails.flag2) {
+                                  return (
+                                    <div className="flex items-center space-x-1">
+                                      {pairDetails.flag1}
+                                      {pairDetails.flag2}
+                                    </div>
+                                  );
+                                } else if (pairDetails.icon) {
+                                  return pairDetails.icon;
+                                }
+                              }
+                              return (
+                                <svg className="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                                </svg>
+                              );
+                            })()}
+                            <div>
+                              <p className="font-semibold text-gray-900">{tradeData.tradingPair}</p>
+                              <p className="text-sm text-gray-600">
+                                {getTradingPairDetails(tradeData.tradingPair)?.name || 'Trading Pair'}
+                              </p>
+                            </div>
+                          </div>
+                          <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </div>
+                      ) : (
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-3">
+                            <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                            </svg>
+                            <span className="text-gray-500">Select trading pair</span>
+                          </div>
+                          <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+                          </svg>
+                        </div>
+                      )}
+                    </button>
+                  </div>
+                </div>
+              </div>
+
               {/* Account & Trade Info Section */}
               <div className="bg-gradient-to-br from-white via-green-50/50 to-emerald-100/30 rounded-2xl sm:rounded-3xl border border-green-200/60 p-4 sm:p-6 lg:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-[1.01]">
                 <div className="flex flex-col sm:flex-row sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 mb-6 sm:mb-8">
@@ -1085,138 +1217,6 @@ export default function AddAMTrade() {
                     {errors.stopLoss && (
                       <p className="text-xs text-red-600 mt-1">{errors.stopLoss}</p>
                     )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Market & Time Info Section */}
-              <div className="bg-gradient-to-br from-white to-purple-50 rounded-2xl border border-purple-100 p-8 shadow-lg hover:shadow-xl transition-all duration-300">
-                <div className="flex items-center space-x-4 mb-8">
-                  <div className="p-3 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl shadow-lg">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900">Market & Time Info</h3>
-                    <p className="text-sm text-gray-600">Select your trading market and timeframe</p>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-3">
-                      Month
-                    </label>
-                    <div className="relative">
-                      <select
-                        name="month"
-                        value={tradeData.month}
-                        onChange={handleInputChange}
-                        className="w-full pl-12 pr-10 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent appearance-none bg-white transition-all duration-200 shadow-sm hover:shadow-md hover:border-purple-300"
-                      >
-                        {generateMonthOptions().map(month => (
-                          <option key={month} value={month}>{month}</option>
-                        ))}
-                      </select>
-                      <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-500">
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                      </div>
-                      <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                        <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-3">
-                      Quarter
-                    </label>
-                    <div className="relative">
-                      <select
-                        name="quarter"
-                        value={tradeData.quarter}
-                        onChange={handleInputChange}
-                        className="w-full pl-12 pr-10 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent appearance-none bg-white transition-all duration-200 shadow-sm hover:shadow-md hover:border-purple-300"
-                      >
-                        {generateQuarterOptions().map(quarter => (
-                          <option key={quarter} value={quarter}>{quarter}</option>
-                        ))}
-                      </select>
-                      <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-purple-500">
-                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                        </svg>
-                      </div>
-                      <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                        <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="md:col-span-2 lg:col-span-3">
-                    <label className="block text-sm font-medium text-gray-700 mb-3">
-                      Trading Pair *
-                    </label>
-                    <button
-                      type="button"
-                      onClick={() => setShowTradingPairModal(true)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent bg-white hover:bg-gray-50 transition-all duration-200 shadow-sm hover:shadow-md text-left"
-                    >
-                      {tradeData.tradingPair ? (
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center space-x-3">
-                            {(() => {
-                              const pairDetails = getTradingPairDetails(tradeData.tradingPair);
-                              if (pairDetails) {
-                                if (pairDetails.flag1 && pairDetails.flag2) {
-                                  return (
-                                    <div className="flex items-center space-x-1">
-                                      {pairDetails.flag1}
-                                      {pairDetails.flag2}
-                                    </div>
-                                  );
-                                } else if (pairDetails.icon) {
-                                  return pairDetails.icon;
-                                }
-                              }
-                              return (
-                                <svg className="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                                </svg>
-                              );
-                            })()}
-                            <div>
-                              <p className="font-semibold text-gray-900">{tradeData.tradingPair}</p>
-                              <p className="text-sm text-gray-600">
-                                {getTradingPairDetails(tradeData.tradingPair)?.name || 'Trading Pair'}
-                              </p>
-                            </div>
-                          </div>
-                          <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </div>
-                      ) : (
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center space-x-3">
-                            <svg className="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                            </svg>
-                            <span className="text-gray-500">Select trading pair</span>
-                          </div>
-                          <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
-                          </svg>
-                        </div>
-                      )}
-                    </button>
                   </div>
                 </div>
               </div>
